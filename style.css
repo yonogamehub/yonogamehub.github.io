@@ -235,7 +235,9 @@ NOTICE BAR
 
     color:#fff;
 
-    padding:9px 0;
+    .notice-bar{
+    padding: 4px 0;
+    }
 
     font-size:14px;
 
@@ -257,7 +259,9 @@ MAIN HEADER
 
     background:linear-gradient(135deg,#1b43c7,#2959ef);
 
-    padding:18px 15px;
+    .main-header{
+    padding: 8px 15px;
+    }
 
     color:#fff;
 
