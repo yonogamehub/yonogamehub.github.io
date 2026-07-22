@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manage Games</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+padding:20px;
+color:#fff;
+}
+
+h2{
+text-align:center;
+color:#FFD700;
+margin-bottom:20px;
+}
+
+#gamesList{
+max-width:800px;
+margin:auto;
+}
+
+.game{
+background:#1e293b;
+border-radius:15px;
+padding:15px;
+margin-bottom:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.35);
+text-align:center;
+}
+
+.game img{
+width:90px;
+height:90px;
+border-radius:12px;
+object-fit:cover;
+margin-bottom:10px;
+}
+
+.game h3{
+margin:10px 0;
+font-size:22px;
+}
+
+.rating{
+color:#FFD700;
+margin-bottom:10px;
+font-size:18px;
+}
+
+.game a{
+color:#00d4ff;
+text-decoration:none;
+word-break:break-all;
+}
+
+.btns{
+margin-top:15px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+button{
+padding:10px 18px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.edit{
+background:#FFD700;
+color:#000;
+}
+
+.delete{
+background:#ff3b30;
+color:#fff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>🎮 Manage Games</h2>
+
+<div id="gamesList">
+Loading...
+</div>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
+  authDomain: "yonoappskiduniya.firebaseapp.com",
+  projectId: "yonoappskiduniya",
+  storageBucket: "yonoappskiduniya.firebasestorage.app",
+  messagingSenderId: "474330790853",
+  appId: "1:474330790853:web:da1f01d00a7ffedbc4e9ac"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const gamesList = document.getElementById("gamesList");
+
+async function loadGames(){
+
+gamesList.innerHTML = "";
+
+const snapshot = await getDocs(collection(db,"games"));
+
+if(snapshot.empty){
+gamesList.innerHTML="<h3 style='text-align:center'>No Games Found</h3>";
+return;
+}
+
+snapshot.forEach((game)=>{
+
+const data = game.data();
+  gamesList.innerHTML += `
+<div class="game">
+
+<img src="${data.image}" alt="${data.name}">
+
+<h3>${data.name}</h3>
+
+<div class="rating">
+${data.rating || "⭐⭐⭐⭐⭐"}
+</div>
+
+<p>
+<a href="${data.link}" target="_blank">
+${data.link}
+</a>
+</p>
+
+<div class="btns">
+
+<button class="edit"
+onclick="editGame(
+'${game.id}',
+'${data.name}',
+'${data.image}',
+'${data.link}',
+'${data.rating || "⭐⭐⭐⭐⭐"}'
+)">
+✏️ Edit
+</button>
+
+<button class="delete"
+onclick="deleteGame('${game.id}')">
+🗑 Delete
+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+window.editGame = async function(id,name,image,link,rating){
+
+const newName = prompt("Game Name",name);
+if(newName===null) return;
+
+const newImage = prompt("Image URL",image);
+if(newImage===null) return;
+
+const newLink = prompt("Download Link",link);
+if(newLink===null) return;
+
+const newRating = prompt("Rating",rating || "⭐⭐⭐⭐⭐");
+if(newRating===null) return;
+
+await updateDoc(doc(db,"games",id),{
+name:newName,
+image:newImage,
+link:newLink,
+rating:newRating
+});
+
+alert("✅ Game Updated Successfully");
+
+loadGames();
+
+}
+  window.deleteGame = async function(id){
+
+const ok = confirm("Delete this game?");
+
+if(!ok) return;
+
+await deleteDoc(doc(db,"games",id));
+
+alert("🗑️ Game Deleted Successfully");
+
+loadGames();
+
+}
+
+loadGames();
+
+</script>
+
+</body>
+</html>

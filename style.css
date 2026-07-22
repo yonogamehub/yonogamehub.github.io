@@ -1,0 +1,1633 @@
+/*==================================
+GOOGLE FONT
+==================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/*==================================
+RESET
+==================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f3f6fb;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/*==================================
+ROOT COLORS
+==================================*/
+
+:root{
+
+    --primary:#1b43c7;
+    --primary-dark:#1436a8;
+    --yellow:#ffc107;
+    --red:#ff3b30;
+    --green:#22c55e;
+
+    --white:#ffffff;
+    --black:#222222;
+    --text:#555555;
+
+    --radius:18px;
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.08);
+
+    --transition:.3s ease;
+
+}
+
+/*==================================
+COMMON
+==================================*/
+
+section{
+
+    width:100%;
+
+}
+
+img{
+
+    max-width:100%;
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+    color:inherit;
+
+}
+
+button{
+
+    border:none;
+    outline:none;
+    cursor:pointer;
+
+}
+
+input{
+
+    border:none;
+    outline:none;
+
+}
+
+.container{
+
+    width:94%;
+    max-width:1200px;
+    margin:auto;
+
+}
+
+/*==================================
+SCROLLBAR
+==================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eeeeee;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/*==================================
+SELECTION
+==================================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+}
+/*==================================
+INSTALL BAR
+==================================*/
+
+.install-bar{
+
+    width:100%;
+
+    background:#ffffff;
+
+    padding:12px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
+
+}
+
+.install-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.install-left img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+}
+
+.install-left h3{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.install-left p{
+
+    font-size:13px;
+
+    color:#666;
+
+    margin-top:2px;
+
+}
+
+.install-btn{
+
+    background:#1b43c7;
+
+    color:#fff;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.install-btn:hover{
+
+    background:#1436a8;
+
+}
+
+/*==================================
+NOTICE BAR
+==================================*/
+
+.notice-bar{
+
+    background:linear-gradient(90deg,#1b43c7,#2857ef);
+
+    color:#fff;
+
+    padding:9px 0;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+.notice-bar marquee{
+
+    width:100%;
+
+}
+
+/*==================================
+MAIN HEADER
+==================================*/
+
+.main-header{
+
+    background:linear-gradient(135deg,#1b43c7,#2959ef);
+
+    padding:18px 15px;
+
+    color:#fff;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.header-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.header-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.header-logo img{
+
+    width:62px;
+
+    height:62px;
+
+    border-radius:50%;
+
+    border:3px solid #ffd84d;
+
+    background:#fff;
+
+    object-fit:cover;
+
+}
+
+.header-logo h2{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    line-height:1.1;
+
+}
+
+.header-logo p{
+
+    font-size:13px;
+
+    opacity:.95;
+
+    margin-top:4px;
+
+}
+
+.header-icon{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:20px;
+
+    transition:.3s;
+
+    backdrop-filter:blur(8px);
+
+}
+
+.header-icon:hover{
+
+    background:#ffffff;
+
+    color:#1b43c7;
+
+}
+
+/*==================================
+TOP NAVIGATION
+==================================*/
+
+.top-nav{
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    overflow-x:auto;
+
+    padding:14px 12px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+
+    scrollbar-width:none;
+
+}
+
+.top-nav::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.top-nav a{
+
+    flex:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    background:#f4f7ff;
+
+    color:#1b43c7;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.top-nav a i{
+
+    font-size:15px;
+
+}
+
+.top-nav a:hover{
+
+    background:#1b43c7;
+
+    color:#fff;
+
+}
+/*==================================
+HERO BANNER
+==================================*/
+
+.hero-banner{
+
+    width:94%;
+
+    margin:18px auto;
+
+}
+
+.hero-banner img{
+
+    width:100%;
+
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+/*==================================
+TOP APPS
+==================================*/
+
+.top-apps{
+
+    width:94%;
+
+    margin:22px auto;
+
+}
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.section-title h2{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.section-title p{
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    color:#777;
+
+}
+
+.section-title a{
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+/*==================================
+TOP APP GRID
+==================================*/
+
+.top-app-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:14px;
+
+}
+
+/*==================================
+TOP APP CARD
+==================================*/
+
+.top-app-card{
+
+    position:relative;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:18px 12px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.top-app-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.top-app-card img{
+
+    width:62px;
+
+    height:62px;
+
+    margin:8px auto 12px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+}
+
+.top-app-card h3{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.top-app-card p{
+
+    margin-top:8px;
+
+    color:#ff7a00;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+.top-app-card small{
+
+    display:block;
+
+    margin:6px 0 14px;
+
+    color:#777;
+
+    font-size:12px;
+
+}
+
+.top-app-card a{
+
+    display:inline-block;
+
+    background:#ffc107;
+
+    color:#222;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.top-app-card a:hover{
+
+    background:#ffb300;
+
+}
+
+/*==================================
+RANK BADGE
+==================================*/
+
+.rank{
+
+    position:absolute;
+
+    top:10px;
+
+    left:10px;
+
+    background:#1b43c7;
+
+    color:#fff;
+
+    padding:4px 9px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+}
+
+/*==================================
+NEW BADGE
+==================================*/
+
+.new-tag{
+
+    position:absolute;
+
+    top:10px;
+
+    right:10px;
+
+    background:#ff3b30;
+
+    color:#fff;
+
+    padding:4px 8px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:768px){
+
+    .hero-banner img{
+
+        height:170px;
+
+    }
+
+    .top-app-grid{
+
+        gap:10px;
+
+    }
+
+    .top-app-card{
+
+        padding:15px 8px;
+
+    }
+
+    .top-app-card img{
+
+        width:55px;
+
+        height:55px;
+
+    }
+
+    .top-app-card h3{
+
+        font-size:13px;
+
+    }
+
+    .top-app-card a{
+
+        padding:8px 14px;
+
+        font-size:12px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero-banner img{
+
+        height:155px;
+
+        border-radius:15px;
+
+    }
+
+    .section-title h2{
+
+        font-size:19px;
+
+    }
+
+    .top-app-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+        gap:8px;
+
+    }
+
+    .top-app-card{
+
+        border-radius:14px;
+
+        padding:12px 6px;
+
+    }
+
+    .top-app-card img{
+
+        width:46px;
+
+        height:46px;
+
+    }
+
+    .top-app-card h3{
+
+        font-size:11px;
+
+    }
+
+    .top-app-card p{
+
+        font-size:11px;
+
+    }
+
+    .top-app-card small{
+
+        font-size:10px;
+
+    }
+
+    .top-app-card a{
+
+        width:100%;
+
+        padding:7px 0;
+
+        font-size:11px;
+
+    }
+
+}
+/*==================================
+APP TABS
+==================================*/
+
+.app-tabs{
+
+    width:94%;
+
+    margin:22px auto 18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.tab-btn{
+
+    background:#ffffff;
+
+    color:#666;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.tab-btn.active{
+
+    background:linear-gradient(135deg,#1b43c7,#2959ef);
+
+    color:#ffffff;
+
+}
+
+.tab-btn:hover{
+
+    background:#1b43c7;
+
+    color:#ffffff;
+
+}
+
+/*==================================
+SEARCH BAR
+==================================*/
+
+.search-section{
+
+    width:94%;
+
+    margin:18px auto;
+
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#ffffff;
+
+    border-radius:50px;
+
+    padding:14px 18px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+.search-box i{
+
+    color:#1b43c7;
+
+    font-size:18px;
+
+    margin-right:12px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    font-size:15px;
+
+    color:#333;
+
+    background:transparent;
+
+}
+
+.search-box input::placeholder{
+
+    color:#999;
+
+}
+
+/*==================================
+FILTER CHIPS
+==================================*/
+
+.filter-section{
+
+    width:94%;
+
+    margin:18px auto 24px;
+
+    display:flex;
+
+    gap:10px;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+}
+
+.filter-section::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.chip{
+
+    flex:none;
+
+    background:#ffffff;
+
+    color:#555;
+
+    padding:9px 18px;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.chip.active{
+
+    background:#ffc107;
+
+    color:#222;
+
+}
+
+.chip:hover{
+
+    background:#1b43c7;
+
+    color:#ffffff;
+
+}
+
+/*==================================
+GAMES HEADING
+==================================*/
+
+.games-heading{
+
+    width:94%;
+
+    margin:10px auto 20px;
+
+}
+
+.games-heading h2{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.games-heading p{
+
+    margin-top:5px;
+
+    font-size:14px;
+
+    color:#777;
+
+}
+/*==================================
+GAMES SECTION
+==================================*/
+
+.games-section{
+
+    width:94%;
+
+    margin:0 auto 90px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+/*==================================
+GAME CARD
+==================================*/
+
+.game-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#ffffff;
+
+    padding:14px;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.07);
+
+    transition:.3s;
+
+}
+
+.game-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+
+}
+
+/*==================================
+LEFT SIDE
+==================================*/
+
+.game-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex:1;
+
+}
+
+/*==================================
+GAME LOGO
+==================================*/
+
+.game-logo{
+
+    width:64px;
+
+    height:64px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+    background:#f3f6fb;
+
+    flex-shrink:0;
+
+}
+
+/*==================================
+GAME INFO
+==================================*/
+
+.game-info{
+
+    flex:1;
+
+}
+
+.game-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:6px;
+
+}
+
+.game-info h3{
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.game-info p{
+
+    font-size:13px;
+
+    color:#ff7a00;
+
+    font-weight:600;
+
+    margin-bottom:4px;
+
+}
+
+.game-info small{
+
+    display:block;
+
+    font-size:12px;
+
+    color:#777;
+
+}
+
+/*==================================
+BADGE
+==================================*/
+
+.game-badge{
+
+    background:#ff3b30;
+
+    color:#ffffff;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    padding:4px 8px;
+
+    border-radius:20px;
+
+    text-transform:uppercase;
+
+}
+
+/*==================================
+INSTALL BUTTON
+==================================*/
+
+.install-btn{
+
+    min-width:105px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(135deg,#1b43c7,#2959ef);
+
+    color:#ffffff;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.install-btn:hover{
+
+    transform:scale(1.05);
+
+    background:linear-gradient(135deg,#1436a8,#1b43c7);
+
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:768px){
+
+    .game-card{
+
+        padding:12px;
+
+    }
+
+    .game-logo{
+
+        width:58px;
+
+        height:58px;
+
+    }
+
+    .game-info h3{
+
+        font-size:15px;
+
+    }
+
+    .install-btn{
+
+        min-width:92px;
+
+        height:40px;
+
+        font-size:12px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .game-card{
+
+        gap:10px;
+
+    }
+
+    .game-logo{
+
+        width:52px;
+
+        height:52px;
+
+        border-radius:14px;
+
+    }
+
+    .game-info h3{
+
+        font-size:14px;
+
+    }
+
+    .game-info p{
+
+        font-size:12px;
+
+    }
+
+    .game-info small{
+
+        font-size:11px;
+
+    }
+
+    .game-badge{
+
+        font-size:9px;
+
+        padding:3px 7px;
+
+    }
+
+    .install-btn{
+
+        min-width:82px;
+
+        height:38px;
+
+        font-size:11px;
+
+    }
+
+}
+/*==================================
+FIREBASE GAMES
+==================================*/
+
+#firebaseGames{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:20px;
+
+}
+
+/*==================================
+TELEGRAM SECTION
+==================================*/
+
+.telegram-section{
+
+    width:94%;
+
+    margin:35px auto;
+
+}
+
+.telegram-card{
+
+    background:linear-gradient(135deg,#229ED9,#0b7db6);
+
+    border-radius:22px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    color:#ffffff;
+
+    box-shadow:0 12px 28px rgba(34,158,217,.28);
+
+}
+
+.telegram-card i{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+}
+
+.telegram-card h2{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.telegram-card p{
+
+    font-size:14px;
+
+    opacity:.95;
+
+    margin-bottom:20px;
+
+    line-height:1.6;
+
+}
+
+.telegram-card a{
+
+    display:inline-block;
+
+    background:#ffffff;
+
+    color:#229ED9;
+
+    padding:12px 28px;
+
+    border-radius:35px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.telegram-card a:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/*==================================
+FOOTER
+==================================*/
+
+.footer{
+
+    background:#1f2937;
+
+    color:#d1d5db;
+
+    text-align:center;
+
+    padding:35px 20px 90px;
+
+}
+
+.footer-logo{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    margin:0 auto 15px;
+
+    object-fit:cover;
+
+}
+
+.footer h3{
+
+    color:#ffffff;
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+.footer p{
+
+    font-size:14px;
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.footer-links a{
+
+    color:#ffffff;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+    color:#ffc107;
+
+}
+
+.footer-copy{
+
+    font-size:13px;
+
+    color:#9ca3af;
+
+}
+
+/*==================================
+BOTTOM NAVIGATION
+==================================*/
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    padding:10px 0;
+
+    box-shadow:0 -6px 20px rgba(0,0,0,.08);
+
+    z-index:999;
+
+}
+
+.bottom-nav a{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:4px;
+
+    color:#777;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.bottom-nav a i{
+
+    font-size:20px;
+
+}
+
+.bottom-nav a.active{
+
+    color:var(--primary);
+
+}
+
+.bottom-nav a:hover{
+
+    color:var(--primary);
+
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:768px){
+
+    .telegram-card{
+
+        padding:24px 18px;
+
+    }
+
+    .telegram-card h2{
+
+        font-size:21px;
+
+    }
+
+    .footer{
+
+        padding-bottom:85px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .telegram-card{
+
+        border-radius:18px;
+
+        padding:22px 15px;
+
+    }
+
+    .telegram-card i{
+
+        font-size:42px;
+
+    }
+
+    .telegram-card h2{
+
+        font-size:19px;
+
+    }
+
+    .telegram-card p{
+
+        font-size:13px;
+
+    }
+
+    .telegram-card a{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .footer h3{
+
+        font-size:20px;
+
+    }
+
+    .footer p{
+
+        font-size:13px;
+
+    }
+
+    .bottom-nav a{
+
+        font-size:11px;
+
+    }
+
+    .bottom-nav a i{
+
+        font-size:18px;
+
+    }
+
+}
+

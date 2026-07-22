@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Game</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:400px;
+margin:auto;
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+}
+
+h2{
+text-align:center;
+color:#FFD700;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#FFD700;
+color:#000;
+font-weight:bold;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>➕ Add New Game</h2>
+
+<input type="text" id="gameName" placeholder="Game Name">
+
+<input type="text" id="gameImage" placeholder="Game Image URL">
+
+<input type="text" id="gameLink" placeholder="Game Download Link">
+
+<input
+type="number"
+id="gameRating"
+placeholder="Game Rating (4.5)"
+min="0"
+max="5"
+step="0.1">
+
+<button>Add Game</button>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
+authDomain: "yonoappskiduniya.firebaseapp.com",
+projectId: "yonoappskiduniya",
+storageBucket: "yonoappskiduniya.firebasestorage.app",
+messagingSenderId: "474330790853",
+appId: "1:474330790853:web:da1f01d00a7ffedbc4e9ac"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.querySelector("button").onclick = async function(){
+
+const name = document.getElementById("gameName").value;
+const image = document.getElementById("gameImage").value;
+const link = document.getElementById("gameLink").value;
+const rating = document.getElementById("gameRating").value;
+
+try{
+
+await addDoc(collection(db,"games"),{
+name:name,
+image:image,
+link:link,
+rating:rating
+});
+
+alert("✅ Game Added Successfully");
+
+document.getElementById("gameName").value="";
+document.getElementById("gameImage").value="";
+document.getElementById("gameLink").value="";
+document.getElementById("gameRating").value="";
+
+}catch(e){
+alert(e.message);
+}
+
+}
+</script>
+
+</body>
+</html>
