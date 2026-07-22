@@ -255,18 +255,12 @@ NOTICE BAR
 MAIN HEADER
 ==================================*/
 
-.main-header{
-
-    background:linear-gradient(135deg,#1b43c7,#2959ef);
-
     .main-header{
-    padding: 18px 15px;
-    {
+    background: linear-gradient(135deg,#1b43c7,#2959ef);
+    padding:18px 15px;
     color:#fff;
-
     box-shadow:0 8px 20px rgba(0,0,0,.08);
-
-}
+    }
 
 .header-top{
 
