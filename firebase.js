@@ -7,7 +7,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/fireba
 import {
     getFirestore,
     collection,
-    getDocs
+    getDocs,
+    query,
+    where,
+    orderBy,
+    limit
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 // =====================================
@@ -93,3 +97,10 @@ window.addEventListener("DOMContentLoaded", () => {
     loadGames();
 
 });
+window.db = db;
+window.collection = collection;
+window.getDocs = getDocs;
+window.query = query;
+window.where = where;
+window.orderBy = orderBy;
+window.limit = limit;
