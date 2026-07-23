@@ -238,3 +238,16 @@ window.addEventListener("load", () => {
 // =====================================
 
 window.renderFirebaseGames = renderFirebaseGames;
+// ================================
+// TOP 3 APPS
+// ================================
+
+async function loadTopApps() {
+
+    const topAppsGrid = document.getElementById("topAppsGrid");
+
+    if (!topAppsGrid || !window.db) return;
+
+    topAppsGrid.innerHTML = "";
+
+}
