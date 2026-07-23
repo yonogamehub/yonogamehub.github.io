@@ -60,13 +60,16 @@ cursor:pointer;
 
 <input type="text" id="gameLink" placeholder="Game Download Link">
 
+
+
 <input
 type="number"
-id="gameRating"
-placeholder="Game Rating (4.5)"
-min="0"
-max="5"
-step="0.1">
+id="gameOrder"
+placeholder="Game Order (1-500)"
+min="1"
+max="500"
+required>
+
 
 <button>Add Game</button>
 
@@ -94,14 +97,15 @@ const name = document.getElementById("gameName").value;
 const image = document.getElementById("gameImage").value;
 const link = document.getElementById("gameLink").value;
 const rating = document.getElementById("gameRating").value;
-
+const order = Number(document.getElementById("gameOrder").value);
 try{
 
 await addDoc(collection(db,"games"),{
-name:name,
-image:image,
-link:link,
-rating:rating
+    name:name,
+    image:image,
+    link:link,
+    rating:rating,
+    order:order
 });
 
 alert("✅ Game Added Successfully");
