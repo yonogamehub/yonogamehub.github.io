@@ -283,5 +283,11 @@ snap.forEach((doc) => {
             Download
         </a>
 
-    </div>`;
+        </div>`;
+});
+
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    loadTopApps();
 });
