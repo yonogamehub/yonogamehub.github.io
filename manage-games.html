@@ -115,7 +115,7 @@ import {
   getDocs,
   updateDoc,
   deleteDoc,
-  doc
+  do,
   query,
 orderBy
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
@@ -138,8 +138,7 @@ async function loadGames(){
 
 gamesList.innerHTML = "";
 
-const q = query(collection(db,"games"), orderBy("order"));
-const snapshot = await getDocs(q);
+const snapshot = await getDocs(collection(db,"games"));
 
 if(snapshot.empty){
 gamesList.innerHTML="<h3 style='text-align:center'>No Games Found</h3>";
