@@ -166,7 +166,7 @@ INSTALL BAR
     align-items:center;
 
     gap:12px;
-
+flex:1;
 }
 
 .install-left img{
@@ -192,13 +192,10 @@ INSTALL BAR
 }
 
 .install-left p{
-
     font-size:13px;
-
     color:#666;
-
     margin-top:2px;
-
+    white-space:nowrap;
 }
 
 .install-btn{
