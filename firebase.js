@@ -5,9 +5,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 import {
-    getFirestore,
-    collection,
-    getDocs
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 // =====================================
@@ -49,7 +51,9 @@ async function loadGames() {
 
     try {
 
-        const snapshot = await getDocs(gamesRef);
+        const snapshot = await getDocs(
+  query(gamesRef, orderBy("order"))
+);
 
         const games = [];
 
