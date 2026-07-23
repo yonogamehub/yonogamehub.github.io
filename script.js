@@ -251,3 +251,37 @@ async function loadTopApps() {
     topAppsGrid.innerHTML = "";
 
 }
+const snap = await window.getDocs(
+    window.query(
+        window.collection(window.db, "games"),
+        window.where("topPosition", ">", 0),
+        window.orderBy("topPosition"),
+        window.limit(3)
+    )
+);
+
+snap.forEach((doc) => {
+
+    const game = doc.data();
+
+    topAppsGrid.innerHTML += `
+    <div class="top-app-card">
+
+        <span class="rank">#${game.topPosition}</span>
+
+        <span class="new-tag">${game.badge || "HOT"}</span>
+
+        <img src="${game.image}" alt="${game.name}" onerror="this.src='images/logo.png'">
+
+        <h3>${game.name}</h3>
+
+        <p>Bonus ₹${game.reward || game.bonus || 0}</p>
+
+        <small>Min Withdraw ₹${game.withdraw || 100}</small>
+
+        <a href="${game.link}" target="_blank">
+            Download
+        </a>
+
+    </div>`;
+});
