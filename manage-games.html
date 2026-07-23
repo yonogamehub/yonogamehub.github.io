@@ -116,6 +116,8 @@ import {
   updateDoc,
   deleteDoc,
   doc
+  query,
+orderBy
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -136,7 +138,8 @@ async function loadGames(){
 
 gamesList.innerHTML = "";
 
-const snapshot = await getDocs(collection(db,"games"));
+const q = query(collection(db,"games"), orderBy("order"));
+const snapshot = await getDocs(q);
 
 if(snapshot.empty){
 gamesList.innerHTML="<h3 style='text-align:center'>No Games Found</h3>";
@@ -171,7 +174,8 @@ onclick="editGame(
 '${data.name}',
 '${data.image}',
 '${data.link}',
-'${data.rating || "⭐⭐⭐⭐⭐"}'
+'${data.rating || "⭐⭐⭐⭐⭐"}',
+'${data.order || 999}'
 )">
 ✏️ Edit
 </button>
@@ -192,7 +196,7 @@ onclick="setTopGame('${game.id}')">
 });
 
 }
-window.editGame = async function(id,name,image,link,rating){
+window.editGame = async function(id,name,image,link,rating,order){
 
 const newName = prompt("Game Name",name);
 if(newName===null) return;
@@ -204,13 +208,16 @@ const newLink = prompt("Download Link",link);
 if(newLink===null) return;
 
 const newRating = prompt("Rating",rating || "⭐⭐⭐⭐⭐");
+  const newOrder = prompt("Game Order (1-500)", order);
+if(newOrder===null) return;
 if(newRating===null) return;
 
 await updateDoc(doc(db,"games",id),{
 name:newName,
 image:newImage,
 link:newLink,
-rating:newRating
+rating:newRating,
+order:Number(newOrder)
 });
 
 alert("✅ Game Updated Successfully");
