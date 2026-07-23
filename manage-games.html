@@ -180,7 +180,10 @@ onclick="editGame(
 onclick="deleteGame('${game.id}')">
 🗑 Delete
 </button>
-
+<button class="top3"
+onclick="setTopGame('${game.id}')">
+⭐ Top 3
+</button>
 </div>
 
 </div>
@@ -228,7 +231,23 @@ alert("🗑️ Game Deleted Successfully");
 loadGames();
 
 }
+window.setTopGame = async function(id){
 
+    const position = prompt(
+        "Top Position\n\n1 = Top #1\n2 = Top #2\n3 = Top #3\n0 = Remove",
+        "1"
+    );
+
+    if(position === null) return;
+
+    await updateDoc(doc(db,"games",id),{
+        topPosition: Number(position)
+    });
+
+    alert("✅ Top Position Saved");
+
+    loadGames();
+}
 loadGames();
 
 </script>
