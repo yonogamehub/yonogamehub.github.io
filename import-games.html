@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Import Games To Firebase</title>
+
+<style>
+body{
+    margin:0;
+    padding:30px;
+    background:#0d1117;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+h1{
+    color:#00ff88;
+}
+
+button{
+    background:#00b894;
+    color:#fff;
+    border:none;
+    padding:15px 30px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+button:hover{
+    background:#009f7a;
+}
+
+#status{
+    margin-top:25px;
+    font-size:18px;
+    color:#ffd369;
+    white-space:pre-line;
+}
+
+.progress{
+    width:100%;
+    max-width:500px;
+    height:22px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+    margin:30px auto;
+}
+
+.bar{
+    width:0%;
+    height:100%;
+    background:#00ff88;
+    transition:.3s;
+}
+</style>
+</head>
+
+<body>
+
+<h1>YONO GAMES IMPORT TOOL</h1>
+
+<p>
+This tool imports all hardcoded games into Firebase.<br>
+Run only one time.
+</p>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div id="status">
+Waiting...
+</div>
+
+<button onclick="startImport()">
+START IMPORT
+</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+addDoc,
+query,
+where
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey:"AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
+authDomain:"yonoappskiduniya.firebaseapp.com",
+projectId:"yonoappskiduniya",
+storageBucket:"yonoappskiduniya.firebasestorage.app",
+messagingSenderId:"474330790853",
+appId:"1:474330790853:web:da1f01d00a7ffedbc4e9ac"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+
+const games=[
+  {
+name:"Bingo101",
+image:"images/bingo101.png",
+link:"https://bingo101.info/?code=6YFHXY2G8Y1&t=1783100334",
+rating:"4.9",
+bonus:"₹28",
+order:1,
+top:false
+},
+
+{
+name:"Spin101",
+image:"images/spin101.png",
+link:"https://spin101.click/?code=351NDUFCAX2&t=1783100475",
+rating:"4.9",
+bonus:"₹38",
+order:2,
+top:true
+},
+
+{
+name:"IND Slots",
+image:"images/indslots.png",
+link:"https://www.indslotsbonus.com/?code=EYM4AS1VV24&t=1783100572",
+rating:"4.8",
+bonus:"₹58",
+order:3,
+top:false
+},
+
+{
+name:"YONO Games",
+image:"images/yonogames.png",
+link:"https://yonogamesi.com/?code=XF3NXDK5TPR&t=1783100619",
+rating:"5.0",
+bonus:"₹58",
+order:4,
+top:true
+},
+
+{
+name:"YONO Slots",
+image:"images/yonoslots.png",
+link:"https://www.uonoslot.top/?code=PJBWTB9KC6M&t=1783100731",
+rating:"4.9",
+bonus:"₹68",
+order:5,
+top:false
+},
+
+{
+name:"SPIN777",
+image:"images/spin777.png",
+link:"https://spin777-s.com/?code=7V9Y39GRWBL&t=1783100798",
+rating:"5.0",
+bonus:"₹88",
+order:6,
+top:false
+},
+
+{
+name:"GoGo Rummy",
+image:"images/gogorummy.png",
+link:"https://www.gospin.bet/?code=8FWG1HVHA2X&t=1783101328",
+rating:"4.8",
+bonus:"₹68",
+order:7,
+top:false
+},
+
+{
+name:"Spin Crush",
+image:"images/spincrush.png",
+link:"https://bkfadsegtgs.safelyearnmillionsbysharingonepersonaqfxzqyj8.com/?code=BHFAPHH6FW7&t=1783101574",
+rating:"4.9",
+bonus:"₹78",
+order:8,
+top:false
+},
+
+{
+name:"Boss Rummy",
+image:"images/bossrummy.png",
+link:"https://www.bossrummyi.com/?code=9HFNPG883N8&t=1783101990",
+rating:"5.0",
+bonus:"₹88",
+order:9,
+top:false
+},
+  {
+name:"JOY RUMMY",
+image:"images/joyrummy.png",
+link:"https://www.joyrummytop.com/?code=J5KPG61GMXM",
+rating:"4.9",
+bonus:"₹68",
+order:10,
+top:false
+},
+
+{
+name:"DIWA GAME",
+image:"images/diwagame.png",
+link:"https://diwagameshare.biz?pid=478121036&channel=2010003",
+rating:"5.0",
+bonus:"Official",
+order:11,
+top:false
+},
+
+{
+name:"DIWA SLOTS",
+image:"images/diwaslots.png",
+link:"https://sharediwaslot.com?pid=278109911&channel=2010002&pkg=com.diwaslotwhl.app",
+rating:"4.9",
+bonus:"New User",
+order:12,
+top:false
+},
+
+{
+name:"DIWA VIP",
+image:"images/diwavip.png",
+link:"https://diwavipshare.im?pid=520328926&channel=2050001&pkg=com.diwavip.h5",
+rating:"5.0",
+bonus:"VIP",
+order:13,
+top:false
+},
+
+{
+name:"MQM",
+image:"images/mqm.png",
+link:"https://5mqmshare.vip?pid=271735045&channel=2070983&pkg=com.mqmrfkfsxwas.vva",
+rating:"5.0",
+bonus:"High Bonus",
+order:14,
+top:false
+},
+
+{
+name:"FN7",
+image:"images/fn7.png",
+link:"https://invite.fn7e.com/?code=41TVJ6Z",
+rating:"4.9",
+bonus:"Welcome",
+order:15,
+top:false
+},
+
+{
+name:"HINDI777",
+image:"images/hindi777.png",
+link:"https://www.hindi777.com/",
+rating:"4.8",
+bonus:"Daily Bonus",
+order:16,
+top:false
+},
+
+{
+name:"101Z GAME",
+image:"images/101zgame.png",
+link:"#",
+rating:"New",
+bonus:"Coming Soon",
+order:17,
+top:false
+},
+
+{
+name:"IN7 GAME",
+image:"images/in7.png",
+link:"#",
+rating:"New",
+bonus:"Coming Soon",
+order:18,
+top:false
+},
+
+{
+name:"DhanGame",
+image:"images/dhangame.png",
+link:"https://www.dhangamespin.com/?code=47TBEDSDGPU&t=1784834806",
+rating:"5.0",
+bonus:"₹28",
+order:0,
+top:true
+}
+  ];
+
+const status=document.getElementById("status");
+const bar=document.getElementById("bar");
+
+window.startImport=async function(){
+
+let imported=0;
+let skipped=0;
+
+for(let i=0;i<games.length;i++){
+
+const game=games[i];
+
+status.innerHTML=`Checking ${game.name}...`;
+
+const q=query(
+collection(db,"games"),
+where("name","==",game.name)
+);
+
+const snap=await getDocs(q);
+
+if(snap.empty){
+
+await addDoc(collection(db,"games"),game);
+
+imported++;
+
+}else{
+
+skipped++;
+
+}
+
+const percent=Math.round(((i+1)/games.length)*100);
+
+bar.style.width=percent+"%";
+
+status.innerHTML=
+`Imported : ${imported}
+Skipped : ${skipped}
+Progress : ${percent}%`;
+
+}
+
+status.innerHTML=
+`✅ Import Completed Successfully!
+
+Imported : ${imported}
+
+Skipped : ${skipped}
+
+Now open Manage Games.`;
+
+}
+</script>
+
+</body>
+</html>
