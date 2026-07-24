@@ -304,9 +304,11 @@ function renderTopApps(games = []) {
 
             <small>⭐ ${game.rating} | Min Withdraw ₹100</small>
 
-            <a href="${game.link}" target="_blank">
-                Download
-            </a>
+            <a href="${game.link}"
+   target="_blank"
+   class="download-btn">
+   Download
+</a>
         </div>`;
     });
 }
