@@ -190,8 +190,12 @@ function renderFirebaseGames(games = []) {
 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
 </p>
 
-                    <small>
-<span style="color:#ff3b30;font-weight:700;">Min Withdraw</span>
+                    <p>
+🎁 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
+</p>
+
+<small>
+<span style="color:#ff3b30;font-weight:700;">Min</span>
 <span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
 &nbsp; | &nbsp; ${rating}
 </small>
@@ -307,12 +311,11 @@ function renderTopApps(games = []) {
             <h3>${game.name}</h3>
 
             <p>
-🎁 <span style="color:#16a34a;font-weight:700;">Welcome Bonus</span>
-<span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
+🎁 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
 </p>
 
             <small>
-<span style="color:#ff3b30;font-weight:700;">Min Withdraw</span>
+<span style="color:#ff3b30;font-weight:700;">Min</span>
 <span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
 &nbsp; | &nbsp; ⭐ ${game.rating || "5.0"}
 </small>
