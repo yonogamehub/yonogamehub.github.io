@@ -101,6 +101,39 @@ searchGames();
 // =====================================
 // FIREBASE GAME RENDER
 // =====================================
+// =====================================
+// HELPERS
+// =====================================
+
+function getGameImage(game) {
+
+    if (!game.image) return "images/logo.png";
+
+    if (game.image.startsWith("http")) return game.image;
+
+    if (game.image.startsWith("images/")) return game.image;
+
+    return "images/" + game.image;
+}
+
+function getGameBadge(game) {
+
+    return game.badge || "NEW";
+}
+
+function getGameReward(game) {
+
+    return game.reward || game.bonus || "🎁 Welcome Bonus";
+}
+
+function getGameRating(game) {
+
+    if (!game.rating) return "⭐ 5.0";
+
+    return game.rating.toString().startsWith("⭐")
+        ? game.rating
+        : "⭐ " + game.rating;
+}
 
 function renderFirebaseGames(games = []) {
     allFirebaseGames = games.slice();
