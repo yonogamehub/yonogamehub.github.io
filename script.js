@@ -208,7 +208,7 @@ function renderFirebaseGames(games = []) {
     });
 
     updateGameCount();
-renderTopApps(games);
+
 }
 
 // =====================================
@@ -271,44 +271,3 @@ window.addEventListener("load", () => {
 // =====================================
 
 window.renderFirebaseGames = renderFirebaseGames;
-function renderTopApps(games = []) {
-
-    const container = document.getElementById("topAppsContainer");
-    if (!container) return;
-
-    const topGames = games
-        .filter(game => game.top === true)
-        .sort((a, b) => (a.order || 999) - (b.order || 999))
-        .slice(0, 3);
-
-    container.innerHTML = "";
-
-    topGames.forEach((game, index) => {
-
-        const badge = game.badge || "NEW";
-        const reward = game.reward || game.bonus || "Bonus";
-        const image = game.image.startsWith("images/")
-            ? game.image
-            : "images/" + game.image;
-
-        container.innerHTML += `
-        <div class="top-app-card">
-            <span class="rank">#${index + 1}</span>
-            <span class="new-tag">${badge}</span>
-
-            <img src="${image}" alt="${game.name}">
-
-            <h3>${game.name}</h3>
-
-            <p>${reward}</p>
-
-            <small>⭐ ${game.rating} | Min Withdraw ₹100</small>
-
-            <a href="${game.link}"
-   target="_blank"
-   class="download-btn">
-   Download
-</a>
-        </div>`;
-    });
-}
