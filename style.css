@@ -1593,5 +1593,13 @@ RESPONSIVE
 
     }
 
+#topAppsContainer{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+#topAppsContainer .top-app-card{
+    width:100%;
 }
 
