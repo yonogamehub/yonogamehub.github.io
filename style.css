@@ -142,21 +142,13 @@ INSTALL BAR
 ==================================*/
 
 .install-bar{
-
     width:100%;
-
-    background:#ffffff;
-
-    padding:12px 15px;
-
+    background:#fff;
+    padding:6px 15px;   /* 12px se 6px */
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
-    box-shadow:0 2px 12px rgba(0,0,0,.06);
-
+    box-shadow:none;    /* ya 0 1px 3px rgba(0,0,0,.05) */
 }
 
 .install-left{
@@ -171,9 +163,9 @@ INSTALL BAR
 
 .install-left img{
 
-    width:50px;
+    width:44px;
 
-    height:50px;
+    height:44px;
 
     border-radius:14px;
 
