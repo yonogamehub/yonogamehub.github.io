@@ -215,7 +215,7 @@ NOTICE BAR
 
 .notice-bar{
     background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
-    color:#FFD700;
+    color:#D4AF37
     text-align:center;
     padding:6px 10px;
     font-weight:600;
@@ -825,29 +825,20 @@ SEARCH BAR
 }
 
 .search-box{
-
     display:flex;
-
     align-items:center;
-
-    background:#ffffff;
-
+    background:linear-gradient(135deg,#FFF8E1,#FFFFFF);
+    border:2px solid #D4AF37;
     border-radius:50px;
-
     padding:14px 18px;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
-
+    box-shadow:0 10px 25px rgba(212,175,55,.25);
+    transition:all .3s ease;
 }
 
 .search-box i{
-
-    color:#1b43c7;
-
-    font-size:18px;
-
+    color:#D4AF37;
+    font-size:22px;
     margin-right:12px;
-
 }
 
 .search-box input{
@@ -862,9 +853,15 @@ SEARCH BAR
 
 }
 
-.search-box input::placeholder{
-
-    color:#999;
+.search-box input{
+    width:100%;
+    font-size:16px;
+    font-weight:600;
+    color:#1A237E;
+    background:transparent;
+    border:none;
+    outline:none;
+   color:#B8860B;
 
 }
 
