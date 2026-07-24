@@ -143,12 +143,12 @@ INSTALL BAR
 
 .install-bar{
     width:100%;
-    background:#fff;
-    padding:6px 15px;   /* 12px se 6px */
+    background:linear-gradient(135deg,#1b43c7,#2959ef);
+    padding:6px 15px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    box-shadow:none;    /* ya 0 1px 3px rgba(0,0,0,.05) */
+    box-shadow:none;
 }
 
 .install-left{
@@ -179,39 +179,28 @@ INSTALL BAR
 
     font-weight:700;
 
-    color:#222;
+    color:#fff;
 
 }
 
 .install-left p{
     font-size:13px;
-    color:#666;
+    color:#fff;
     margin-top:2px;
     
 }
 
 .install-btn{
-
-    background:#1b43c7;
-
-    color:#fff;
-
+    background:linear-gradient(135deg,#FFD54F,#FFC107);
+    color:#1b43c7;
     padding:10px 22px;
-
     border-radius:30px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    transition:.3s;
-
+    font-weight:700;
+    border:none;
 }
 
 .install-btn:hover{
-
-    background:#1436a8;
-
+    background:linear-gradient(135deg,#FFE082,#FFB300);
 }
 
 /*==================================
@@ -245,10 +234,10 @@ MAIN HEADER
 ==================================*/
 
     .main-header{
-    background: linear-gradient(135deg,#1b43c7,#2959ef);
-    padding:8px 15px;
+    background:linear-gradient(135deg,#1b43c7,#2959ef);
+    padding:6px 15px;
     color:#fff;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    box-shadow:none;
     }
 
 .header-top{
@@ -273,8 +262,8 @@ MAIN HEADER
 
 .header-logo img{
 
-    width: 62px;
-height: 62px;
+    width: 50px;
+height: 559px;
 
     border-radius:50%;
 
@@ -288,7 +277,7 @@ height: 62px;
 
 .header-logo h2{
 
-    font-size:22px;
+    font-size:20px;
 
     font-weight:800;
 
@@ -297,13 +286,10 @@ height: 62px;
 }
 
 .header-logo p{
-
     font-size:13px;
-
     opacity:.95;
-
-    margin-top:4px;
-
+    margin-top:1px;
+    margin-bottom:0;
 }
 
 .header-icon{
@@ -356,9 +342,9 @@ TOP NAVIGATION
 
     overflow-x:auto;
 
-    padding:6px 12px;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
+    padding:3px 12px;
+    margin-top:0;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
 
     scrollbar-width:none;
 
@@ -417,9 +403,7 @@ HERO BANNER
 
     width:94%;
 
-    margin:6px auto;
-
-}
+    margin:2px auto 10px;
 
 .hero-banner img{
 
