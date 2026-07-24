@@ -208,7 +208,7 @@ function renderFirebaseGames(games = []) {
     });
 
     updateGameCount();
-
+renderTopApps(games);
 }
 
 // =====================================
