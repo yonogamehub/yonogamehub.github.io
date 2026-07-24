@@ -143,12 +143,15 @@ INSTALL BAR
 
 .install-bar{
     width:100%;
-    background:linear-gradient(135deg,#1b43c7,#2959ef);
+    background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
     padding:6px 15px;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    box-sizing:border-box;
+    border-bottom:2px solid #FFD700;
     box-shadow:none;
+    margin:0;
 }
 
 .install-left{
@@ -191,16 +194,19 @@ INSTALL BAR
 }
 
 .install-btn{
-    background:linear-gradient(135deg,#FFD54F,#FFC107);
-    color:#1b43c7;
-    padding:10px 22px;
-    border-radius:30px;
+    background:linear-gradient(180deg,#FFD84D,#FFC107);
+    color:#1b2d72;
     font-weight:700;
+    padding:8px 18px;
     border:none;
+    border-radius:20px;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(255,193,7,.35);
+    transition:0.3s;
 }
 
 .install-btn:hover{
-    background:linear-gradient(135deg,#FFE082,#FFB300);
+    background:linear-gradient(180deg,#FFE066,#FFD54F);
 }
 
 /*==================================
@@ -208,19 +214,12 @@ NOTICE BAR
 ==================================*/
 
 .notice-bar{
-
-    background:linear-gradient(90deg,#1b43c7,#2857ef);
-
-    color:#fff;
-
-    .notice-bar{
-    padding: 4px 0;
-    }
-
-    font-size:14px;
-
-    font-weight:500;
-
+    background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
+    color:#FFD700;
+    text-align:center;
+    padding:6px 10px;
+    font-weight:600;
+    border-bottom:2px solid #FFD700;
 }
 
 .notice-bar marquee{
@@ -234,9 +233,10 @@ MAIN HEADER
 ==================================*/
 
     .main-header{
-    background:linear-gradient(135deg,#1b43c7,#2959ef);
+    background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
     padding:8px 15px;
     color:#fff;
+    border-bottom:2px solid #FFD700;
     box-shadow:none;
     border-radius:0 0 20px 20px;
     overflow:hidden;
