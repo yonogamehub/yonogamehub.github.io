@@ -235,9 +235,11 @@ MAIN HEADER
 
     .main-header{
     background:linear-gradient(135deg,#1b43c7,#2959ef);
-    padding:6px 15px;
+    padding:8px 15px;
     color:#fff;
     box-shadow:none;
+    border-radius:0 0 20px 20px;
+    overflow:hidden;
     }
 
 .header-top{
@@ -400,24 +402,19 @@ HERO BANNER
 ==================================*/
 
 .hero-banner{
-
     width:94%;
-
-    margin:2px auto 10px;
-
-.hero-banner img{
-
-    width:100%;
-
-    height:190px;
-
-    object-fit:cover;
-
+    margin:12px auto;
+    background:#fff;
     border-radius:18px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-
+    overflow:hidden;
 }
+.hero-banner img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    display:block;
+}
+
 
 /*==================================
 TOP APPS
