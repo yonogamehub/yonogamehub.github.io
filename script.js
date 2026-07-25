@@ -55,24 +55,31 @@ tabs.forEach(tab => {
         const t = tab.textContent.trim().toLowerCase();
 
         if (t === "all apps") {
-            renderFirebaseGames(allFirebaseGames);
-        }
 
-        else if (t === "new apps") {
-            renderFirebaseGames(
-                allFirebaseGames.filter(game =>
-                    (game.category || "all").toLowerCase() === "new"
-                )
-            );
-        }
+    renderFirebaseGames(allFirebaseGames);
+    renderTopApps(allFirebaseGames);
 
-        else if (t === "upcoming") {
-            renderFirebaseGames(
-                allFirebaseGames.filter(game =>
-                    (game.category || "all").toLowerCase() === "upcoming"
-                )
-            );
-        }
+}
+else if (t === "new apps") {
+
+    const games = allFirebaseGames.filter(game =>
+        (game.category || "all").toLowerCase() === "new"
+    );
+
+    renderFirebaseGames(games);
+    renderTopApps(games);
+
+}
+else if (t === "upcoming") {
+
+    const games = allFirebaseGames.filter(game =>
+        (game.category || "all").toLowerCase() === "upcoming"
+    );
+
+    renderFirebaseGames(games);
+    renderTopApps(games);
+
+}
 
     });
 
