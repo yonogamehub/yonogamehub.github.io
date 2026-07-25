@@ -214,16 +214,17 @@ NOTICE BAR
 ==================================*/
 
 .notice-bar{
-    background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
-    color:#D4AF37
+    background:linear-gradient(90deg,#0f4cff,#2563eb,#4f8cff);
+    color:#FFD700;
     text-align:center;
     padding:6px 10px;
-    font-weight:600;
+    font-weight:700;
     border-bottom:2px solid #FFD700;
 }
 
 .notice-bar marquee{
-
+color:#FFD700;
+font-size:15px;
     width:100%;
 
 }
@@ -1602,4 +1603,14 @@ RESPONSIVE
 #topAppsContainer .top-app-card{
     width:100%;
 }
-
+@keyframes noticeGlow{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
