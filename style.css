@@ -1614,3 +1614,15 @@ background-position:100% 50%;
 background-position:0% 50%;
 }
 }
+.game-img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:20px;
+    border:3px solid #FFD700;
+    background:#fff;
+    padding:4px;
+    display:block;
+    margin:0 auto 15px;
+    box-shadow:0 6px 18px rgba(255,215,0,.35);
+}
