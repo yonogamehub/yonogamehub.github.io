@@ -185,10 +185,6 @@ function renderFirebaseGames(games = []) {
 
                     </div>
 
-                    <p>
-🎁 <span style="color:#16a34a;font-weight:700;">Welcome Bonus</span>
-<span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
-</p>
 
                     <p>
 🎁 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
@@ -197,8 +193,11 @@ function renderFirebaseGames(games = []) {
 <small>
 <span style="color:#ff3b30;font-weight:700;">Min</span>
 <span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
-&nbsp; | &nbsp; ${rating}
 </small>
+
+<div style="color:#FFC107;font-size:16px;font-weight:700;">
+${rating}
+</div>
 
                 </div>
 
@@ -317,8 +316,11 @@ function renderTopApps(games = []) {
             <small>
 <span style="color:#ff3b30;font-weight:700;">Min</span>
 <span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
-&nbsp; | &nbsp; ⭐ ${game.rating || "5.0"}
 </small>
+
+<div style="color:#FFC107;font-size:16px;font-weight:700;">
+${game.rating || "⭐⭐⭐⭐⭐"}
+</div>
 
             <a href="${game.link}" target="_blank">Download</a>
         </div>
