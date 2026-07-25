@@ -174,7 +174,7 @@ function renderFirebaseGames(games = []) {
     }
 
     games.forEach(game => {
-
+const category = (game.category || "all").toLowerCase();
         const badge = game.badge || "NEW";
         const reward = game.reward || "🎁 Welcome Bonus 58";
         const rating = game.rating || "⭐ 5.0";
@@ -196,7 +196,11 @@ function renderFirebaseGames(games = []) {
 
                         <h3>${game.name}</h3>
 
-                        <span class="game-badge">${badge}</span>
+                        <span class="game-badge">
+${category === "new" ? "🆕 NEW" :
+ category === "upcoming" ? "⏳ Upcoming" :
+ badge}
+</span>
 
                     </div>
 
