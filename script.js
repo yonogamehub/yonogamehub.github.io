@@ -172,7 +172,9 @@ function getGameRating(game) {
 }
 
 function renderFirebaseGames(games = []) {
+    if (allFirebaseGames.length === 0) {
     allFirebaseGames = games.slice();
+    }
 
     if (!firebaseContainer) return;
 
