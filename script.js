@@ -46,15 +46,24 @@ function searchGames() {
 // =====================================
 
 tabs.forEach(tab => {
-
     tab.addEventListener("click", () => {
 
         tabs.forEach(btn => btn.classList.remove("active"));
-
         tab.classList.add("active");
 
-    });
+        const t = tab.textContent.trim().toLowerCase();
+        let g = allFirebaseGames;
 
+        if (t.includes("new")) {
+            g = g.filter(x => (x.category || "").toLowerCase() === "new");
+        }
+        else if (t.includes("upcoming")) {
+            g = g.filter(x => (x.category || "").toLowerCase() === "upcoming");
+        }
+
+        renderFirebaseGames(g);
+
+    });
 });
 
 // =====================================
