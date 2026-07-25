@@ -67,11 +67,26 @@ chips.forEach(chip => {
         chip.classList.add("active");
         const t=(chip.textContent||"").toLowerCase();
         let g=allFirebaseGames;
-        if(t.includes("new")) g=g.filter(x=>(x.badge||"NEW").toLowerCase().includes("new"));
-        else if(t.includes("bonus")) g=g.filter(x=>String(x.reward||"").toLowerCase().includes("bonus"));
-        else if(t.includes("fast")) g=g.filter(x=>String(x.reward||"").toLowerCase().includes("withdraw"));
-        else if(t.includes("trend")) g=allFirebaseGames;
-        renderFirebaseGames(g);
+        if (f.includes("new")) {
+    gg = gg.filter(x => (x.category || "all") === "new");
+}
+else if (f.includes("upcoming")) {
+    gg = gg.filter(x => (x.category || "all") === "upcoming");
+}
+else if (f.includes("all")) {
+    gg = gg;
+}
+else if (f.includes("bonus")) {
+    gg = gg.filter(x => String(x.reward || "").toLowerCase().includes("bonus"));
+}
+else if (f.includes("fast")) {
+    gg = gg.filter(x => Number(x.withdraw || 0) <= 100);
+}
+else if (f.includes("trend")) {
+    gg = gg.filter(x => Number(x.topPosition) > 0);
+}
+
+renderFirebaseGames(gg);
     });
 });
 
