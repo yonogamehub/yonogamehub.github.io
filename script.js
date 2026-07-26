@@ -243,7 +243,7 @@ else if (category === "upcoming") {
     <span class="game-badge top-badge">${badge}</span>
 </div>
 
-                    </div>
+                    
 
 
                     <p>
