@@ -239,11 +239,11 @@ else if (category === "upcoming") {
                 <div class="game-info">
 
                     <div class="game-top">
+    <h3>${game.name}</h3>
+</div>
 
-                        <h3>${game.name}</h3>
-
-                        <span class="game-badge">
-${badge}
+<span class="game-badge top-badge">
+    ${badge}
 </span>
 
                     </div>
