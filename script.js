@@ -153,6 +153,11 @@ function getGameImage(game) {
     }
 
     // GitHub image
+    if (game.image) {
+        return "images/" + game.image;
+    }
+
+    // Default by game name
     const name = (game.name || "")
         .toLowerCase()
         .replace(/\s+/g, "")
