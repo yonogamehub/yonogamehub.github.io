@@ -258,9 +258,7 @@ ${badge}
 <span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
 </small>
 
-<div style="color:#FFC107;font-size:16px;font-weight:700;">
-${rating}
-</div>
+
 
                 </div>
 
