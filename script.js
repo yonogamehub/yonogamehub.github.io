@@ -91,26 +91,26 @@ chips.forEach(chip => {
         chip.classList.add("active");
         const t=(chip.textContent||"").toLowerCase();
         let g=allFirebaseGames;
-        if (f.includes("new")) {
-    gg = gg.filter(x => (x.category || "all") === "new");
+        if (t.includes("new")) {
+    g = g.filter(x => (x.category || "all") === "new");
 }
-else if (f.includes("upcoming")) {
-    gg = gg.filter(x => (x.category || "all") === "upcoming");
+else if (t.includes("upcoming")) {
+    g = g.filter(x => (x.category || "all") === "upcoming");
 }
-else if (f.includes("all")) {
-    gg = gg;
+else if (t.includes("all")) {
+    g = g;
 }
-else if (f.includes("bonus")) {
-    gg = gg.filter(x => String(x.reward || "").toLowerCase().includes("bonus"));
+else if (t.includes("bonus")) {
+    g = g.filter(x => String(x.reward || "").toLowerCase().includes("bonus"));
 }
-else if (f.includes("fast")) {
-    gg = gg.filter(x => Number(x.withdraw || 0) <= 100);
+else if (t.includes("fast")) {
+    g = g.filter(x => Number(x.withdraw || 0) <= 100);
 }
-else if (f.includes("trend")) {
-    gg = gg.filter(x => Number(x.topPosition) > 0);
+else if (t.includes("trend")) {
+    g = g.filter(x => Number(x.topPosition) > 0);
 }
 
-renderFirebaseGames(gg);
+renderFirebaseGames(g);
     });
 });
 
@@ -339,8 +339,9 @@ function renderTopApps(games = []) {
     if (!container) return;
 
     const topGames = games
-        .filter(game => Number(game.topPosition) > 0)
-        .sort((a, b) => Number(a.topPosition) - Number(b.topPosition));
+    .filter(game => Number(game.topPosition) > 0)
+    .sort((a, b) => Number(a.topPosition) - Number(b.topPosition))
+    .slice(0, 3);
 
     container.innerHTML = "";
 
@@ -348,9 +349,7 @@ function renderTopApps(games = []) {
 
         const badge = game.badge || (index === 0 ? "NEW" : "HOT");
         const reward = game.reward || game.bonus || "Bonus";
-        const image = game.image.startsWith("images/")
-            ? game.image
-            : "images/" + game.image;
+        const image = getGameImage(game);
 
         container.innerHTML += `
         <div class="top-app-card">
