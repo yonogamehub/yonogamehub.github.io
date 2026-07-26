@@ -227,7 +227,7 @@ else if (category === "upcoming") {
 
         firebaseContainer.innerHTML += `
 
-        <div class="game-card">
+        <div class="game-card firebase-game-card">
 
             <div class="game-left">
 
@@ -240,11 +240,8 @@ else if (category === "upcoming") {
 
                     <div class="game-top">
     <h3>${game.name}</h3>
+    <span class="game-badge top-badge">${badge}</span>
 </div>
-
-<span class="game-badge top-badge">
-    ${badge}
-</span>
 
                     </div>
 
