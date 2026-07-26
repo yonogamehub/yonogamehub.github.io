@@ -336,7 +336,7 @@ function renderTopApps(games = []) {
 
     topGames.forEach((game, index) => {
 
-        const badge = game.badge || (index === 0 ? "NEW" : "HOT");
+        const badge = game.badge || "0";
         const reward = game.reward || game.bonus || "Bonus";
         const image = getGameImage(game);
 
