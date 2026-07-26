@@ -373,7 +373,9 @@ function renderTopApps(games = []) {
             <img src="${image}" alt="${game.name}"
 style="width:78px;height:78px;object-fit:contain;margin:8px auto 6px;display:block;">
 
-            <h3>${game.name}</h3>
+            <h3 style="font-size:22px;font-weight:800;margin:8px 0 10px;text-transform:uppercase;">
+${game.name}
+</h3>
 
             <p>
 🎁 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
