@@ -226,52 +226,47 @@ else if (category === "upcoming") {
         const image = getGameImage(game);
 
         firebaseContainer.innerHTML += `
+<div class="game-card firebase-game-card">
 
-        <div class="game-card firebase-game-card">
+    <div class="game-left">
 
-            <div class="game-left">
+        <img src="${image}"
+             class="game-logo"
+             alt="${game.name}"
+             onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(game.name)}&background=1d43c5&color=ffffff&size=256&bold=true';">
 
-                <img src="${image}"
-     class="game-logo"
-     alt="${game.name}"
-     onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(game.name)}&background=1d43c5&color=ffffff&size=256&bold=true';">
+        <div class="game-info">
 
-                <div class="game-info">
-
-                    <div class="game-top">
-    <h3>${game.name}</h3>
-    <span class="game-badge top-badge">${badge}</span>
-</div>
-
-                    
-
-
-                    <p>
-🎁 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
-</p>
-
-<small>
-<span style="color:#ff3b30;font-weight:700;">Min</span>
-<span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
-</small>
-
-
-
-                </div>
-
+            <div class="game-top">
+                <h3>${game.name}</h3>
+                <span class="game-badge">${badge}</span>
             </div>
 
-            <a href="${game.link}"
-               target="_blank"
-               class="install-btn">
+            <p>
+                🎁 <span style="color:#ff3b30;font-weight:700;">
+                ${reward.replace("🎁 Welcome Bonus ","")}
+                </span>
+            </p>
 
-               INSTALL
-
-            </a>
+            <small>
+                ⭐ ${rating} |
+                <span style="color:#003366;font-weight:700;">
+                ${game.withdraw || "100"}
+                </span>
+            </small>
 
         </div>
 
-        `;
+    </div>
+
+    <a href="${game.link}"
+       target="_blank"
+       class="install-btn">
+       INSTALL
+    </a>
+
+</div>
+`;
 
     });
 
