@@ -1064,9 +1064,9 @@ GAME INFO
 
 .game-info h3{
 
-    font-size:17px;
-
-    font-weight:700;
+font-size:22px;
+font-weight:800;
+text-transform:uppercase;
 
     color:#222;
 
@@ -1173,9 +1173,11 @@ RESPONSIVE
 
     .game-info h3{
 
-        font-size:15px;
-
-    }
+        .game-info h3{
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+        }
 
     .install-btn{
 
@@ -1205,9 +1207,10 @@ RESPONSIVE
 
     .game-info h3{
 
-        font-size:14px;
-
-    }
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+        }
 
     .game-info p{
 
