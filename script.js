@@ -332,6 +332,7 @@ window.addEventListener("load", () => {
 // =====================================
 
 window.renderFirebaseGames = renderFirebaseGames;
+window.renderTopApps = renderTopApps;
 function renderTopApps(games = []) {
 
     const container = document.getElementById("topAppsContainer");
