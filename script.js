@@ -339,8 +339,12 @@ function renderTopApps(games = []) {
     if (!container) return;
 
     const topGames = games
-    .filter(game => Number(game.topPosition) > 0)
-    .sort((a, b) => Number(a.topPosition) - Number(b.topPosition))
+    .filter(game => Number(game.topPosition || 0) > 0 || game.top === true)
+    .sort((a, b) => {
+        const aPos = Number(a.topPosition || 999);
+        const bPos = Number(b.topPosition || 999);
+        return aPos - bPos;
+    })
     .slice(0, 3);
 
     container.innerHTML = "";
