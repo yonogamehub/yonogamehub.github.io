@@ -1167,11 +1167,8 @@ RESPONSIVE
     }
 
     .game-logo{
-
-        width:58px;
-
-        height:58px;
-
+    width:78px;
+    height:78px;
     }
 
     .game-info h3{
@@ -1201,13 +1198,9 @@ RESPONSIVE
     }
 
     .game-logo{
-
-        width:52px;
-
-        height:52px;
-
-        border-radius:14px;
-
+    width:78px;
+    height:78px;
+    border-radius:16px;
     }
 
     .game-info h3{
