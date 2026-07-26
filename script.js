@@ -58,7 +58,7 @@ tabs.forEach(tab => {
 
     renderFirebaseGames(allFirebaseGames);
     renderTopApps(allFirebaseGames);
-
+document.getElementById("hardcodedGames").style.display = "block";
 }
 else if (t === "new apps") {
 
@@ -68,7 +68,7 @@ else if (t === "new apps") {
 
     renderFirebaseGames(games);
     renderTopApps(games);
-
+document.getElementById("hardcodedGames").style.display = "none";
 }
 else if (t === "upcoming") {
 
@@ -78,7 +78,7 @@ else if (t === "upcoming") {
 
     renderFirebaseGames(games);
     renderTopApps(games);
-
+document.getElementById("hardcodedGames").style.display = "none";
 }
 
     });
