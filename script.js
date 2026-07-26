@@ -388,7 +388,11 @@ ${game.name}
 
 
 
-            <a href="${game.link}" target="_blank">Download</a>
+            <a href="${game.link}" target="_blank"
+style="display:block;background:#FFC107;color:#000;font-weight:700;
+padding:12px;border-radius:30px;text-decoration:none;margin-top:12px;">
+Download
+</a>
         </div>
         `;
     });
