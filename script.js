@@ -386,9 +386,7 @@ style="width:78px;height:78px;object-fit:contain;margin:8px auto 6px;display:blo
 <span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
 </small>
 
-<div style="color:#FFC107;font-size:16px;font-weight:700;">
-${game.rating || "⭐⭐⭐⭐⭐"}
-</div>
+
 
             <a href="${game.link}" target="_blank">Download</a>
         </div>
