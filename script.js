@@ -373,7 +373,7 @@ function renderTopApps(games = []) {
             <img src="${image}" alt="${game.name}"
 style="width:78px;height:78px;object-fit:contain;margin:8px auto 6px;display:block;">
 
-            <h3 style="font-size:22px;font-weight:800;margin:8px 0 10px;text-transform:uppercase;">
+            <h3 style="font-size:18px;font-weight:800;margin:8px 0 8px;text-transform:uppercase;line-height:1.1;">
 ${game.name}
 </h3>
 
