@@ -92,8 +92,6 @@ async function loadGames() {
 // AUTO LOAD
 // =====================================
 
-window.addEventListener("DOMContentLoaded", () => {
-
-    loadGames();
-
+window.addEventListener("load", () => {
+    setTimeout(loadGames, 300);
 });
