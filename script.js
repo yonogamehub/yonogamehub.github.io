@@ -175,9 +175,7 @@ function getGameRating(game) {
 }
 
 function renderFirebaseGames(games = []) {
-    if (allFirebaseGames.length === 0) {
-    allFirebaseGames = games.slice();
-    }
+    allFirebaseGames = [...games];
 
     if (!firebaseContainer) return;
 
@@ -212,7 +210,7 @@ else if (category === "upcoming") {
         
         const reward = game.reward || "🎁 Welcome Bonus 58";
         const rating = game.rating || "⭐ 5.0";
-        const image = "images/" + (game.image || "logo.png");
+        const image = getGameImage(game);
 
         firebaseContainer.innerHTML += `
 
