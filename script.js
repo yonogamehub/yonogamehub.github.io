@@ -68,6 +68,7 @@ else if (t === "new apps") {
 
     renderFirebaseGames(games);
     renderTopApps(games);
+}
 else if (t === "upcoming") {
 
     const games = allFirebaseGames.filter(game =>
