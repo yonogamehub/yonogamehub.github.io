@@ -175,6 +175,7 @@ function getGameRating(game) {
 }
 
 function renderFirebaseGames(games = []) {
+
     allFirebaseGames = [...games];
 
     if (!firebaseContainer) return;
@@ -182,7 +183,6 @@ function renderFirebaseGames(games = []) {
     firebaseContainer.innerHTML = "";
 
     if (!games.length) {
-
         firebaseContainer.innerHTML = `
         <div class="game-card">
             <div class="game-left">
@@ -192,82 +192,73 @@ function renderFirebaseGames(games = []) {
                 </div>
             </div>
         </div>`;
-
+        updateGameCount();
+        renderTopApps([]);
         return;
-
     }
 
     games.forEach(game => {
-const category = (game.category || "all").toLowerCase();
-        let badge = game.badge || "NEW";
 
-if (category === "new") {
-    badge = "🆕 New";
-}
-else if (category === "upcoming") {
-    badge = "⏳ Upcoming";
-}
-        
-        const reward = game.reward || "🎁 Welcome Bonus 58";
-        const rating = game.rating || "⭐ 5.0";
+        const category = (game.category || "all").toLowerCase();
+
+        let badge = getGameBadge(game);
+
+        if (category === "new") {
+            badge = "🆕 New";
+        } else if (category === "upcoming") {
+            badge = "⏳ Upcoming";
+        }
+
+        const reward = getGameReward(game);
+        const rating = getGameRating(game);
         const image = getGameImage(game);
 
         firebaseContainer.innerHTML += `
-
         <div class="game-card">
-
             <div class="game-left">
 
                 <img src="${image}"
                      class="game-logo"
-                     alt="${game.name}">
+                     alt="${game.name || 'Game'}">
 
                 <div class="game-info">
 
                     <div class="game-top">
-
-                        <h3>${game.name}</h3>
-
-                        <span class="game-badge">
-${badge}
-</span>
-
+                        <h3>${game.name || "Unknown Game"}</h3>
+                        <span class="game-badge">${badge}</span>
                     </div>
 
-
                     <p>
-🎁 <span style="color:#ff3b30;font-weight:700;">${reward.replace("🎁 Welcome Bonus ","")}</span>
-</p>
+                        🎁 <span style="color:#ff3b30;font-weight:700;">
+                        ${reward.replace("🎁 Welcome Bonus ","")}
+                        </span>
+                    </p>
 
-<small>
-<span style="color:#ff3b30;font-weight:700;">Min</span>
-<span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
-</small>
+                    <small>
+                        <span style="color:#ff3b30;font-weight:700;">Min</span>
+                        <span style="color:#003366;font-weight:700;">
+                        ₹${game.withdraw || "100"}
+                        </span>
+                    </small>
 
-<div style="color:#FFC107;font-size:16px;font-weight:700;">
-${rating}
-</div>
+                    <div style="color:#FFC107;font-size:16px;font-weight:700;">
+                        ${rating}
+                    </div>
 
                 </div>
-
             </div>
 
-            <a href="${game.link}"
+            <a href="${game.link || "#"}"
                target="_blank"
                class="install-btn">
-
                INSTALL
-
             </a>
 
-        </div>
-
-        `;
-
+        </div>`;
     });
 
     updateGameCount();
-renderTopApps(games);
+    renderTopApps(games);
 }
 
 // =====================================
