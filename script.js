@@ -147,13 +147,18 @@ searchGames();
 
 function getGameImage(game) {
 
-    if (!game.image) return "images/logo.png";
+    // Firebase URL
+    if (game.image && game.image.startsWith("http")) {
+        return game.image;
+    }
 
-    if (game.image.startsWith("http")) return game.image;
+    // GitHub image
+    const name = (game.name || "")
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/[^a-z0-9]/g, "");
 
-    if (game.image.startsWith("images/")) return game.image;
-
-    return "images/" + game.image;
+    return `images/${name}.png`;
 }
 
 function getGameBadge(game) {
@@ -222,8 +227,9 @@ else if (category === "upcoming") {
             <div class="game-left">
 
                 <img src="${image}"
-                     class="game-logo"
-                     alt="${game.name}">
+     class="game-logo"
+     alt="${game.name}"
+     onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(game.name)}&background=1d43c5&color=ffffff&size=256&bold=true';">
 
                 <div class="game-info">
 
