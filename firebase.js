@@ -72,9 +72,10 @@ async function loadGames() {
 
         if (typeof window.renderFirebaseGames === "function") {
 
-            window.renderFirebaseGames(games);
+    window.renderTopApps(games);
+    window.renderFirebaseGames(games);
 
-        } else {
+} else {
 
             console.error("renderFirebaseGames is not defined");
 
