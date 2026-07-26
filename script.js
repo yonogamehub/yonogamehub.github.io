@@ -372,7 +372,8 @@ function renderTopApps(games = []) {
             <span class="rank">#${index + 1}</span>
             <span class="new-tag">${badge}</span>
 
-            <img src="${image}" alt="${game.name}">
+            <img src="${image}" alt="${game.name}"
+style="width:78px;height:78px;object-fit:contain;margin:8px auto 6px;display:block;">
 
             <h3>${game.name}</h3>
 
