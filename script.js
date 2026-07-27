@@ -249,10 +249,10 @@ else if (category === "upcoming") {
             </p>
 
             <small>
-    <span style="color:#002B5B;font-weight:700;">
-        ${game.minText || game.withdraw || "100"}
-    </span>
-</small>
+    <span style="color:#003366;font-weight:700;">Min </span>
+<span style="color:#000000;font-weight:700;">
+    ${game.withdraw || "100"}
+</span>
 
         </div>
 
