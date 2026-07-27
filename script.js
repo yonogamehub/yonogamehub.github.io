@@ -250,7 +250,7 @@ else if (category === "upcoming") {
 
             <small>
     <span style="color:#003366;font-weight:700;">
-        ${game.withdraw || "MIN 100"}
+        ${game.withdraw || "100"}
     </span>
 </small>
 
