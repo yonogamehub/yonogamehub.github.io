@@ -249,7 +249,7 @@ else if (category === "upcoming") {
             </p>
 
             <small>
-                ⭐ ${rating} |
+            
                 <span style="color:#003366;font-weight:700;">
                 ${game.withdraw || "100"}
                 </span>
