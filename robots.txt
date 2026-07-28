@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://unogamestore.site/sitemap.xml
