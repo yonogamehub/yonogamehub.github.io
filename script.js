@@ -215,10 +215,10 @@ const category = (game.category || "all").toLowerCase();
         let badge = getGameBadge(game);
 
 if (category === "new") {
-    badge = "🆕 New";
+    badge = " New";
 }
 else if (category === "upcoming") {
-    badge = "⏳ Upcoming";
+    badge = " Upcoming";
 }
         
         const reward = game.reward || "🎁 Welcome Bonus 58";
