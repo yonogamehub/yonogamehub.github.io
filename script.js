@@ -358,7 +358,7 @@ function renderTopApps(games = []) {
 
         container.innerHTML += `
         <div class="top-app-card">
-            <span class="rank">#${index + 1}</span>
+            <span class="rank rank-${index + 1}">${index + 1}</span>
             <span class="new-tag">${badge}</span>
 
             <img src="${image}" alt="${game.name}"
