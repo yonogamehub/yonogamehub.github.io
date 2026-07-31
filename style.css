@@ -234,7 +234,7 @@ MAIN HEADER
 
     .main-header{
     background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
-    padding:8px 15px;
+    padding:4px 12px;
     color:#fff;
     border-bottom:2px solid #FFD700;
     box-shadow:none;
@@ -264,8 +264,8 @@ MAIN HEADER
 
 .header-logo img{
 
-    width: 54px;
-height: 54px;
+    width:46px;
+height:46px;
 
     border-radius:50%;
 
@@ -279,7 +279,7 @@ height: 54px;
 
 .header-logo h2{
 
-    font-size:20px;
+    font-size:16px;
 
     font-weight:800;
 
@@ -288,7 +288,7 @@ height: 54px;
 }
 
 .header-logo p{
-    font-size:13px;
+font-size:11px;
     opacity:.95;
     margin-top:1px;
     margin-bottom:0;
@@ -296,9 +296,8 @@ height: 54px;
 
 .header-icon{
 
-    width:46px;
-
-    height:46px;
+    width:40px;
+height:40px;
 
     border-radius:14px;
 
