@@ -365,11 +365,11 @@ TOP NAVIGATION
 
     align-items:center;
 
-    gap:8px;
+    gap:5px;
 
-    padding:10px 16px;
+    padding:7px 12px;
 
-    border-radius:30px;
+    border-radius:18px;
 
     background:#f4f7ff;
 
@@ -385,7 +385,7 @@ TOP NAVIGATION
 
 .top-nav a i{
 
-    font-size:15px;
+    font-size:16px;
 
 }
 
