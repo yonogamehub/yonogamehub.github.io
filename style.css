@@ -144,7 +144,7 @@ INSTALL BAR
 .install-bar{
     width:100%;
     background:linear-gradient(90deg,#1a237e,#2948c7,#3d5afe);
-    padding:6px 15px;
+    padding:4px 12px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -160,15 +160,14 @@ INSTALL BAR
 
     align-items:center;
 
-    gap:12px;
+    gap:8px;
 
 }
 
 .install-left img{
 
-    width:44px;
-
-    height:44px;
+    width:36px;
+height:36px;
 
     border-radius:14px;
 
@@ -178,7 +177,7 @@ INSTALL BAR
 
 .install-left h3{
 
-    font-size:16px;
+    font-size:14px;
 
     font-weight:700;
 
@@ -187,7 +186,7 @@ INSTALL BAR
 }
 
 .install-left p{
-    font-size:13px;
+    font-size:11px;
     color:#fff;
     margin-top:2px;
     
