@@ -235,10 +235,10 @@ MAIN HEADER
 
     .main-header{
     background:linear-gradient(90deg,#1b2d72,#2448b8,#2f5be6);
-    padding:4px 12px;
+    padding: 8px 14px;
     color:#fff;
-    border-bottom:2px solid #FFD700;
-    box-shadow:none;
+border-bottom:1px solid rgba(255,215,0,.9);
+box-shadow:0 2px 10px rgba(255,215,0,.35);
     border-radius:0 0 20px 20px;
     overflow:hidden;
         margin-top: 2px;
