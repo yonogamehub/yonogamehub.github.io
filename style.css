@@ -333,57 +333,37 @@ height:40px;
 TOP NAVIGATION
 ==================================*/
 
-.top-nav{
-
-    background:#ffffff;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    overflow-x:auto;
-
-    padding:3px 12px;
-    margin-top:0;
-    box-shadow:0 1px 3px rgba(0,0,0,.05);
-
-    scrollbar-width:none;
-
+.top-nav {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Target site jaisi clean spacing */
+    overflow-x: auto;
+    padding: 8px 12px; /* Top-bottom padding badhai taaki chipke na */
+    margin-top: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    scrollbar-width: none;
 }
 
-.top-nav::-webkit-scrollbar{
-
-    display:none;
-
+.top-nav::-webkit-scrollbar {
+    display: none;
 }
 
-.top-nav a{
-
-    flex:none;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:4px;
-
-    padding:4px 8px;
-
-    border-radius:14px;
-
-    background:#f4f7ff;
-
-    color:#1b43c7;
-
-    font-size:11px;
-
-    font-weight:600;
-
-    transition:.3s;
-
+.top-nav a {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px; /* Buttons ke andar achhi jagah ke liye */
+    border-radius: 6px; /* 14px se ghata kar 6px kiya target site jaisa border */
+    background: #f4f6ff;
+    color: #1b43c7;
+    font-size: 13px; /* Text thoda bada aur readable */
+    font-weight: 600;
+    transition: .2s;
+    border: 1px solid #e0e6ed; /* Soft border definition */
 }
+
 
 .top-nav a i{
 
