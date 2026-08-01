@@ -412,10 +412,10 @@ margin:4px 0 0;
 
 .hero-banner img{
     width:100%;
-    height:118px;
+    height: 112px;
     display:block;
     object-fit:cover;
-    border-radius:18px;
+    border-radius:0px;
 }
 
 
