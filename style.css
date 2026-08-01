@@ -402,13 +402,7 @@ TOP NAVIGATION
 HERO BANNER
 ==================================*/
 
-.hero-banner {
-    width: 94%;
-    margin: 10px auto;
-    border-radius: 12px;
-    overflow: hidden;
-    background: transparent;
-}
+
 
 .hero-banner img {
     width: 100%;
@@ -419,6 +413,14 @@ HERO BANNER
 }
 
 
+.hero-banner {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+    background: transparent;
+}
 
 /*==================================
 TOP APPS
