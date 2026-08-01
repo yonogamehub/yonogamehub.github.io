@@ -1631,40 +1631,45 @@ background-position:0% 50%;
     gap:8px;
   }
 
-  .top-app-card{
-    padding:12px 6px 10px;
-    border-radius:14px;
-    min-width:0;
-  }
+  
 
   .top-app-card img{
-    width:55px;
-    height:55px;
-    margin:6px auto 10px;
-    border-radius:14px;
+    width:48px;
+    height:48px;
+    margin:5px auto 7px;
+    border-radius:12px;
     object-fit:cover;
   }
 
   .top-app-card h3{
-    font-size:11px;
+    font-size:10px;
     line-height:1.15;
-    margin:4px 0 7px;
-    white-space:nowrap;
-    overflow:visible;
+    margin:4px 0 6px;
+
+    text-transform:none !important;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+
+    width:100%;
+    max-width:100%;
+    min-height:23px;
+
+    text-align:center;
   }
 
   .top-app-card p{
-    font-size:11px;
+    font-size:10px;
     line-height:1.2;
-    margin:4px 0;
-    white-space:nowrap;
+    margin:3px 0;
+    white-space:normal;
   }
 
   .top-app-card small{
     display:block;
-    font-size:10px;
+    font-size:9px;
     line-height:1.2;
-    margin:4px 0 9px;
+    margin:3px 0 7px;
     white-space:nowrap;
   }
 
