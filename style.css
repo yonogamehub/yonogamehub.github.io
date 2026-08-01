@@ -367,17 +367,17 @@ TOP NAVIGATION
 
     align-items:center;
 
-    gap:5px;
+    gap:6px;
 
     padding:7px 12px;
 
-    border-radius:18px;
+    border-radius:20px;
 
     background:#f4f7ff;
 
     color:#1b43c7;
 
-    font-size:14px;
+    font-size:12px;
 
     font-weight:600;
 
@@ -387,7 +387,7 @@ TOP NAVIGATION
 
 .top-nav a i{
 
-    font-size:16px;
+    font-size:14px;
 
 }
 
