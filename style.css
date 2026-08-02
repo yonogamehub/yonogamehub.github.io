@@ -2114,24 +2114,28 @@ background-position:0% 50%;
     padding: 0 8px !important;
   }
 }
-/* ===== ONLY TOP HEADER SIZE FIX ===== */
+/* ===== FINAL PREMIUM HEADER FIX ===== */
 
-/* UONOAPPS name */
-.header-logo .brand-name {
-    font-size: 26px !important;
-    font-weight: 600 !important;
-    white-space: nowrap !important;
-}
-
-/* Install bar text */
+/* Install UonoApps text */
 .install-left h5 {
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    line-height: 1.2 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.2px !important;
     margin: 0 !important;
+    white-space: nowrap !important;
+    color: #ffffff !important;
 }
 
-/* Install left side ko button se chipakne se roko */
+/* Install bar spacing */
+.install-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+}
+
+/* Left area */
 .install-left {
     min-width: 0 !important;
     flex: 1 1 auto !important;
@@ -2140,38 +2144,30 @@ background-position:0% 50%;
 /* Install button */
 .install-btn {
     flex: 0 0 auto !important;
-    margin-left: 20px !important;
+    margin-left: 10px !important;
 }
 
-/* Install bar proper spacing */
-.install-bar {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 16px !important;
-}
-/* ===== PREMIUM TOP TEXT ===== */
-
-/* Install UonoApps */
-.install-left h5 {
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.3px !important;
-    color: #ffffff !important;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.22) !important;
-}
-
-/* Main UONOAPPS Name */
+/* Main UONO APPS name */
 .header-logo .brand-name {
-    font-size: 25px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
     color: #ffffff !important;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.25) !important;
 }
-    .main-header {
+
+/* Main logo */
+.header-logo img {
+    width: 52px !important;
+    height: 52px !important;
+    flex: 0 0 52px !important;
+}
+
+/* Main header */
+.main-header {
     border-bottom: 3px solid #ffd21c !important;
-    }
+}
 /* ===== FIREBASE GAME CARD MOBILE FIX ===== */
 @media (max-width: 768px) {
 
