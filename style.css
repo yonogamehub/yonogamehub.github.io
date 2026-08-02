@@ -1626,3 +1626,30 @@ background-position:0% 50%;
     background:#ffc107 !important;
     color:#222 !important;
 }
+/* ===== FIX ONLY HEADER / INSTALL LOGOS ===== */
+
+.install-bar .install-left > img {
+    width: 38px !important;
+    height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    min-width: 38px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.main-header .header-logo > img {
+    width: 42px !important;
+    height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    min-width: 42px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* Banner ko bilkul touch nahi karega */
+.hero-banner > img {
+    width: 100% !important;
+    height: auto !important;
+}
