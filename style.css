@@ -1924,3 +1924,44 @@ background-position:0% 50%;
     height:auto !important;
     display:block !important;
 }
+/* ===== MOBILE FULL WIDTH FIX ===== */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    display: block !important;
+  }
+
+  .install-bar,
+  .main-header,
+  .top-nav,
+  .hero-banner,
+  .top-apps,
+  .app-tabs,
+  .search-section,
+  .games-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-banner img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .top-apps {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
