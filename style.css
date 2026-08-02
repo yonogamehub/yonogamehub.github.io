@@ -220,7 +220,8 @@ INSTALL BAR
 
 /* Main Header Bar */
 .main-header {
-    background: linear-gradient(180deg, #123bb6 0%, #0f329e 100%);
+        background: linear-gradient(180deg, #123bb6 0%, #0f329e 100%);
+    
     padding: 10px 14px !important;
 }
 
@@ -305,19 +306,19 @@ INSTALL BAR
 }
 
 
-    
-HERO BANNER
+    /* HERO BANNER */
+
 ==================================*/
 
 
-
 .hero-banner img {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
     display: block;
-    object-fit: contain;
-    border-radius: 12px;
+    object-fit: cover !important;
+    border-radius: 0 !important;
 }
+
 
 
 .hero-banner {
