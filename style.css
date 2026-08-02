@@ -2114,3 +2114,39 @@ background-position:0% 50%;
     padding: 0 8px !important;
   }
 }
+/* ===== ONLY TOP HEADER SIZE FIX ===== */
+
+/* UONOAPPS name */
+.header-logo .brand-name {
+    font-size: 26px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+}
+
+/* Install bar text */
+.install-left h5 {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+}
+
+/* Install left side ko button se chipakne se roko */
+.install-left {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+}
+
+/* Install button */
+.install-btn {
+    flex: 0 0 auto !important;
+    margin-left: 20px !important;
+}
+
+/* Install bar proper spacing */
+.install-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+}
