@@ -1653,3 +1653,50 @@ background-position:0% 50%;
     width: 100% !important;
     height: auto !important;
 }
+/* ===== HEADER FINAL ALIGNMENT FIX ===== */
+
+.main-header{
+    width:100% !important;
+    padding:8px 14px !important;
+    box-sizing:border-box !important;
+}
+
+.header-top{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    width:100% !important;
+}
+
+.header-logo{
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+}
+
+.header-logo img{
+    width:42px !important;
+    height:42px !important;
+    flex-shrink:0 !important;
+}
+
+.brand-name{
+    font-size:18px !important;
+    line-height:1 !important;
+    margin:0 !important;
+    white-space:nowrap !important;
+}
+
+.header-nav-btns{
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    margin:0 !important;
+}
+
+.header-nav-btns .nav-btn{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    margin:0 !important;
+}
