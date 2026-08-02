@@ -19,11 +19,16 @@ html{
     scroll-behavior:smooth;
 }
 
-body{
-    background:#f3f6fb;
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    background:#f4f6f9;
     color:#222;
     overflow-x:hidden;
 }
+
 
 /*==================================
 ROOT COLORS
@@ -31,14 +36,16 @@ ROOT COLORS
 
 :root{
 
-    --primary:#1b43c7;
+    --primary:#41b43c;
+    
     --primary-dark:#1436a8;
     --yellow:#ffc107;
     --red:#ff3b30;
     --green:#22c55e;
 
     --white:#ffffff;
-    --black:#222222;
+        --black:#222222;
+    
     --text:#555555;
 
     --radius:18px;
