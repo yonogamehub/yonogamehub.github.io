@@ -2206,3 +2206,66 @@ background-position:0% 50%;
     object-fit: contain !important;
     box-sizing: border-box !important;
 }
+/* ===== TOP INSTALL BAR - COMPACT FIX ===== */
+
+.install-bar {
+    min-height: 88px !important;
+    height: 88px !important;
+    padding: 8px 26px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 12px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* LEFT SIDE */
+.install-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+/* TOP LOGO */
+.install-left img {
+    width: 58px !important;
+    height: 58px !important;
+    flex: 0 0 58px !important;
+    object-fit: contain !important;
+}
+
+/* INSTALL UONOAPPS TEXT */
+.install-left h5 {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+/* INSTALL BUTTON */
+.install-btn {
+    width: 112px !important;
+    min-width: 112px !important;
+    height: 54px !important;
+    padding: 0 15px !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+
+    flex: 0 0 112px !important;
+}
