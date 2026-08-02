@@ -1577,3 +1577,52 @@ background-position:0% 50%;
     font-size: 9px;
   }
 }
+/* ===== FIX TOP INSTALL AREA ONLY ===== */
+
+.install-bar{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    width:100% !important;
+    padding:8px 14px !important;
+    box-sizing:border-box !important;
+    background:linear-gradient(180deg,#123bb6 0%,#0d2c8a 100%) !important;
+}
+
+.install-left{
+    display:flex !important;
+    align-items:center !important;
+    gap:10px !important;
+}
+
+.install-left img{
+    width:38px !important;
+    height:38px !important;
+    max-width:38px !important;
+    object-fit:cover !important;
+    border-radius:8px !important;
+    margin:0 !important;
+}
+
+.install-left h5{
+    margin:0 !important;
+    font-size:14px !important;
+    line-height:18px !important;
+    color:#fff !important;
+}
+
+.install-left p{
+    margin:2px 0 0 !important;
+    font-size:11px !important;
+    line-height:14px !important;
+    color:#dbe4ff !important;
+}
+
+.install-btn{
+    width:auto !important;
+    padding:8px 18px !important;
+    border-radius:20px !important;
+    font-size:12px !important;
+    background:#ffc107 !important;
+    color:#222 !important;
+}
