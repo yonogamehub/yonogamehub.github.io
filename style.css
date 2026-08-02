@@ -2320,3 +2320,101 @@ background-position:0% 50%;
     from { transform: translateX(0); }
     to   { transform: translateX(-100%); }
 }
+/* ===== STEP 1: PREMIUM INSTALL BAR - FINAL ===== */
+
+.install-bar{
+    min-height: 72px !important;
+    padding: 8px 20px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+
+    /* Premium royal blue */
+    background: linear-gradient(
+        135deg,
+        #173d9f 0%,
+        #2459d6 55%,
+        #173d9f 100%
+    ) !important;
+
+    /* Golden bottom line */
+    border-bottom: 3px solid #f4c928 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* LEFT SIDE - LOGO + NAME */
+
+.install-left{
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+}
+
+
+/* LOGO */
+
+.install-left img{
+    width: 58px !important;
+    height: 58px !important;
+
+    object-fit: cover !important;
+    border-radius: 14px !important;
+
+    flex: 0 0 58px !important;
+}
+
+
+/* UONO APPS STORE TEXT */
+
+.install-left h5{
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+
+    color: #ffffff !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* INSTALL BUTTON */
+
+.install-btn{
+    flex: 0 0 auto !important;
+
+    margin: 0 !important;
+    padding: 12px 25px !important;
+    min-width: 110px !important;
+
+    text-align: center !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+
+    color: #142c63 !important;
+
+    background: linear-gradient(
+        135deg,
+        #ffd83d 0%,
+        #ffc400 100%
+    ) !important;
+
+    border-radius: 24px !important;
+    border: none !important;
+
+    box-shadow: 0 5px 14px rgba(255,196,0,0.30) !important;
+
+    text-decoration: none !important;
+}
