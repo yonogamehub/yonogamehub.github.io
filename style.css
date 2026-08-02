@@ -2995,3 +2995,27 @@ background-position:0% 50%;
     line-height: 1 !important;
     border-radius: 22px !important;
 }
+/* ONLY HEADER HOME + TG SMALL FIX */
+
+.header-nav-btns{
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    flex: 0 0 auto !important;
+}
+
+.header-nav-btns .nav-btn{
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.header-nav-btns .nav-btn i{
+    font-size: 19px !important;
+}
