@@ -2737,3 +2737,172 @@ background-position:0% 50%;
         font-size: 17px !important;
     }
 }
+/* =========================================
+   FINAL TOP AREA FIX
+   ========================================= */
+
+/* 1. INSTALL BAR */
+.install-bar{
+    min-height: 74px !important;
+    padding: 8px 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+
+    background: linear-gradient(
+        110deg,
+        #17377f 0%,
+        #214eb5 100%
+    ) !important;
+
+    border-bottom: 2px solid #f1cf32 !important;
+}
+
+/* logo + name */
+.install-left{
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+}
+
+.install-left img{
+    width: 58px !important;
+    height: 58px !important;
+    flex: 0 0 58px !important;
+    object-fit: cover !important;
+    border-radius: 13px !important;
+}
+
+/* Install UonoApps text */
+.install-left h5{
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+    color: #fff !important;
+}
+
+/* Install button SMALLER + RIGHT SIDE */
+.install-btn{
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 96px !important;
+    padding: 10px 21px !important;
+    margin: 0 0 0 24px !important;
+
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+
+    border-radius: 22px !important;
+}
+
+
+/* =========================================
+   2. DAILY BONUS MOVING BAR
+   ========================================= */
+
+.premium-notice{
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    overflow: hidden !important;
+    position: relative !important;
+
+    background: linear-gradient(
+        110deg,
+        #17377f 0%,
+        #214eb5 100%
+    ) !important;
+
+    border-bottom: 2px solid #f1cf32 !important;
+}
+
+/* sliding text */
+.premium-notice-track{
+    position: absolute !important;
+
+    display: block !important;
+    width: max-content !important;
+    min-width: max-content !important;
+
+    white-space: nowrap !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #ffe56a !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 46px !important;
+
+    animation: uonoNoticeMove 16s linear infinite !important;
+    will-change: transform !important;
+}
+
+@keyframes uonoNoticeMove{
+
+    0%{
+        transform: translateX(100vw);
+    }
+
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+
+/* =========================================
+   3. MAIN HEADER LOGO + NAME CLOSE
+   ========================================= */
+
+.main-header{
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+}
+
+.header-top{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.header-logo{
+    display: flex !important;
+    align-items: center !important;
+
+    /* logo aur name ko paas */
+    gap: 7px !important;
+
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+.header-logo img{
+    width: 54px !important;
+    height: 54px !important;
+    flex: 0 0 54px !important;
+    margin: 0 !important;
+}
+
+.header-logo .brand-name{
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+}
