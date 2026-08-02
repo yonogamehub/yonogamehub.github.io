@@ -3019,3 +3019,31 @@ background-position:0% 50%;
 .header-nav-btns .nav-btn i{
     font-size: 19px !important;
 }
+/* ===== ONLY HEIGHT FIX ===== */
+
+/* 1. INSTALL BAR HEIGHT */
+.install-bar{
+    height: 90px !important;
+    min-height: 90px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. UONO APPS STORE HEADER HEIGHT */
+.main-header{
+    height: 90px !important;
+    min-height: 90px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.main-header .header-top{
+    height: 100% !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+}
