@@ -2150,3 +2150,25 @@ background-position:0% 50%;
     justify-content: space-between !important;
     gap: 16px !important;
 }
+/* ===== PREMIUM TOP TEXT ===== */
+
+/* Install UonoApps */
+.install-left h5 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.3px !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.22) !important;
+}
+
+/* Main UONOAPPS Name */
+.header-logo .brand-name {
+    font-size: 25px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25) !important;
+}
+    .main-header {
+    border-bottom: 3px solid #ffd21c !important;
+    }
