@@ -1700,3 +1700,227 @@ background-position:0% 50%;
     justify-content:center !important;
     margin:0 !important;
 }
+/* =========================================
+   RESTORE OLD UONOGAMES HEADER LOOK
+   ========================================= */
+
+/* INSTALL BAR */
+.install-bar{
+    width:100% !important;
+    min-height:90px !important;
+    padding:10px 20px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    box-sizing:border-box !important;
+
+    background:linear-gradient(
+        135deg,
+        #082b8f 0%,
+        #1248d5 55%,
+        #173ba8 100%
+    ) !important;
+
+    border-bottom:3px solid #ffd21a !important;
+}
+
+.install-left{
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
+    min-width:0 !important;
+}
+
+.install-bar .install-left > img{
+    width:62px !important;
+    height:62px !important;
+    min-width:62px !important;
+    max-width:62px !important;
+    max-height:62px !important;
+    border-radius:14px !important;
+    object-fit:cover !important;
+}
+
+.install-left h5{
+    margin:0 !important;
+    color:#fff !important;
+    font-size:20px !important;
+    font-weight:800 !important;
+    line-height:1.15 !important;
+}
+
+.install-left p{
+    margin:4px 0 0 !important;
+    color:#fff4c7 !important;
+    font-size:13px !important;
+    font-weight:600 !important;
+}
+
+.install-btn{
+    width:auto !important;
+    min-width:110px !important;
+    padding:14px 25px !important;
+    background:linear-gradient(135deg,#ffd91a,#ffb900) !important;
+    color:#14234b !important;
+    border-radius:30px !important;
+    font-size:16px !important;
+    font-weight:800 !important;
+    text-align:center !important;
+    box-shadow:0 5px 16px rgba(255,193,0,.35) !important;
+}
+
+
+/* NOTICE / TICKER BAR */
+.middle-ticker-bar{
+    width:100% !important;
+    background:linear-gradient(
+        90deg,
+        #082b8f,
+        #164dd4,
+        #082b8f
+    ) !important;
+
+    border-bottom:2px solid #ffd21a !important;
+    padding:16px 10px !important;
+    box-sizing:border-box !important;
+    text-align:center !important;
+}
+
+.middle-ticker-bar p{
+    margin:0 !important;
+    color:#ffe56b !important;
+    font-size:17px !important;
+    font-weight:800 !important;
+}
+
+
+/* MAIN BLUE HEADER */
+.main-header{
+    width:100% !important;
+    padding:14px 18px !important;
+    box-sizing:border-box !important;
+
+    background:linear-gradient(
+        135deg,
+        #082b8f 0%,
+        #1550dc 55%,
+        #1740b5 100%
+    ) !important;
+
+    border-bottom:3px solid #ffd21a !important;
+}
+
+.header-top{
+    width:100% !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+}
+
+.header-logo{
+    display:flex !important;
+    align-items:center !important;
+    gap:14px !important;
+}
+
+.main-header .header-logo > img{
+    width:64px !important;
+    height:64px !important;
+    min-width:64px !important;
+    max-width:64px !important;
+    max-height:64px !important;
+    border-radius:14px !important;
+    object-fit:cover !important;
+}
+
+.main-header .brand-name{
+    margin:0 !important;
+    color:#fff !important;
+    font-size:28px !important;
+    line-height:1 !important;
+    font-weight:900 !important;
+    letter-spacing:.5px !important;
+    white-space:nowrap !important;
+    font-family:'Impact','Arial Black',sans-serif !important;
+}
+
+
+/* HEADER RIGHT BUTTONS */
+.header-nav-btns{
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    margin:0 !important;
+}
+
+.header-nav-btns .nav-btn{
+    width:48px !important;
+    height:48px !important;
+    padding:0 !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    background:rgba(255,255,255,.15) !important;
+    border:1px solid rgba(255,255,255,.40) !important;
+    border-radius:11px !important;
+
+    color:#fff !important;
+    font-size:20px !important;
+}
+
+.header-nav-btns .tg-btn{
+    width:auto !important;
+    min-width:82px !important;
+    padding:0 12px !important;
+}
+
+
+/* TOP WHITE NAVIGATION */
+.top-nav{
+    width:100% !important;
+    margin:0 !important;
+    padding:0 8px !important;
+    min-height:48px !important;
+
+    display:flex !important;
+    align-items:center !important;
+    overflow-x:auto !important;
+
+    background:#fff !important;
+    border-bottom:1px solid #ddd !important;
+    box-shadow:0 2px 5px rgba(0,0,0,.06) !important;
+}
+
+.top-nav a{
+    flex:none !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:4px !important;
+
+    padding:11px 12px !important;
+
+    color:#1643a8 !important;
+    background:#fff !important;
+    border-right:1px solid #ddd !important;
+    border-radius:0 !important;
+
+    font-size:13px !important;
+    font-weight:700 !important;
+    white-space:nowrap !important;
+}
+
+
+/* DO NOT CHANGE BANNER */
+.hero-banner{
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.hero-banner > img{
+    width:100% !important;
+    height:auto !important;
+    display:block !important;
+}
