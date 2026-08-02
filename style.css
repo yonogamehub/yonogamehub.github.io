@@ -2080,3 +2080,37 @@ background-position:0% 50%;
     font-size: 14px !important;
   }
 }
+/* FINAL HEADER NAME FIT FIX */
+@media (max-width: 768px) {
+
+  .header-logo {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+
+  .brand-name {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .header-logo img {
+    width: 46px !important;
+    height: 46px !important;
+    flex: 0 0 46px !important;
+  }
+
+  .header-nav-btns {
+    flex: 0 0 auto !important;
+    gap: 5px !important;
+  }
+
+  .header-nav-btns .nav-btn {
+    min-width: 42px !important;
+    width: auto !important;
+    height: 42px !important;
+    padding: 0 8px !important;
+  }
+}
