@@ -2964,3 +2964,34 @@ background-position:0% 50%;
 .top-nav a i{
     font-size: 15px !important;
 }
+/* ===== INSTALL BUTTON POSITION FINAL FORCE FIX ===== */
+
+.install-bar{
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 26px !important;
+    padding-right: 26px !important;
+}
+
+.install-left{
+    display: flex !important;
+    align-items: center !important;
+    flex: 1 1 0 !important;   /* THIS creates the distance */
+    min-width: 0 !important;
+}
+
+.install-btn{
+    flex: 0 0 92px !important;
+    width: 92px !important;
+    min-width: 92px !important;
+
+    margin-left: auto !important;
+    margin-right: 0 !important;
+
+    padding: 10px 0 !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+    border-radius: 22px !important;
+}
