@@ -2936,3 +2936,31 @@ background-position:0% 50%;
 .install-left{
     flex: 0 1 auto !important;
 }
+/* ===== ONLY TOP WHITE NAV SIZE FIX ===== */
+
+.top-nav{
+    min-height: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+}
+
+.top-nav a{
+    height: 42px !important;
+    min-height: 42px !important;
+
+    padding: 0 12px !important;
+    gap: 6px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+
+.top-nav a i{
+    font-size: 15px !important;
+}
