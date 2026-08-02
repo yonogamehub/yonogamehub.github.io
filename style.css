@@ -2613,3 +2613,127 @@ background-position:0% 50%;
         font-size: 20px !important;
     }
 }
+/* ===== EXACT COMPACT TOP INSTALL BAR ===== */
+
+.install-bar{
+    height: 92px !important;
+    min-height: 92px !important;
+    padding: 0 108px 0 26px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    background: linear-gradient(
+        110deg,
+        #12327d 0%,
+        #173f9c 48%,
+        #214db8 100%
+    ) !important;
+
+    border-bottom: 3px solid #e9c72c !important;
+    box-sizing: border-box !important;
+}
+
+
+/* LOGO + TITLE */
+
+.install-left{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+}
+
+.install-left img{
+    width: 62px !important;
+    height: 62px !important;
+    flex: 0 0 62px !important;
+
+    object-fit: cover !important;
+    border-radius: 14px !important;
+}
+
+.install-left h5{
+    margin: 0 !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0 !important;
+
+    color: #ffffff !important;
+    white-space: nowrap !important;
+}
+
+
+/* INSTALL BUTTON */
+
+.install-btn{
+    width: 110px !important;
+    min-width: 110px !important;
+    height: 52px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: linear-gradient(
+        135deg,
+        #ffdd32,
+        #ffc800
+    ) !important;
+
+    color: #18316a !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+
+    border: none !important;
+    border-radius: 27px !important;
+
+    text-decoration: none !important;
+
+    box-shadow:
+        0 5px 15px rgba(255,200,0,.25) !important;
+}
+
+
+/* MOBILE EXACT SPACING */
+
+@media(max-width:768px){
+
+    .install-bar{
+        height: 92px !important;
+        min-height: 92px !important;
+
+        /* IMPORTANT: right empty space like reference */
+        padding: 0 108px 0 26px !important;
+    }
+
+    .install-left{
+        gap: 11px !important;
+    }
+
+    .install-left img{
+        width: 60px !important;
+        height: 60px !important;
+        flex-basis: 60px !important;
+    }
+
+    .install-left h5{
+        font-size: 17px !important;
+    }
+
+    .install-btn{
+        width: 110px !important;
+        min-width: 110px !important;
+        height: 52px !important;
+        font-size: 17px !important;
+    }
+}
