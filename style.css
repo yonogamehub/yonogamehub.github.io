@@ -2172,3 +2172,33 @@ background-position:0% 50%;
     .main-header {
     border-bottom: 3px solid #ffd21c !important;
     }
+/* ===== FIREBASE GAME CARD MOBILE FIX ===== */
+@media (max-width: 768px) {
+
+  .game-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .game-card .game-info {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .game-card .game-info h3 {
+    font-size: 18px !important;
+    line-height: 1.15 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .game-card .install-btn {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 110px !important;
+    margin-left: 8px !important;
+    padding: 12px 18px !important;
+    white-space: nowrap !important;
+  }
+}
