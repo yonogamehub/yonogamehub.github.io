@@ -2198,3 +2198,11 @@ background-position:0% 50%;
     white-space: nowrap !important;
   }
 }
+    /* ONLY MAIN HEADER LOGO ROUND */
+.main-header .header-logo img {
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    padding: 3px !important;
+    object-fit: contain !important;
+    box-sizing: border-box !important;
+}
