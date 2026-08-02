@@ -1965,3 +1965,118 @@ background-position:0% 50%;
     padding-right: 18px !important;
   }
 }
+/* ===== UPPER AREA COMPACT SIZE LIKE REFERENCE ===== */
+@media (max-width: 768px) {
+
+  /* INSTALL BAR */
+  .install-bar {
+    padding: 8px 18px !important;
+    min-height: 74px !important;
+  }
+
+  .install-left {
+    gap: 10px !important;
+    min-width: 0 !important;
+  }
+
+  .install-left img {
+    width: 54px !important;
+    height: 54px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .install-left h5 {
+    font-size: 18px !important;
+    line-height: 1.15 !important;
+    margin: 0 0 3px !important;
+  }
+
+  .install-left p {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .install-btn {
+    font-size: 16px !important;
+    padding: 11px 24px !important;
+    flex-shrink: 0 !important;
+  }
+
+
+  /* MAIN BLUE HEADER */
+  .main-header {
+    padding: 12px 18px !important;
+    min-height: 88px !important;
+    overflow: hidden !important;
+  }
+
+  .header-top {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .header-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .header-logo img {
+    width: 52px !important;
+    height: 52px !important;
+    flex: 0 0 52px !important;
+  }
+
+  /* UONO APPS STORE */
+  .brand-name {
+    font-size: 21px !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+    min-width: 0 !important;
+  }
+
+
+  /* HOME / TG / MENU */
+  .header-nav-btns {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .header-nav-btns .nav-btn {
+    height: 43px !important;
+    min-width: 43px !important;
+    padding: 0 9px !important;
+    font-size: 15px !important;
+    border-radius: 10px !important;
+  }
+
+  .header-nav-btns .nav-btn i {
+    font-size: 18px !important;
+  }
+
+
+  /* TOP WHITE NAVIGATION */
+  .top-nav {
+    min-height: 44px !important;
+    padding: 0 !important;
+  }
+
+  .top-nav a {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+    gap: 4px !important;
+  }
+
+  .top-nav a i {
+    font-size: 14px !important;
+  }
+}
