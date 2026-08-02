@@ -2269,3 +2269,6 @@ background-position:0% 50%;
 
     flex: 0 0 112px !important;
 }
+.install-bar {
+    background: linear-gradient(135deg, #0B3DBD 0%, #174FD1 100%) !important;
+}
