@@ -2418,3 +2418,198 @@ background-position:0% 50%;
 
     text-decoration: none !important;
 }
+/* =========================================
+   PREMIUM TOP AREA - FINAL OVERRIDE
+   ========================================= */
+
+/* 1. INSTALL APP BAR */
+.install-bar{
+    min-height: 72px !important;
+    padding: 8px 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+
+    background: linear-gradient(135deg,#173b99,#2459d5) !important;
+    border-bottom: 3px solid #f5c928 !important;
+    box-sizing: border-box !important;
+}
+
+.install-left{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-width: 0 !important;
+    flex: 1 !important;
+}
+
+.install-left img{
+    width: 58px !important;
+    height: 58px !important;
+    flex: 0 0 58px !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+}
+
+.install-left h5{
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #fff !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+}
+
+.install-btn{
+    flex: 0 0 auto !important;
+    min-width: 110px !important;
+    padding: 12px 23px !important;
+    margin: 0 !important;
+
+    background: linear-gradient(135deg,#ffda32,#ffc400) !important;
+    color: #172d60 !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+
+    border: 0 !important;
+    border-radius: 24px !important;
+
+    box-shadow: 0 5px 14px rgba(255,196,0,.30) !important;
+}
+
+
+/* 2. MAIN BLUE HEADER */
+.main-header{
+    background: linear-gradient(135deg,#173b99,#2459d5) !important;
+    padding: 11px 19px !important;
+    min-height: 78px !important;
+
+    border-bottom: 3px solid #f5c928 !important;
+    box-sizing: border-box !important;
+}
+
+.header-top{
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+}
+
+.header-logo{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+.header-logo img{
+    width: 58px !important;
+    height: 58px !important;
+    flex: 0 0 58px !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+}
+
+.header-logo .brand-name{
+    color: #fff !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+}
+
+
+/* 3. HOME / TG BUTTONS */
+.header-nav-btns{
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    flex: 0 0 auto !important;
+}
+
+.header-nav-btns .nav-btn{
+    width: 47px !important;
+    min-width: 47px !important;
+    height: 47px !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: #fff !important;
+    font-size: 19px !important;
+
+    border: 1px solid rgba(255,255,255,.35) !important;
+    border-radius: 10px !important;
+    background: rgba(255,255,255,.10) !important;
+}
+
+
+/* 4. WHITE NAVIGATION BAR */
+.top-nav{
+    min-height: 42px !important;
+    padding: 0 !important;
+    background: #fff !important;
+
+    display: flex !important;
+    align-items: stretch !important;
+
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+}
+
+.top-nav a{
+    min-height: 42px !important;
+    padding: 0 13px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+
+    color: #174a9e !important;
+    background: #fff !important;
+
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+
+    border-right: 1px solid #e3e3e3 !important;
+}
+
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .install-bar{
+        padding: 8px 20px !important;
+    }
+
+    .install-left h5{
+        font-size: 17px !important;
+    }
+
+    .install-btn{
+        min-width: 108px !important;
+        padding: 12px 21px !important;
+    }
+
+    .main-header{
+        padding: 10px 19px !important;
+    }
+
+    .header-logo .brand-name{
+        font-size: 20px !important;
+    }
+}
