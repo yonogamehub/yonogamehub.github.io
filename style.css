@@ -3126,3 +3126,15 @@ background-position:0% 50%;
     object-fit: contain !important;
     flex-shrink: 0 !important;
 }
+/* ===== ALL GAME ICONS SMALL ===== */
+
+/* Firebase + Index dono */
+.game-card .game-logo,
+.firebase-game-card .game-logo {
+    width: 78px !important;
+    height: 78px !important;
+    max-width: 78px !important;
+    max-height: 78px !important;
+    object-fit: contain !important;
+    flex: 0 0 78px !important;
+}
