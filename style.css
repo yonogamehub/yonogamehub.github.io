@@ -3695,3 +3695,16 @@ background-position:0% 50%;
 .main-header .header-nav-btns a i {
     font-size: 21px !important;
 }
+/* ===== HOME + TG BUTTON SMALL ===== */
+
+.main-header .nav-btn {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    padding: 0 !important;
+    border-radius: 12px !important;
+}
+
+.main-header .nav-btn i {
+    font-size: 19px !important;
+}
