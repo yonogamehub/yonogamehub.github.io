@@ -243,16 +243,16 @@ else if (category === "upcoming") {
             </div>
 
             <p>
-                🎁 <span style="color:#ff3b30;font-weight:700;">
-                ${reward.replace("🎁 Welcome Bonus ","")}
-                </span>
-            </p>
+    🎁 <span style="color:#ff3b30;font-weight:700;">
+        Sign Up Bonus ₹${String(game.reward || game.bonus || "58").replace(/[^\d.-]/g, "")}
+    </span>
+</p>
 
-            <small>
-    <span style="color:#003366;font-weight:700;">Min </span>
-<span style="color:#000000;font-weight:700;">
-    ${game.withdraw || "100"}
-</span>
+<small>
+    🏦 <span style="color:#003366;font-weight:700;">
+        Min Withdraw ₹${String(game.withdraw || "110").replace(/[^\d.-]/g, "")}
+    </span>
+</small>
 
         </div>
 
