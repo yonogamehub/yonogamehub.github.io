@@ -223,7 +223,10 @@ else if (category === "upcoming") {
         
         const reward = game.reward || "🎁 Welcome Bonus 58";
         const rating = game.rating || "⭐ 5.0";
-        const image = getGameImage(game);
+        const rawImage = getGameImage(game);
+const image = rawImage.startsWith("http") || rawImage.startsWith("images/")
+    ? rawImage
+    : "images/" + rawImage;
 
         firebaseContainer.innerHTML += `
 <div class="game-card firebase-game-card">
