@@ -3656,3 +3656,20 @@ background-position:0% 50%;
     color: #ffe36e !important;
     white-space: nowrap !important;
 }
+/* ===== TAGLINE FINAL OVERRIDE ===== */
+
+.header-brand-text .brand-tagline {
+    font-size: 10px !important;
+    line-height: 12px !important;
+    font-weight: 600 !important;
+    color: #ffe36e !important;
+
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+
+    width: max-content !important;
+    max-width: none !important;
+
+    margin-top: 2px !important;
+}
