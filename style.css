@@ -3632,3 +3632,27 @@ background-position:0% 50%;
     border-radius: 25px !important;
     flex-shrink: 0 !important;
 }
+/* ===== HEADER BRAND TAGLINE ===== */
+
+.header-brand-text {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.header-brand-text .brand-name {
+    margin: 0 !important;
+    line-height: 1.05 !important;
+}
+
+.header-brand-text .brand-tagline {
+    display: block !important;
+    margin-top: 4px !important;
+
+    font-size: 10px !important;
+    line-height: 11px !important;
+    font-weight: 600 !important;
+
+    color: #ffe36e !important;
+    white-space: nowrap !important;
+}
