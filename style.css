@@ -3473,3 +3473,48 @@ background-position:0% 50%;
 .marquee-container {
     border-bottom: none !important;
 }
+/* ===== COMPACT TOP INSTALL BAR ===== */
+.install-bar,
+.install-app,
+.pwa-install,
+.install-banner {
+    min-height: 74px !important;
+    height: 74px !important;
+    padding: 6px 28px !important;
+    box-sizing: border-box !important;
+}
+
+/* Install bar logo */
+.install-bar img,
+.install-app img,
+.pwa-install img,
+.install-banner img {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+}
+
+
+/* ===== COMPACT MAIN HEADER ===== */
+.main-header,
+.header-main,
+.site-header,
+.brand-header {
+    min-height: 88px !important;
+    height: 88px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    box-sizing: border-box !important;
+}
+
+/* Main header logo */
+.main-header img,
+.header-main img,
+.site-header img,
+.brand-header img {
+    width: 58px !important;
+    height: 58px !important;
+    object-fit: cover !important;
+}
