@@ -3673,3 +3673,25 @@ background-position:0% 50%;
 
     margin-top: 2px !important;
 }
+/* ===== MAIN HEADER SMALL LOGO + ICONS ONLY ===== */
+
+/* Main header logo */
+.main-header .header-logo img {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    object-fit: cover !important;
+}
+
+/* Home + Telegram buttons */
+.main-header .header-nav-btns a {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    padding: 0 !important;
+}
+
+/* Home + Telegram icons */
+.main-header .header-nav-btns a i {
+    font-size: 21px !important;
+}
