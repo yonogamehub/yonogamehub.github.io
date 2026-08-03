@@ -373,8 +373,7 @@ ${game.name}
 </p>
 
             <small>
-<span style="color:#ff3b30;font-weight:700;">Min</span>
-<span style="color:#003366;font-weight:700;">₹${game.withdraw || "100"}</span>
+  🏦 <span style="color:#003366;font-weight:700;">Min Withdraw ₹${String(game.withdraw || "100").replace(/[^\d.-]/g, "")}</span>
 </small>
 
 
