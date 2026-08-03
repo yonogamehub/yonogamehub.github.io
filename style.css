@@ -3555,3 +3555,25 @@ background-position:0% 50%;
     border-bottom-color: transparent !important;
     box-shadow: none !important;
 }
+/* Install bar logo smaller */
+.install-bar .install-left img {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+
+/* Install button smaller */
+.install-bar .install-btn {
+    padding: 8px 22px !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    font-size: 16px !important;
+    border-radius: 24px !important;
+}
+
+/* Premium/Daily Bonus bar ki NICHE wali golden line remove */
+.premium-notice {
+    border-bottom: none !important;
+}
