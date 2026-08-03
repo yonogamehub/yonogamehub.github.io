@@ -3577,3 +3577,58 @@ background-position:0% 50%;
 .premium-notice {
     border-bottom: none !important;
 }
+/* ===== COMPACT INSTALL BAR - REFERENCE SIZE ===== */
+
+.install-bar {
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 6px 26px !important;
+    box-sizing: border-box !important;
+}
+
+.install-left {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+}
+
+/* SMALL LOGO */
+.install-left img {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    margin-right: 9px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+
+/* Install UonoApps */
+.install-left h5 {
+    margin: 0 !important;
+    font-size: 13px !important;
+    line-height: 15px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+
+/* Add to Home Screen... */
+.install-left p {
+    margin: 2px 0 0 !important;
+    padding: 0 !important;
+    font-size: 10px !important;
+    line-height: 12px !important;
+    font-weight: 600 !important;
+    color: #ffe36e !important;
+    white-space: nowrap !important;
+}
+
+/* SMALL INSTALL BUTTON */
+.install-btn {
+    padding: 8px 22px !important;
+    min-width: 88px !important;
+    height: 42px !important;
+    font-size: 15px !important;
+    line-height: 26px !important;
+    border-radius: 25px !important;
+    flex-shrink: 0 !important;
+}
