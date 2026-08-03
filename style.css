@@ -3458,3 +3458,18 @@ background-position:0% 50%;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+/* Install bar ka logo thoda chota */
+.install-app img,
+.install-banner img,
+.pwa-install img {
+    width: 48px !important;
+    height: 48px !important;
+    object-fit: cover !important;
+}
+
+/* Daily Bonus ke niche wali golden line remove */
+.daily-bonus,
+.bonus-ticker,
+.marquee-container {
+    border-bottom: none !important;
+}
