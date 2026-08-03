@@ -3745,3 +3745,9 @@ background-position:0% 50%;
 .main-header .nav-btn i {
     font-size: 17px !important;
 }
+.game-card .install-btn,
+.firebase-game-card .install-btn {
+    white-space: nowrap !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+}
