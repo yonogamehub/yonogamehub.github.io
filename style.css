@@ -3723,3 +3723,25 @@ background-position:0% 50%;
     border-radius: 28px !important;
     flex-shrink: 0 !important;
 }
+/* ===== INSTALL BUTTON GAP + HOME TG SMALL ===== */
+
+/* Install button ko thoda right/dur */
+.install-btn {
+    margin-left: 24px !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Home + TG square buttons aur chhote */
+.main-header .nav-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    padding: 0 !important;
+    border-radius: 11px !important;
+}
+
+/* Andar Home + Telegram icons */
+.main-header .nav-btn i {
+    font-size: 17px !important;
+}
