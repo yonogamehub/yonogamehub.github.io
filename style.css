@@ -3138,3 +3138,18 @@ background-position:0% 50%;
     object-fit: contain !important;
     flex: 0 0 78px !important;
 }
+/* ===== ALL GAME LOGOS 62PX ===== */
+
+/* INDEX + FIREBASE BOTH */
+.game-card .game-logo,
+.game-card .game-left > img,
+.firebase-game-card .game-logo,
+.firebase-game-card .game-left > img {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+    flex: 0 0 62px !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+}
