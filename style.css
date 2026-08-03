@@ -3518,3 +3518,40 @@ background-position:0% 50%;
     height: 58px !important;
     object-fit: cover !important;
 }
+/* ===== INSTALL BAR FINAL SMALL SIZE ===== */
+
+/* Install bar logo */
+.install-bar img,
+.install-app img,
+.pwa-install img,
+.install-banner img {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    object-fit: cover !important;
+}
+
+/* Install button */
+.install-bar button,
+.install-app button,
+.pwa-install button,
+.install-banner button,
+.install-btn {
+    padding: 9px 24px !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    font-size: 16px !important;
+    border-radius: 25px !important;
+}
+
+/* Daily Bonus ke NICHE ki golden line remove */
+.daily-bonus,
+.bonus-ticker,
+.marquee-container,
+.ticker,
+.announcement-bar {
+    border-bottom: 0 !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+}
