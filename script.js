@@ -420,3 +420,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+/* ===== INSTALL → 📥 Download (ALL GAMES) ===== */
+function changeInstallToDownload() {
+    document.querySelectorAll('.game-card a, .game-card button, .firebase-game-card a, .firebase-game-card button')
+    .forEach(btn => {
+        if (btn.textContent.trim().toUpperCase() === 'INSTALL') {
+            btn.innerHTML = '📥 Download';
+        }
+    });
+}
+
+/* Hardcoded games */
+changeInstallToDownload();
+
+/* Firebase games load hone ke baad bhi automatically change */
+const downloadObserver = new MutationObserver(() => {
+    changeInstallToDownload();
+});
+
+downloadObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+});
