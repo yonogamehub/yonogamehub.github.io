@@ -3116,3 +3116,13 @@ background-position:0% 50%;
     color: #003366 !important;   /* Premium dark navy */
     font-weight: 700 !important;
 }
+/* ===== FIREBASE GAMES IMAGE ONLY - SMALLER ===== */
+
+.firebase-game-card .game-logo {
+    width: 105px !important;
+    height: 105px !important;
+    max-width: 105px !important;
+    max-height: 105px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+}
