@@ -3105,3 +3105,14 @@ background-position:0% 50%;
 .header-nav-btns .nav-btn i{
     font-size: 20px !important;
 }
+/* ===== INDEX GAMES BONUS + WITHDRAW PREMIUM COLOR ===== */
+
+#gamesContainer > .game-card .game-info p{
+    color: #ff3b30 !important;   /* Firebase jaisa red */
+    font-weight: 700 !important;
+}
+
+#gamesContainer > .game-card .game-info small{
+    color: #003366 !important;   /* Premium dark navy */
+    font-weight: 700 !important;
+}
