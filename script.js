@@ -387,3 +387,36 @@ Download
         `;
     });
 }
+// ===== ONLY INDEX HARD-CODED GAMES FIX =====
+document.addEventListener("DOMContentLoaded", function () {
+
+    const hardCodeContainer = document.querySelector("#gamesContainer");
+    if (!hardCodeContainer) return;
+
+    // Sirf direct hard-coded cards
+    hardCodeContainer.querySelectorAll(":scope > .game-card").forEach(function(card) {
+
+        // 🎁 BONUS
+        const bonus = card.querySelector(".game-info p");
+
+        if (bonus && !bonus.textContent.includes("Sign Up Bonus")) {
+            bonus.innerHTML = bonus.innerHTML.replace(
+                /Bonus/i,
+                "Sign Up Bonus"
+            );
+        }
+
+        // 🏦 MIN WITHDRAW
+        const withdraw = card.querySelector(".game-info small");
+
+        if (withdraw) {
+            let amount = withdraw.textContent.match(/\d+/);
+
+            if (amount) {
+                withdraw.innerHTML = "🏦 Min Withdraw ₹" + amount[0];
+            }
+        }
+
+    });
+
+});
