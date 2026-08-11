@@ -16,12 +16,12 @@ import {
 // =====================================
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTm5TISkglT",
+  apiKey: "AIzaSyAM153E0np-14pFQgLFyDPcTm5TISkglT",
   authDomain: "yonoappskiduniya.firebaseapp.com",
   projectId: "yonoappskiduniya",
   storageBucket: "yonoappskiduniya.firebasestorage.app",
   messagingSenderId: "474330790853",
-  appId: "1:474330790853:web:da1f01d00a7ffedbc4e9ac"
+  appId: "1:474330790853:web:da1f01d00a7ffebdc4e9ac"
 };
 
 
@@ -35,33 +35,38 @@ const gamesRef = collection(db, "games");
 
 
 // =====================================
-// URL GAME NAME
+// GET GAME KEY
 // =====================================
 
 const params = new URLSearchParams(window.location.search);
 
-let gameKey = (params.get("game") || "").toLowerCase().trim();
+let gameKey = (params.get("game") || "").trim();
 
+
+// Also support path if needed
 if (!gameKey) {
-    const path = window.location.pathname
-        .replace(/^\/+|\/+$/g, "")
-        .toLowerCase();
 
-    if (path && path !== "game-details.html") {
-        gameKey = path;
-    }
+  const path = window.location.pathname
+    .replace(/\/+$/, "")
+    .toLowerCase();
+
+  if (path && path !== "/game-details.html") {
+    gameKey = path.split("/").pop().trim();
+  }
 }
 
+
 // =====================================
-// NORMALIZE NAME
+// NORMALIZE
 // =====================================
 
 function makeSlug(name) {
-    return String(name || "")
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
+
+  return String(name || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 
@@ -70,17 +75,33 @@ function makeSlug(name) {
 // =====================================
 
 function setText(id, value) {
+
   const el = document.getElementById(id);
-  if (el) el.textContent = value;
+
+  if (el) {
+    el.textContent = value ?? "";
+  }
 }
 
 
 function setImage(id, value) {
+
   const el = document.getElementById(id);
 
   if (!el) return;
 
-  el.src = value || "images/logo.png";
+  let image = value || "images/logo.png";
+
+  if (
+    image &&
+    !image.startsWith("http://") &&
+    !image.startsWith("https://") &&
+    !image.startsWith("images/")
+  ) {
+    image = "images/" + image;
+  }
+
+  el.src = image;
 
   el.onerror = function () {
     this.onerror = null;
@@ -90,6 +111,7 @@ function setImage(id, value) {
 
 
 function setLink(id, value) {
+
   const el = document.getElementById(id);
 
   if (!el) return;
@@ -101,10 +123,11 @@ function setLink(id, value) {
 
 
 // =====================================
-// SHOW / HIDE
+// LOADING
 // =====================================
 
 function hideLoading() {
+
   const loading = document.getElementById("loading");
 
   if (loading) {
@@ -114,6 +137,7 @@ function hideLoading() {
 
 
 function showGameContent() {
+
   hideLoading();
 
   const content = document.getElementById("gameContent");
@@ -124,15 +148,29 @@ function showGameContent() {
 }
 
 
-function showError() {
+function showError(message = "This game is currently unavailable.") {
+
   hideLoading();
 
   const content = document.getElementById("gameContent");
   const error = document.getElementById("error");
 
-  if (content) content.style.display = "none";
+  if (content) {
+    content.style.display = "none";
+  }
 
-  if (error) error.style.display = "block";
+  if (error) {
+
+    error.style.display = "block";
+
+    const text =
+      error.querySelector(".error-message") ||
+      error.querySelector("p");
+
+    if (text) {
+      text.textContent = message;
+    }
+  }
 }
 
 
@@ -142,36 +180,80 @@ function showError() {
 
 async function loadGameDetails() {
 
+  console.log("GAME KEY:", gameKey);
+
   try {
 
-    // No game in URL
+    // -------------------------------
+    // NO KEY
+    // -------------------------------
+
     if (!gameKey) {
-      console.error("Game name missing from URL");
-      showError();
+
+      showError("Game link is missing.");
+
       return;
     }
 
 
-    // Get all Firebase games
+    // -------------------------------
+    // GET FIREBASE GAMES
+    // -------------------------------
+
     const snapshot = await getDocs(gamesRef);
 
     let game = null;
 
 
-    snapshot.forEach(doc => {
+    // -------------------------------
+    // FIND GAME
+    // -------------------------------
 
-      const data = doc.data();
+    snapshot.forEach((doc) => {
 
-      const firebaseName = makeSlug(data.name);
-const firebaseSlug = String(data.shareSlug || makeSlug(data.name))
-    .toLowerCase()
-    .trim();
+      const data = doc.data() || {};
 
-if (
-    if (
-    firebaseName === makeSlug(gameKey) ||
-    firebaseSlug === gameKey
-) {
+      const name = String(data.name || "").trim();
+
+      const slug = String(
+        data.slug ||
+        data.gameSlug ||
+        makeSlug(name)
+      )
+        .toLowerCase()
+        .trim();
+
+      const key = String(gameKey)
+        .toLowerCase()
+        .trim();
+
+
+      // Match by document ID
+      if (doc.id.toLowerCase() === key) {
+
+        game = {
+          id: doc.id,
+          ...data
+        };
+
+        return;
+      }
+
+
+      // Match by name
+      if (makeSlug(name) === makeSlug(gameKey)) {
+
+        game = {
+          id: doc.id,
+          ...data
+        };
+
+        return;
+      }
+
+
+      // Match by slug
+      if (slug === key) {
 
         game = {
           id: doc.id,
@@ -183,61 +265,56 @@ if (
     });
 
 
-    // =====================================
+    // -------------------------------
     // GAME NOT FOUND
-    // =====================================
+    // -------------------------------
 
     if (!game) {
 
-      console.error("Game not found:", gameKey);
+      console.error("GAME NOT FOUND:", gameKey);
 
-      showError();
+      showError("This game is currently unavailable.");
 
       return;
     }
 
 
-    // =====================================
+    console.log("GAME FOUND:", game);
+
+
+    // =================================
     // GAME DATA
-    // =====================================
+    // =================================
 
-    const name = game.name || "Game";
+    const name =
+      game.name ||
+      game.title ||
+      "Game";
 
-    let image =
+
+    const image =
       game.image ||
       game.logo ||
       "images/logo.png";
-
-    if (
-      image &&
-      !image.startsWith("http") &&
-      !image.startsWith("images/")
-    ) {
-      image = "images/" + image;
-    }
 
 
     const bonus =
       game.reward ||
       game.bonus ||
+      game.welcomeBonus ||
       "Welcome Bonus";
 
 
     const withdraw =
       game.withdraw ||
       game.minWithdraw ||
+      game.minwithdraw ||
       "₹100";
 
 
     const rating =
       game.rating ||
-      "4.0";
-
-
-    const downloadLink =
-      game.link ||
-      game.download ||
-      "#";
+      "★★★★★";
 
 
     const category =
@@ -250,24 +327,32 @@ if (
       `${name} offers exciting gaming and earning opportunities for users.`;
 
 
+    const downloadLink =
+      game.link ||
+      game.download ||
+      game.downloadLink ||
+      "#";
 
-    // =====================================
+
+    // =================================
     // PAGE TITLE
-    // =====================================
+    // =================================
 
     document.title =
       `${name} - Download | UONO APPS STORE`;
 
 
-
-    // =====================================
-    // UPDATE GAME DETAILS
-    // =====================================
+    // =================================
+    // UPDATE TEXT
+    // =================================
 
     setText("gameName", name);
     setText("finalGameName", name);
 
     setText("aboutGameName", name);
+    setText("aboutGameName2", name);
+    setText("aboutGameName3", name);
+    setText("aboutGameName4", name);
 
     setText("gameBonus", bonus);
     setText("gameRating", rating);
@@ -275,36 +360,82 @@ if (
     setText("gameWithdraw", withdraw);
 
     setText("gameDescription", description);
-    setText("gameAbout", description);
 
 
-    // =====================================
+    // =================================
+    // ABOUT GAME
+    // =================================
+
+    const aboutBox =
+      document.getElementById("gameAbout");
+
+    if (aboutBox) {
+
+      aboutBox.innerHTML = `
+        <p>
+          Discover <strong>${name}</strong> and enjoy
+          a smooth, fast and mobile-friendly gaming
+          experience designed for easy access and entertainment.
+        </p>
+
+        <p>
+          <strong>${name}</strong> offers a simple and convenient
+          platform with attractive offers, smooth navigation
+          and an optimized experience for mobile users.
+        </p>
+
+        <h3>Why Choose ${name}?</h3>
+
+        <ul>
+          <li>🎁 Attractive promotional offers</li>
+          <li>⚡ Fast and smooth gaming experience</li>
+          <li>💰 Convenient withdrawal options</li>
+          <li>📱 Mobile-friendly interface</li>
+        </ul>
+      `;
+
+    }
+
+
+    // =================================
     // IMAGE
-    // =====================================
+    // =================================
 
     setImage("gameImage", image);
 
 
-    // =====================================
+    document
+      .querySelectorAll(".game-logo")
+      .forEach((img) => {
+
+        img.src = image;
+
+        img.onerror = function () {
+
+          this.onerror = null;
+
+          this.src = "images/logo.png";
+
+        };
+
+      });
+
+
+    // =================================
     // DOWNLOAD BUTTONS
-    // =====================================
+    // =================================
 
     setLink("downloadButton", downloadLink);
-
     setLink("finalDownloadButton", downloadLink);
-
     setLink("downloadBtn", downloadLink);
-
     setLink("downloadBtn2", downloadLink);
 
 
-    // =====================================
-    // OTHER DOWNLOAD BUTTONS
-    // =====================================
-
     document
-      .querySelectorAll(".download-btn, .download-now, .final-download")
-      .forEach(btn => {
+      .querySelectorAll(
+        ".download-btn, .download-now, .final-download"
+      )
+      .forEach((btn) => {
 
         btn.href = downloadLink;
         btn.target = "_blank";
@@ -313,87 +444,55 @@ if (
       });
 
 
-    // =====================================
-    // OPTIONAL CLASS ELEMENTS
-    // =====================================
+    // =================================
+    // OPTIONAL GAME CLASSES
+    // =================================
 
-    document.querySelectorAll(".game-name")
-      .forEach(el => el.textContent = name);
-
-    document.querySelectorAll(".game-bonus")
-      .forEach(el => el.textContent = bonus);
-
-    document.querySelectorAll(".game-rating")
-      .forEach(el => el.textContent = rating);
-
-    document.querySelectorAll(".game-category")
-      .forEach(el => el.textContent = category);
-
-    document.querySelectorAll(".game-withdraw")
-      .forEach(el => el.textContent = withdraw);
-
-    document.querySelectorAll(".game-description")
-      .forEach(el => el.textContent = description);
-// ================================
-// DYNAMIC ABOUT GAME
-// ================================
-
-const aboutName = document.getElementById("aboutGameName");
-const aboutName2 = document.getElementById("aboutGameName2");
-const aboutName3 = document.getElementById("aboutGameName3");
-const aboutName4 = document.getElementById("aboutGameName4");
-const aboutBox = document.getElementById("gameAbout");
-
-if (aboutName) aboutName.textContent = name;
-if (aboutName2) aboutName2.textContent = name;
-if (aboutName3) aboutName3.textContent = name;
-if (aboutName4) aboutName4.textContent = name;
-
-if (aboutBox) {
-    aboutBox.innerHTML = `
-        <p>
-            Discover <strong>${name}</strong> and enjoy a smooth,
-            fast and mobile-friendly gaming experience designed
-            for easy access and entertainment.
-        </p>
-
-        <p>
-            <strong>${name}</strong> offers a simple and convenient
-            platform with attractive offers, smooth navigation
-            and an optimized experience for mobile users.
-        </p>
-
-        <h3>Why Choose ${name}?</h3>
-
-        <ul>
-            <li>🎁 Attractive promotional offers</li>
-            <li>⚡ Fast and smooth gaming experience</li>
-            <li>💰 Convenient withdrawal options</li>
-            <li>📱 Mobile-friendly interface</li>
-        </ul>
-    `;
-}
-
-    // =====================================
-    // OTHER GAME LOGOS
-    // =====================================
-
-    document.querySelectorAll(".game-logo")
-      .forEach(img => {
-
-        img.src = image;
-
-        img.onerror = function () {
-          this.onerror = null;
-          this.src = "images/logo.png";
-        };
-
+    document
+      .querySelectorAll(".game-name")
+      .forEach((el) => {
+        el.textContent = name;
       });
 
 
-    // =====================================
-    // FINISHED
-    // =====================================
+    document
+      .querySelectorAll(".game-bonus")
+      .forEach((el) => {
+        el.textContent = bonus;
+      });
+
+
+    document
+      .querySelectorAll(".game-rating")
+      .forEach((el) => {
+        el.textContent = rating;
+      });
+
+
+    document
+      .querySelectorAll(".game-category")
+      .forEach((el) => {
+        el.textContent = category;
+      });
+
+
+    document
+      .querySelectorAll(".game-withdraw")
+      .forEach((el) => {
+        el.textContent = withdraw;
+      });
+
+
+    document
+      .querySelectorAll(".game-description")
+      .forEach((el) => {
+        el.textContent = description;
+      });
+
+
+    // =================================
+    // SUCCESS
+    // =================================
 
     console.log("✅ GAME DETAILS LOADED:", game);
 
@@ -404,7 +503,9 @@ if (aboutBox) {
 
     console.error("❌ GAME DETAILS ERROR:", error);
 
-    showError();
+    showError(
+      "Unable to load this game. Please try again."
+    );
 
   }
 
@@ -415,6 +516,7 @@ if (aboutBox) {
 // START
 // =====================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadGameDetails();
-});
+document.addEventListener(
+  "DOMContentLoaded",
+  loadGameDetails
+);
