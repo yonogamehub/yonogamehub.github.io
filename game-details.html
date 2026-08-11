@@ -1,1 +1,456 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Game Details - UONO APPS</title>
+
+<meta name="theme-color" content="#1b43c7">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* =========================================
+   PREMIUM GAME DETAILS PAGE
+========================================= */
+
+.details-page{
+    width:94%;
+    max-width:720px;
+    margin:20px auto 100px;
+}
+
+/* Back */
+.details-back{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#1b43c7;
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:16px;
+}
+
+/* Main Hero */
+.game-details-hero{
+    background:linear-gradient(135deg,#ffffff,#f5f8ff);
+    border-radius:26px;
+    padding:25px 18px 22px;
+    text-align:center;
+    box-shadow:0 12px 35px rgba(27,67,199,.12);
+    border:1px solid rgba(27,67,199,.08);
+}
+
+.details-logo{
+    width:115px;
+    height:115px;
+    object-fit:cover;
+    border-radius:25px;
+    background:#fff;
+    padding:5px;
+    border:3px solid #FFD700;
+    box-shadow:0 10px 25px rgba(255,193,7,.25);
+}
+
+.details-name{
+    margin:15px 0 7px;
+    font-size:27px;
+    font-weight:800;
+    color:#151515;
+}
+
+.details-badge{
+    display:inline-block;
+    background:#ff3b30;
+    color:#fff;
+    padding:5px 13px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.details-rating{
+    margin-top:12px;
+    font-size:15px;
+    font-weight:700;
+    color:#f59e0b;
+}
+
+/* Info */
+.details-info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.details-info-box{
+    background:#fff;
+    border-radius:16px;
+    padding:13px 8px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.details-info-box span{
+    display:block;
+    font-size:11px;
+    color:#777;
+    margin-bottom:5px;
+}
+
+.details-info-box strong{
+    display:block;
+    font-size:14px;
+    color:#222;
+}
+
+/* Download */
+.details-download{
+    display:block;
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border-radius:16px;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    background:linear-gradient(135deg,#1b43c7,#2959ef);
+    box-shadow:0 10px 25px rgba(27,67,199,.28);
+    transition:.25s;
+}
+
+.details-download:active{
+    transform:scale(.97);
+}
+
+/* Trust badges */
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+    margin-top:15px;
+}
+
+.trust-box{
+    background:#fff;
+    border-radius:15px;
+    padding:13px 5px;
+    text-align:center;
+    box-shadow:0 5px 16px rgba(0,0,0,.06);
+}
+
+.trust-box .icon{
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.trust-box strong{
+    display:block;
+    font-size:11px;
+    color:#222;
+}
+
+.trust-box small{
+    font-size:9px;
+    color:#777;
+}
+
+/* Sections */
+.details-section{
+    background:#fff;
+    margin-top:15px;
+    padding:20px 17px;
+    border-radius:20px;
+    box-shadow:0 7px 22px rgba(0,0,0,.06);
+}
+
+.details-section h2{
+    margin:0 0 10px;
+    font-size:19px;
+    color:#1b43c7;
+}
+
+.details-section p{
+    margin:0;
+    color:#666;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.features-list{
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+
+.features-list li{
+    padding:9px 0;
+    border-bottom:1px solid #eee;
+    font-size:13px;
+    color:#444;
+}
+
+.features-list li:last-child{
+    border-bottom:none;
+}
+
+/* Bottom Download */
+.final-download{
+    margin-top:18px;
+    background:linear-gradient(135deg,#ffc107,#ffb300);
+    color:#111;
+    box-shadow:0 10px 25px rgba(255,193,7,.28);
+}
+
+/* Mobile */
+@media(max-width:480px){
+
+    .details-page{
+        width:94%;
+        margin-top:15px;
+    }
+
+    .details-logo{
+        width:105px;
+        height:105px;
+    }
+
+    .details-name{
+        font-size:24px;
+    }
+
+    .details-info-grid{
+        gap:8px;
+    }
+
+    .trust-box{
+        padding:11px 3px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="details-page">
+
+    <a href="index.html" class="details-back">
+        ← Back to Games
+    </a>
+
+    <!-- GAME HERO -->
+    <div class="game-details-hero">
+
+        <img
+            id="gameImage"
+            class="details-logo"
+            src=""
+            alt="Game">
+
+        <h1 id="gameName" class="details-name">
+            Loading...
+        </h1>
+
+        <span id="gameBadge" class="details-badge">
+            NEW
+        </span>
+
+        <div id="gameRating" class="details-rating">
+            ⭐ 5.0
+        </div>
+
+        <!-- GAME INFO -->
+        <div class="details-info-grid">
+
+            <div class="details-info-box">
+                <span>🎁 Sign Up Bonus</span>
+                <strong id="gameBonus">₹0</strong>
+            </div>
+
+            <div class="details-info-box">
+                <span>🏦 Min Withdraw</span>
+                <strong id="gameWithdraw">₹100</strong>
+            </div>
+
+        </div>
+
+        <!-- DOWNLOAD -->
+        <a
+            id="downloadButton"
+            href="#"
+            target="_blank"
+            class="details-download">
+            📥 DOWNLOAD NOW
+        </a>
+
+    </div>
+
+
+    <!-- TRUST -->
+    <div class="trust-grid">
+
+        <div class="trust-box">
+            <div class="icon">🛡️</div>
+            <strong>100% Safe</strong>
+            <small>Verified App</small>
+        </div>
+
+        <div class="trust-box">
+            <div class="icon">⚡</div>
+            <strong>Fast Download</strong>
+            <small>Quick Access</small>
+        </div>
+
+        <div class="trust-box">
+            <div class="icon">🏆</div>
+            <strong>Trusted</strong>
+            <small>Popular Game</small>
+        </div>
+
+    </div>
+
+
+    <!-- ABOUT -->
+    <div class="details-section">
+
+        <h2>🎮 About <span id="aboutGameName">Game</span></h2>
+
+        <p id="gameAbout">
+            Welcome to the game. Enjoy exciting gameplay,
+            attractive bonuses and fast withdrawals.
+        </p>
+
+    </div>
+
+
+    <!-- FEATURES -->
+    <div class="details-section">
+
+        <h2>🔥 Game Features</h2>
+
+        <ul class="features-list">
+
+            <li>🎁 Attractive Welcome Bonus</li>
+            <li>⚡ Fast & Easy Registration</li>
+            <li>💰 Quick Withdrawal Options</li>
+            <li>🔐 Secure & User Friendly</li>
+            <li>📱 Android Mobile Friendly</li>
+            <li>🎮 Smooth Gaming Experience</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- FINAL DOWNLOAD -->
+    <a
+        id="finalDownloadButton"
+        href="#"
+        target="_blank"
+        class="details-download final-download">
+
+        🚀 DOWNLOAD <span id="finalGameName">GAME</span> NOW
+
+    </a>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   GAME DETAILS DATA
+========================================= */
+
+const games = {
+
+    "bingo101": {
+        name: "Bingo101",
+        image: "images/bingo101.png",
+        bonus: "₹551",
+        withdraw: "₹100",
+        rating: "4.8",
+        badge: "HOT",
+        link: "#",
+        about: "Bingo101 is a popular gaming platform offering exciting games, attractive welcome bonuses and convenient withdrawal options."
+    },
+
+    "spin101": {
+        name: "Spin101",
+        image: "images/spin101.png",
+        bonus: "₹551",
+        withdraw: "₹100",
+        rating: "4.7",
+        badge: "NEW",
+        link: "#",
+        about: "Spin101 offers an exciting gaming experience with attractive bonuses and a simple mobile-friendly interface."
+    }
+
+};
+
+
+/* =========================================
+   GET GAME FROM URL
+========================================= */
+
+const params = new URLSearchParams(window.location.search);
+
+const gameId = (
+    params.get("game") || "bingo101"
+).toLowerCase();
+
+
+/* =========================================
+   LOAD GAME
+========================================= */
+
+const game = games[gameId] || games["bingo101"];
+
+document.getElementById("gameImage").src = game.image;
+
+document.getElementById("gameName").textContent = game.name;
+
+document.getElementById("aboutGameName").textContent = game.name;
+
+document.getElementById("finalGameName").textContent =
+    game.name;
+
+document.getElementById("gameBadge").textContent =
+    game.badge;
+
+document.getElementById("gameRating").textContent =
+    "⭐ " + game.rating;
+
+document.getElementById("gameBonus").textContent =
+    game.bonus;
+
+document.getElementById("gameWithdraw").textContent =
+    game.withdraw;
+
+document.getElementById("gameAbout").textContent =
+    game.about;
+
+document.getElementById("downloadButton").href =
+    game.link;
+
+document.getElementById("finalDownloadButton").href =
+    game.link;
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+document.title =
+    game.name + " - UONO APPS";
+
+</script>
+
+</body>
+</html>
