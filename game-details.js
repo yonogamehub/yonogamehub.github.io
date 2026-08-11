@@ -162,13 +162,14 @@ async function loadGameDetails() {
 
       const data = doc.data();
 
-      const firebaseName = normalizeName(data.name);
+      const firebaseName = makeSlug(data.name);
 const firebaseSlug = String(data.shareSlug || makeSlug(data.name))
     .toLowerCase()
     .trim();
 
 if (
-    firebaseName === normalizeName(gameKey) ||
+    if (
+    firebaseName === makeSlug(gameKey) ||
     firebaseSlug === gameKey
 ) {
 
