@@ -315,7 +315,45 @@ async function loadGameDetails() {
 
     document.querySelectorAll(".game-description")
       .forEach(el => el.textContent = description);
+// ================================
+// DYNAMIC ABOUT GAME
+// ================================
 
+const aboutName = document.getElementById("aboutGameName");
+const aboutName2 = document.getElementById("aboutGameName2");
+const aboutName3 = document.getElementById("aboutGameName3");
+const aboutName4 = document.getElementById("aboutGameName4");
+const aboutBox = document.getElementById("gameAbout");
+
+if (aboutName) aboutName.textContent = name;
+if (aboutName2) aboutName2.textContent = name;
+if (aboutName3) aboutName3.textContent = name;
+if (aboutName4) aboutName4.textContent = name;
+
+if (aboutBox) {
+    aboutBox.innerHTML = `
+        <p>
+            Discover <strong>${name}</strong> and enjoy a smooth,
+            fast and mobile-friendly gaming experience designed
+            for easy access and entertainment.
+        </p>
+
+        <p>
+            <strong>${name}</strong> offers a simple and convenient
+            platform with attractive offers, smooth navigation
+            and an optimized experience for mobile users.
+        </p>
+
+        <h3>Why Choose ${name}?</h3>
+
+        <ul>
+            <li>🎁 Attractive promotional offers</li>
+            <li>⚡ Fast and smooth gaming experience</li>
+            <li>💰 Convenient withdrawal options</li>
+            <li>📱 Mobile-friendly interface</li>
+        </ul>
+    `;
+}
 
     // =====================================
     // OTHER GAME LOGOS
