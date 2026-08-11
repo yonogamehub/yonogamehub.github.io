@@ -39,17 +39,29 @@ const gamesRef = collection(db, "games");
 // =====================================
 
 const params = new URLSearchParams(window.location.search);
-const gameKey = (params.get("game") || "").toLowerCase().trim();
 
+let gameKey = (params.get("game") || "").toLowerCase().trim();
+
+if (!gameKey) {
+    const path = window.location.pathname
+        .replace(/^\/+|\/+$/g, "")
+        .toLowerCase();
+
+    if (path && path !== "game-details.html") {
+        gameKey = path;
+    }
+}
 
 // =====================================
 // NORMALIZE NAME
 // =====================================
 
-function normalizeName(name) {
-  return String(name || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
+function makeSlug(name) {
+    return String(name || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
 }
 
 
@@ -151,8 +163,14 @@ async function loadGameDetails() {
       const data = doc.data();
 
       const firebaseName = normalizeName(data.name);
+const firebaseSlug = String(data.shareSlug || makeSlug(data.name))
+    .toLowerCase()
+    .trim();
 
-      if (firebaseName === normalizeName(gameKey)) {
+if (
+    firebaseName === normalizeName(gameKey) ||
+    firebaseSlug === gameKey
+) {
 
         game = {
           id: doc.id,
