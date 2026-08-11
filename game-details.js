@@ -189,81 +189,60 @@ async function loadGameDetails() {
     // -------------------------------
 
     if (!gameKey) {
+  showError("Game link is missing.");
+  return;
+}
 
-      showError("Game link is missing.");
+const snapshot = await getDocs(gamesRef);
 
-      return;
-    }
+let game = null;
 
+function cleanKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .trim()
+    .replace(/\.html$/i, "")
+    .replace(/[^a-z0-9]/g, "");
+}
 
-    // -------------------------------
-    // GET FIREBASE GAMES
-    // -------------------------------
+const requestedKey = cleanKey(
+  decodeURIComponent(gameKey)
+);
 
-    const snapshot = await getDocs(gamesRef);
+snapshot.forEach(docSnap => {
 
-    let game = null;
+  const data = docSnap.data() || {};
 
+  const possibleKeys = [
+    docSnap.id,
+    data.id,
+    data.name,
+    data.slug,
+    data.gameSlug,
+    data.gameId,
+    data.gameID,
+    data.key,
+    data.title
+  ];
 
-    // -------------------------------
-    // FIND GAME
-    // -------------------------------
+  const matched = possibleKeys.some(value =>
+    cleanKey(value) === requestedKey
+  );
 
-    snapshot.forEach((doc) => {
+  if (matched) {
+    game = {
+      id: docSnap.id,
+      ...data
+    };
+  }
+});
 
-      const data = doc.data() || {};
-
-      const name = String(data.name || "").trim();
-
-      const slug = String(
-        data.slug ||
-        data.gameSlug ||
-        makeSlug(name)
-      )
-        .toLowerCase()
-        .trim();
-
-      const key = String(gameKey)
-        .toLowerCase()
-        .trim();
-
-
-      // Match by document ID
-      if (doc.id.toLowerCase() === key) {
-
-        game = {
-          id: doc.id,
-          ...data
-        };
-
-        return;
-      }
-
-
-      // Match by name
-      if (makeSlug(name) === makeSlug(gameKey)) {
-
-        game = {
-          id: doc.id,
-          ...data
-        };
-
-        return;
-      }
-
-
-      // Match by slug
-      if (slug === key) {
-
-        game = {
-          id: doc.id,
-          ...data
-        };
-
-      }
-
-    });
-
+// GAME NOT FOUND
+if (!game) {
+  console.error("Game not found:", gameKey);
+  showError();
+  return;
+}
 
     // -------------------------------
     // GAME NOT FOUND
@@ -282,7 +261,7 @@ async function loadGameDetails() {
     console.log("GAME FOUND:", game);
 
 
-    // =================================
+    // ==============slu===============
     // GAME DATA
     // =================================
 
