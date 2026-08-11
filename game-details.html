@@ -1483,3 +1483,62 @@ async function loadGame(){
         /* =====================================
            IMAGE FALLBACK
         ===================================== 
+<script>
+/* =====================================
+   IMAGE FALLBACK
+===================================== */
+
+document.getElementById("gameImage").addEventListener("error", function () {
+    this.src = "images/logo.png";
+});
+
+
+/* =====================================
+   SHOW GAME
+===================================== */
+
+function showGameContent() {
+
+    document.getElementById("loading").style.display = "none";
+
+    document.getElementById("error").style.display = "none";
+
+    document.getElementById("gameContent").style.display = "block";
+}
+
+
+/* =====================================
+   SHOW ERROR
+===================================== */
+
+function showError() {
+
+    document.getElementById("loading").style.display = "none";
+
+    document.getElementById("gameContent").style.display = "none";
+
+    document.getElementById("error").style.display = "block";
+}
+
+
+/* =====================================
+   LOAD GAME START
+===================================== */
+
+loadGame()
+    .then(() => {
+
+        showGameContent();
+
+    })
+    .catch((error) => {
+
+        console.error("Game Details Error:", error);
+
+        showError();
+
+    });
+</script>
+
+</body>
+</html>
