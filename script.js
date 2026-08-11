@@ -276,7 +276,7 @@ const image = rawImage.startsWith("http") || rawImage.startsWith("images/")
     updateGameCount();
 renderTopApps(games);
 }
-
+window.renderFirebaseGames = renderFirebaseGames;
 // =====================================
 // GAME COUNT
 // =====================================
