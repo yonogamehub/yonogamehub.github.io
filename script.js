@@ -382,10 +382,12 @@ ${game.name}
 
 
 
-            <a href="${game.link}" target="_blank"
+            <a href="game-details.html?game=${encodeURIComponent(
+    (game.name || "").toLowerCase().trim()
+)}"
 style="display:block;background:#FFC107;color:#000;font-weight:700;
 padding:12px;border-radius:30px;text-decoration:none;margin-top:12px;">
-Download
+⬇️ Download
 </a>
         </div>
         `;
