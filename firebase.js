@@ -72,7 +72,7 @@ async function loadGames() {
 
         if (typeof window.renderFirebaseGames === "function") {
 
-    window.renderTopApps(games);
+    
     window.renderFirebaseGames(games);
 
 } else {
