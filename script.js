@@ -2,8 +2,8 @@
 // DOM ELEMENTS
 // =====================================
 
-const searchInput = document.querySelector(".search-box input");
-const firebaseContainer = document.getElementById("firebaseGames");
+const firebaseContainer =
+document.getElementById("firebaseGamesList");
 
 const tabs = document.querySelectorAll(".tab-btn");
 const chips = document.querySelectorAll(".chip");
