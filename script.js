@@ -261,11 +261,12 @@ const image = rawImage.startsWith("http") || rawImage.startsWith("images/")
 
     </div>
 
-    <a href="${game.link}"
-       target="_blank"
-       class="install-btn">
-       INSTALL
-    </a>
+    <a href="game-details.html?game=${encodeURIComponent(
+    (game.name || "").toLowerCase().replace(/\s+/g, "")
+)}"
+   class="install-btn">
+   📥 Download
+</a>
 
 </div>
 `;
