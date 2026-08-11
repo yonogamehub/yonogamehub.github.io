@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+</head>
+<body>
 
+<script>
+(function () {
+
+    const path = window.location.pathname
+        .replace(/^\/+|\/+$/g, "");
+
+    // Ignore normal files/pages
+    if (
+        !path ||
+        path.includes(".") ||
+        path === "game-details.html"
+    ) {
+        window.location.replace("/");
+        return;
+    }
+
+    // Clean game URL → Game Details
+    window.location.replace(
+        "/game-details.html?game=" +
+        encodeURIComponent(path)
+    );
+
+})();
+</script>
+
+</body>
+</html>
