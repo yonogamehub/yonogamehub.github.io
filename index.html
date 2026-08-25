@@ -2059,6 +2059,498 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+    <style>
+/* =========================================
+   YONO LOOT HUB - FINAL UI/FILTER FIX
+   Firebase game data/icons untouched
+   ========================================= */
+
+/* TARGET BACKGROUND */
+html,
+body {
+    background: #f4f5fa !important;
+}
+
+main,
+.main-content,
+.content,
+.games-section,
+.game-section,
+#games,
+#firebaseGamesSection {
+    background: #f4f5fa !important;
+}
+
+/* GAME CARDS */
+#firebaseGamesList .game-card,
+#firebaseGamesList .firebase-game-card {
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+/* EXISTING GAME ICONS - URL/IMAGE NOT CHANGED */
+#firebaseGamesList img {
+    width: 108px !important;
+    height: 108px !important;
+    min-width: 108px !important;
+    max-width: 108px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    border-radius: 22px !important;
+}
+
+/* DOWNLOAD BUTTON */
+#firebaseGamesList .download-btn,
+#firebaseGamesList .download-button,
+#firebaseGamesList a[class*="download"],
+#firebaseGamesList button[class*="download"] {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Don't allow image/button to destroy card layout */
+#firebaseGamesList .game-left {
+    min-width: 0 !important;
+}
+
+#firebaseGamesList .game-info {
+    min-width: 0 !important;
+}
+
+#firebaseGamesList .game-info h3,
+#firebaseGamesList .game-info h2 {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* =========================================
+   SEARCH FIX
+   ========================================= */
+
+#firebaseGamesList .game-card.search-hidden {
+    display: none !important;
+}
+
+/* =========================================
+   NO GAMES MESSAGE
+   ========================================= */
+
+#firebaseGamesList .no-games-message {
+    display: none;
+}
+
+#firebaseGamesList .no-games-message.show {
+    display: block !important;
+}
+</style>
+
+
+<script>
+/* =========================================
+   SAFE FIREBASE SEARCH + FILTER
+   Does NOT delete Firebase games
+   ========================================= */
+
+(function () {
+
+    let masterGames = [];
+    let currentFilter = "all";
+    let currentSearch = "";
+
+    /* ---------- container ---------- */
+
+    function getGameContainer() {
+        return document.getElementById("firebaseGamesList");
+    }
+
+    /* ---------- remember Firebase cards ---------- */
+
+    function rememberGames() {
+
+        const container = getGameContainer();
+
+        if (!container) return;
+
+        const cards = Array.from(container.children).filter(card => {
+
+            return card.nodeType === 1 &&
+                   !card.classList.contains("no-games-message");
+
+        });
+
+        cards.forEach(card => {
+
+            if (!masterGames.includes(card)) {
+                masterGames.push(card);
+            }
+
+        });
+    }
+
+
+    /* ---------- card text ---------- */
+
+    function getText(card) {
+
+        return (
+            card.innerText ||
+            card.textContent ||
+            ""
+        ).toLowerCase();
+
+    }
+
+
+    /* ---------- filter ---------- */
+
+    function matchesFilter(card) {
+
+        if (currentFilter === "all") {
+            return true;
+        }
+
+        const text = getText(card);
+
+        if (currentFilter === "trending") {
+            return (
+                text.includes("hot") ||
+                text.includes("trending") ||
+                text.includes("popular")
+            );
+        }
+
+        if (currentFilter === "new") {
+            return (
+                text.includes("new") ||
+                text.includes("fully new")
+            );
+        }
+
+        if (currentFilter === "upcoming") {
+            return text.includes("upcoming");
+        }
+
+        return true;
+    }
+
+
+    /* ---------- search ---------- */
+
+    function matchesSearch(card) {
+
+        if (!currentSearch) {
+            return true;
+        }
+
+        return getText(card).includes(currentSearch);
+
+    }
+
+
+    /* ---------- render ---------- */
+
+    function renderGames() {
+
+        rememberGames();
+
+        if (!masterGames.length) return;
+
+        let visible = 0;
+
+        masterGames.forEach(card => {
+
+            const show =
+                matchesFilter(card) &&
+                matchesSearch(card);
+
+            if (show) {
+
+                card.classList.remove("search-hidden");
+                card.style.removeProperty("display");
+
+                visible++;
+
+            } else {
+
+                card.classList.add("search-hidden");
+                card.style.setProperty(
+                    "display",
+                    "none",
+                    "important"
+                );
+
+            }
+
+        });
+
+
+        /* game count */
+
+        document
+            .querySelectorAll(
+                "#gameCount, .game-count, .games-count"
+            )
+            .forEach(el => {
+
+                el.textContent =
+                    visible + " Games Available";
+
+            });
+
+
+        /* no games */
+
+        const container = getGameContainer();
+
+        if (!container) return;
+
+        let noGames =
+            container.querySelector(".no-games-message");
+
+        if (visible === 0) {
+
+            if (!noGames) {
+
+                noGames =
+                    document.createElement("div");
+
+                noGames.className =
+                    "no-games-message";
+
+                noGames.innerHTML = `
+                    <div style="
+                        padding:30px 20px;
+                        text-align:center;
+                        font-weight:700;
+                        font-size:20px;
+                    ">
+                        NO GAMES FOUND
+
+                        <div style="
+                            margin-top:7px;
+                            font-size:14px;
+                            font-weight:400;
+                        ">
+                            Try another game name or filter.
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(noGames);
+
+            }
+
+            noGames.classList.add("show");
+
+        } else {
+
+            if (noGames) {
+                noGames.classList.remove("show");
+            }
+
+        }
+
+    }
+
+
+    /* ---------- search input ---------- */
+
+    function setupSearch() {
+
+        const inputs = document.querySelectorAll(
+            'input[type="search"],' +
+            'input[placeholder*="Favourite"],' +
+            'input[placeholder*="favorite"],' +
+            'input[placeholder*="game"],' +
+            '#gameSearch,' +
+            '#searchGames'
+        );
+
+        inputs.forEach(input => {
+
+            if (input.dataset.safeSearchInstalled) {
+                return;
+            }
+
+            input.dataset.safeSearchInstalled = "1";
+
+            input.addEventListener("input", function () {
+
+                currentSearch =
+                    this.value
+                        .trim()
+                        .toLowerCase();
+
+                /*
+                 IMPORTANT:
+                 Search never reloads Firebase.
+                 Search never deletes cards.
+                */
+
+                renderGames();
+
+            });
+
+        });
+
+    }
+
+
+    /* ---------- filter buttons ---------- */
+
+    function setupFilters() {
+
+        const buttons =
+            document.querySelectorAll(
+                ".filter-btn," +
+                ".category-btn," +
+                ".tab-btn," +
+                "[data-filter]"
+            );
+
+
+        buttons.forEach(button => {
+
+            if (button.dataset.safeFilterInstalled) {
+                return;
+            }
+
+            let value =
+                button.dataset.filter ||
+                button.innerText
+                    .trim()
+                    .toLowerCase();
+
+            if (
+                value === "all apps" ||
+                value === "all"
+            ) {
+                value = "all";
+            }
+
+            if (value === "trending") {
+                value = "trending";
+            }
+
+            if (
+                value === "new apps" ||
+                value === "new"
+            ) {
+                value = "new";
+            }
+
+            if (value === "upcoming") {
+                value = "upcoming";
+            }
+
+            if (
+                ![
+                    "all",
+                    "trending",
+                    "new",
+                    "upcoming"
+                ].includes(value)
+            ) {
+                return;
+            }
+
+            button.dataset.safeFilterInstalled = "1";
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    currentFilter = value;
+
+                    /*
+                     IMPORTANT:
+                     Do NOT reload page.
+                     Do NOT call Firebase again.
+                     Do NOT replace game array.
+                    */
+
+                    renderGames();
+
+                },
+                true
+            );
+
+        });
+
+    }
+
+
+    /* ---------- Firebase watcher ---------- */
+
+    function watchFirebaseGames() {
+
+        const container = getGameContainer();
+
+        if (!container) return;
+
+        const observer =
+            new MutationObserver(() => {
+
+                rememberGames();
+
+                /*
+                 Firebase can add cards later.
+                 Existing cards remain protected.
+                */
+
+                if (
+                    currentSearch ||
+                    currentFilter !== "all"
+                ) {
+                    renderGames();
+                }
+
+            });
+
+        observer.observe(container, {
+            childList: true
+        });
+
+    }
+
+
+    /* ---------- start ---------- */
+
+    let tries = 0;
+
+    const timer =
+        setInterval(() => {
+
+            rememberGames();
+            setupSearch();
+            setupFilters();
+
+            tries++;
+
+            if (masterGames.length > 0) {
+
+                clearInterval(timer);
+
+                watchFirebaseGames();
+
+                console.log(
+                    "✅ YONO LOOT HUB FIX ACTIVE:",
+                    masterGames.length,
+                    "Firebase games protected"
+                );
+
+            }
+
+            if (tries > 100) {
+                clearInterval(timer);
+            }
+
+        }, 200);
+
+})();
+</script>
 </body>
 
         </html>
