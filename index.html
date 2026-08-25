@@ -2642,6 +2642,31 @@ function watchFirebaseGames() {
 
 })();
 </script>
+    <script>
+// FORCE LOAD FIREBASE GAMES & RE-TRIGGER FILTER
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Set Default Filter
+    if (typeof currentFilter !== 'undefined') {
+        currentFilter = "all";
+    }
+
+    // 2. Force Render Games Function
+    function forceRender() {
+        if (typeof renderGames === "function") {
+            renderGames();
+        }
+        if (typeof rememberGames === "function") {
+            rememberGames();
+        }
+    }
+
+    // Run render immediately and retry after Firebase sync
+    forceRender();
+    setTimeout(forceRender, 1000);
+    setTimeout(forceRender, 2500);
+});
+    </script>
+    
 </body>
 
         </html>
