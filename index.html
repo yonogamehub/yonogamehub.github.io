@@ -1744,6 +1744,321 @@ SCRIPTS
 
 })();
 </script>
+    <!-- =========================================
+     FINAL GAME FILTER + SEARCH FIX
+     Does NOT delete Firebase games
+     ========================================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    let allGameCards = [];
+    let activeFilter = "all";
+    let searchText = "";
+
+    // -----------------------------------------
+    // Find the main game container
+    // -----------------------------------------
+    function getContainer() {
+        return document.getElementById("firebaseGamesList")
+            || document.getElementById("gamesList")
+            || document.querySelector(".games-list")
+            || document.querySelector("#allGames");
+    }
+
+    // -----------------------------------------
+    // Save ORIGINAL cards
+    // Never remove them from DOM permanently
+    // -----------------------------------------
+    function collectGames() {
+        const container = getContainer();
+        if (!container) return;
+
+        const cards = [...container.children].filter(el => {
+            return el.nodeType === 1 &&
+                   !el.classList.contains("no-games-message");
+        });
+
+        if (cards.length > 0) {
+            allGameCards = cards;
+        }
+    }
+
+    // -----------------------------------------
+    // Get text safely
+    // -----------------------------------------
+    function cardText(card) {
+        return (card.innerText || card.textContent || "").toLowerCase();
+    }
+
+    // -----------------------------------------
+    // Check category
+    // -----------------------------------------
+    function matchesFilter(card) {
+
+        if (activeFilter === "all") return true;
+
+        const text = cardText(card);
+
+        if (activeFilter === "trending") {
+            return (
+                text.includes("hot") ||
+                text.includes("trending") ||
+                text.includes("popular")
+            );
+        }
+
+        if (activeFilter === "new") {
+            return (
+                text.includes("new") ||
+                text.includes("fully new")
+            );
+        }
+
+        if (activeFilter === "upcoming") {
+            return text.includes("upcoming");
+        }
+
+        return true;
+    }
+
+    // -----------------------------------------
+    // Search
+    // -----------------------------------------
+    function matchesSearch(card) {
+
+        if (!searchText) return true;
+
+        const text = cardText(card);
+
+        return text.includes(searchText);
+    }
+
+    // -----------------------------------------
+    // SAFE RENDER
+    // Cards are NEVER deleted
+    // -----------------------------------------
+    function applyFilter() {
+
+        const container = getContainer();
+        if (!container || allGameCards.length === 0) return;
+
+        let visible = 0;
+
+        allGameCards.forEach(card => {
+
+            const show =
+                matchesFilter(card) &&
+                matchesSearch(card);
+
+            card.style.display = show ? "" : "flex";
+
+            if (show) visible++;
+        });
+
+        // Update game count
+        const countElements = document.querySelectorAll(
+            "#gameCount, .game-count, .games-count"
+        );
+
+        countElements.forEach(el => {
+            el.textContent = visible + " Games Available";
+        });
+
+        // No games message
+        let noMsg = container.querySelector(".no-games-message");
+
+        if (visible === 0) {
+
+            if (!noMsg) {
+                noMsg = document.createElement("div");
+                noMsg.className = "no-games-message";
+
+                noMsg.innerHTML = `
+                    <div style="
+                        padding:25px;
+                        text-align:center;
+                        font-weight:700;
+                        font-size:20px;
+                    ">
+                        NO GAMES FOUND
+                        <div style="
+                            font-size:14px;
+                            font-weight:400;
+                            margin-top:6px;
+                        ">
+                            Try another game name or filter.
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(noMsg);
+            }
+
+            noMsg.style.display = "block";
+
+        } else if (noMsg) {
+            noMsg.style.display = "none";
+        }
+    }
+
+    // -----------------------------------------
+    // FILTER BUTTONS
+    // -----------------------------------------
+    function setupFilterButtons() {
+
+        const buttons = [...document.querySelectorAll(
+            "button, .filter-btn, .category-btn, .tab-btn"
+        )];
+
+        buttons.forEach(btn => {
+
+            const text = (btn.innerText || "").trim().toLowerCase();
+
+            let filter = null;
+
+            if (text === "all" || text === "all apps") {
+                filter = "all";
+            }
+
+            if (text === "trending") {
+                filter = "trending";
+            }
+
+            if (text === "new" || text === "new apps") {
+                filter = "new";
+            }
+
+            if (text === "upcoming") {
+                filter = "upcoming";
+            }
+
+            if (!filter) return;
+
+            btn.addEventListener("click", e => {
+
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                activeFilter = filter;
+
+                // Reset visual active state
+                buttons.forEach(b => {
+                    if (
+                        ["all","trending","new","upcoming"].includes(
+                            ((b.innerText || "").trim().toLowerCase())
+                        )
+                    ) {
+                        b.classList.remove("active");
+                    }
+                });
+
+                btn.classList.add("active");
+
+                // IMPORTANT:
+                // Do NOT reload Firebase
+                // Do NOT delete games
+                applyFilter();
+
+            }, true);
+        });
+    }
+
+    // -----------------------------------------
+    // SEARCH BOX
+    // -----------------------------------------
+    function setupSearch() {
+
+        const search =
+            document.querySelector("#gameSearch") ||
+            document.querySelector("#searchGames") ||
+            document.querySelector('input[type="search"]') ||
+            document.querySelector('input[placeholder*="Favourite"]') ||
+            document.querySelector('input[placeholder*="game"]');
+
+        if (!search) return;
+
+        search.addEventListener("input", e => {
+
+            searchText = e.target.value
+                .trim()
+                .toLowerCase();
+
+            // ALWAYS search from complete original list
+            activeFilter = activeFilter || "all";
+
+            applyFilter();
+
+        });
+    }
+
+    // -----------------------------------------
+    // Wait for Firebase renderer
+    // -----------------------------------------
+    let attempts = 0;
+
+    const wait = setInterval(() => {
+
+        collectGames();
+
+        attempts++;
+
+        if (allGameCards.length > 0) {
+
+            clearInterval(wait);
+
+            setupFilterButtons();
+            setupSearch();
+
+            console.log(
+                "✅ FILTER FIX ACTIVE:",
+                allGameCards.length,
+                "games protected"
+            );
+        }
+
+        if (attempts > 100) {
+            clearInterval(wait);
+            console.log("⚠️ Game container not found yet.");
+        }
+
+    }, 200);
+
+    // -----------------------------------------
+    // If Firebase adds games later,
+    // automatically save them too
+    // -----------------------------------------
+    const observer = new MutationObserver(() => {
+
+        const container = getContainer();
+        if (!container) return;
+
+        const cards = [...container.children].filter(el =>
+            el.nodeType === 1 &&
+            !el.classList.contains("no-games-message")
+        );
+
+        cards.forEach(card => {
+            if (!allGameCards.includes(card)) {
+                allGameCards.push(card);
+            }
+        });
+
+        if (activeFilter !== "all" || searchText) {
+            applyFilter();
+        }
+
+    });
+
+    const container = getContainer();
+
+    if (container) {
+        observer.observe(container, {
+            childList: true
+        });
+    }
+
+});
+</script>
 </body>
 
         </html>
