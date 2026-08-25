@@ -491,7 +491,6 @@
             <img src="images/banner.png" style="width: 100%; display: block; border-radius: 16px;" alt="Banner" onerror="this.src='https://placehold.co/600x200?text=Banner'">
         </div>
     </div>
-
     <div class="stats-bar">
         <div class="stat-item">
             <h4>15,0000+</h4>
@@ -536,9 +535,11 @@
     <div class="games-list" id="gamesContainer">
         <p style="text-align: center; color: #334155; font-size: 12px; padding: 20px;">Loading games...</p>
     </div>
+
+    <!-- Firebase Stable Version 10.8.0 Fixes White Screen Crash -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
