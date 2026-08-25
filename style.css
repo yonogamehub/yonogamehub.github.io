@@ -3999,3 +3999,26 @@ body{
     min-width:104px !important;padding:11px 10px !important;font-size:14px !important;
   }
 }
+/* ===== YONO LOOT HUB REFERENCE BACKGROUND ===== */
+
+html,
+body {
+    background: #f5f6fb !important;
+}
+
+.top-apps,
+.app-tabs,
+.search-section,
+.filter-section,
+.games-heading,
+.games-section {
+    background: transparent !important;
+}
+
+.games-section {
+    background: transparent !important;
+}
+
+.game-card.firebase-game-card {
+    background: #ffffff !important;
+}
