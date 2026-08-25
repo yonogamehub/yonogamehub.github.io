@@ -51,6 +51,107 @@
 #firebaseGamesList .install-btn { text-decoration:none; }
 #firebaseGamesList .install-btn[disabled] { pointer-events:none; }
 </style>
+    <!-- FORCE CSS OVERRIDE & DISABLE OLD STYLES -->
+<style type="text/css" id="primary-master-style">
+    /* 1. PURANE DISABLE / HIDE RULES KO RESET KARNA */
+    #indexGamesSection { display: none !important; }
+    
+    #firebaseGamesSection, 
+    .firebasenamesList, 
+    #top3GamesSection, 
+    .top-games, 
+    .game-card, 
+    .firebase-game-card { 
+        display: block !important; 
+        visibility: visible !important; 
+        opacity: 1 !important; 
+        max-height: none !important;
+    }
+
+    #firebaseGamesSection .section-title { 
+        margin-bottom: 10px !important; 
+    }
+    
+    .firebasenamesList .install-btn { 
+        text-decoration: none !important; 
+    }
+    
+    .firebasenamesList .install-btn[disabled] { 
+        pointer-events: none !important; 
+    }
+
+    /* 2. HEADER, TITLE & ICONS RIGHT CORNER FIX */
+    .main-header {
+        width: 100% !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        position: relative !important;
+        z-index: 9999 !important;
+    }
+
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 8px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .header-logo img {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 8px !important;
+        object-fit: cover !important;
+    }
+
+    .header-brand-text {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        margin-left: 8px !important;
+        margin-right: auto !important;
+    }
+
+    .brand-name {
+        display: block !important;
+        font-weight: 800 !important;
+        font-size: 0.95rem !important;
+        color: #1e293b !important;
+        line-height: 1.1 !important;
+    }
+
+    .brand-tagline {
+        display: block !important;
+        font-size: 0.68rem !important;
+        color: #64748b !important;
+        margin-top: 2px !important;
+    }
+
+    /* Icons chote aur side kone me */
+    .header-nav-btns {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-left: auto !important;
+    }
+
+    .header-nav-btns .nav-btn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #f1f5f9 !important;
+        color: #0284c7 !important;
+        font-size: 13px !important;
+        text-decoration: none !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
+    }
+</style>
+    
 </head>
 
 <body>
