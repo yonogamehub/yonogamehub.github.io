@@ -171,8 +171,103 @@ function getVisibleGames() {
 // RENDER
 // =====================================
 
-function renderFirebaseGames(games = getVisibleGames()) {
+function renderFirebaseGames(games = null) {
+
+    // Firebase se fresh full list aaye tabhi master list update hogi
+    if (Array.isArray(games)) {
+        allFirebaseGames = games.slice();
+    }
+
     if (!firebaseContainer) return;
+
+    // Search / filter ke time original Firebase list kabhi overwrite nahi hogi
+    const visibleGames = getVisibleGames();
+
+    firebaseContainer.innerHTML = "";
+
+    if (!visibleGames.length) {
+        firebaseContainer.innerHTML = `
+            <div class="game-card firebase-game-card">
+                <div class="game-left">
+                    <div class="game-info">
+                        <h3>No Games Found</h3>
+                        <small>Try another game name or filter.</small>
+                    </div>
+                </div>
+            </div>`;
+        updateGameCount(0);
+        renderTopApps([]);
+        return;
+    }
+
+    const html = visibleGames.map(game => {
+        const name = escapeHTML(game.name || "Game");
+        const image = escapeHTML(getGameImage(game));
+        const badge = escapeHTML(getBadge(game));
+        const bonus = escapeHTML(getBonus(game));
+        const withdraw = escapeHTML(getWithdraw(game));
+        const link = getLink(game);
+
+        const download = link
+            ? `<a href="${escapeHTML(link)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="install-btn">
+                    📥 Download
+               </a>`
+            : `<button class="install-btn" type="button" disabled>
+                    📥 Download
+               </button>`;
+
+        return `
+        <div class="game-card firebase-game-card"
+             data-name="${name.toLowerCase()}"
+             data-category="${escapeHTML(getCategory(game))}"
+             data-badge="${badge}">
+
+            <div class="game-left">
+
+                <img src="${image}"
+                     class="game-logo"
+                     alt="${name}"
+                     onerror="this.onerror=null;this.src='images/logo.png';">
+
+                <div class="game-info">
+
+                    <div class="game-top">
+                        <h3>${name}</h3>
+                        <span class="game-badge">${badge}</span>
+                    </div>
+
+                    <p>
+                        🎁 <span style="color:#ff3b30;font-weight:700;">
+                            Sign Up Bonus ₹${bonus}
+                        </span>
+                    </p>
+
+                    <small>
+                        🏦 <span style="color:#003366;font-weight:700;">
+                            Min Withdraw ₹${withdraw}
+                        </span>
+                    </small>
+
+                </div>
+            </div>
+
+            ${download}
+
+        </div>`;
+    }).join("");
+
+    firebaseContainer.innerHTML = html;
+
+    updateGameCount(visibleGames.length);
+
+    // Top 3 hamesha ORIGINAL Firebase list se
+    renderTopApps(allFirebaseGames);
+
+    animateCards();
+}
 
     firebaseContainer.innerHTML = "";
 
