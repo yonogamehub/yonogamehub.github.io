@@ -539,3 +539,72 @@ function animateCards() {
 window.addEventListener("load", () => {
     updateGameCount();
 });
+/* =====================================================
+   FINAL SEARCH FIX
+===================================================== */
+
+(function () {
+
+    const installSearchFix = () => {
+
+        const input = document.getElementById("searchInput");
+        if (!input) return;
+
+        input.addEventListener("input", function (e) {
+
+            e.stopImmediatePropagation();
+
+            currentSearch = this.value
+                .trim()
+                .toLowerCase();
+
+            /* ALWAYS use original Firebase list */
+            const master = allFirebaseGames.slice();
+
+            const filtered = master.filter(game => {
+
+                const text = [
+                    game.name,
+                    game.badge,
+                    game.category,
+                    game.reward,
+                    game.bonus,
+                    game.withdraw
+                ]
+                .map(v => String(v ?? ""))
+                .join(" ")
+                .toLowerCase();
+
+                return !currentSearch ||
+                       text.includes(currentSearch);
+            });
+
+            /* Render only temporary filtered result */
+            renderFirebaseGames(filtered);
+
+            /* VERY IMPORTANT:
+               restore complete Firebase list */
+            allFirebaseGames = master;
+
+            /* Correct count */
+            const count =
+                document.querySelector(".games-heading p");
+
+            if (count) {
+                count.textContent =
+                    `${filtered.length} Games Available`;
+            }
+
+        }, true);
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            installSearchFix
+        );
+    } else {
+        installSearchFix();
+    }
+
+})();
