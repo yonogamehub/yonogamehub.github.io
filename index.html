@@ -558,7 +558,6 @@
 
         async function fetchGamesFromFirebase() {
             try {
-                // Firebase se data fetch karte waqt order ascending set kiya hai
                 const q = query(collection(db, "games"), orderBy("order", "asc"));
                 const querySnapshot = await getDocs(q);
                 masterGamesData = [];
@@ -647,94 +646,5 @@
                         <img src="${imgSrc}" onerror="this.onerror=null;this.src='images/logo.png'">
                         <h3>${game.name || 'Game'}</h3>
                         <div class="info-text">${bIcon} Bonus ₹${cleanRew}</div>
-                        <div class="withdraw-text">🏦 Min W/D ₹${cleanWd}</div>
-                        <a href="${game.link || '#'}" target="_blank" class="download-btn-sm"><i class="fa-solid fa-download"></i> Download</a>
-                    </div>
-                `;
-            });
-
-            // Main List filtering & ensuring Firebase games come first based on 'order'
-            let filteredList = masterGamesData.filter(game => {
-                if (activeCategory === 'all') return true;
-                const cat = (game.category || 'all').toLowerCase().trim();
-                return cat === activeCategory.toLowerCase();
-            });
-
-            // Search filtering
-            const searchInputEl = document.getElementById("searchInput");
-            const searchKey = searchInputEl ? searchInputEl.value.toLowerCase().trim() : "";
-            if(searchKey) {
-                filteredList = filteredList.filter(g => (g.name || '').toLowerCase().includes(searchKey));
-            }
-
-            if(filteredList.length === 0) {
-                gamesContainer.innerHTML = `<p style="text-align:center; color:#475569; font-size:12px; padding:20px;">No games found in this category!</p>`;
-                return;
-            }
-
-            filteredList.forEach((game, index) => {
-                const badgeClass = (game.badge || 'NEW').toLowerCase().includes('hot') ? 'badge-hot' : (game.badge || 'NEW').toLowerCase().includes('vip') ? 'badge-vip' : 'badge-new';
-                const bIcon = game.bonusIcon || '🎁';
-                const imgSrc = game.image ? (game.image.startsWith('http') ? game.image : game.image.startsWith('images/') ? game.image : 'images/' + game.image) : 'images/logo.png';
-
-                const cleanRew = cleanReward(game.reward);
-                const cleanWd = cleanWithdraw(game.withdraw);
-
-                gamesContainer.innerHTML += `
-                    <div class="game-card">
-                        <div class="game-left">
-                            <span class="game-rank">${index + 1}.</span>
-                            <div class="game-img-wrapper">
-                                <span class="game-badge-inline ${badgeClass}">${game.badge || 'NEW'}</span>
-                                <img src="${imgSrc}" onerror="this.onerror=null;this.src='images/logo.png'">
-                            </div>
-                            <div class="game-details">
-                                <h3>${game.name || 'Game'}</h3>
-                                <p>${bIcon} Bonus ₹${cleanRew}</p>
-                                <span class="withdraw">🏦 Min. Withdrawal ₹${cleanWd}</span>
-                            </div>
-                        </div>
-                        <div class="game-right-actions">
-                            <button class="action-icon-btn" onclick="toggleLike(this)" title="Like"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-icon-btn" onclick="shareGame('${game.name || 'Game'}', '${game.link || '#'}')" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
-                            <a href="${game.link || '#'}" target="_blank" class="download-btn">
-                                <i class="fa-solid fa-download"></i> Download
-                            </a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        window.filterCategory = function(cat, element) {
-            activeCategory = cat;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            renderUI();
-        };
-
-        window.filterGames = function() {
-            renderUI();
-        };
-
-        window.sortGames = function(type, element) {
-            document.querySelectorAll('.sort-chip').forEach(c => c.classList.remove('active'));
-            element.classList.add('active');
-
-            if(type === 'bonus-high') {
-                masterGamesData.sort((a,b) => (parseInt(cleanReward(b.reward)) || 0) - (parseInt(cleanReward(a.reward)) || 0));
-            } else if(type === 'bonus-low') {
-                masterGamesData.sort((a,b) => (parseInt(cleanReward(a.reward)) || 0) - (parseInt(cleanReward(b.reward)) || 0));
-            } else if(type === 'withdraw-low') {
-                masterGamesData.sort((a,b) => (parseInt(cleanWithdraw(a.withdraw)) || 0) - (parseInt(cleanWithdraw(b.withdraw)) || 0));
-            } else {
-                // Default sort forces Firebase 'order' property to stay on top
-                masterGamesData.sort((a,b) => (Number(a.order) || 999) - (Number(b.order) || 999));
-            }
-            renderUI();
-        };
-
-        fetchGamesFromFirebase();
-    </script>
-</body>
-</html>
+                        <div class="withdraw-text">Min Wd: ₹${cleanWd}</div>
+            
