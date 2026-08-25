@@ -147,7 +147,6 @@
             flex-direction: column;
             align-items: center;
             border: 1px solid #d5defd;
-            overflow: visible;
         }
 
         .rank-badge {
@@ -164,7 +163,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             z-index: 5;
         }
 
@@ -191,7 +189,6 @@
             object-fit: cover;
             margin-top: 6px;
             margin-bottom: 4px;
-            background: #fff;
         }
 
         .top3-card h3 {
@@ -210,10 +207,6 @@
             color: #d97706;
             font-weight: 600;
             margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
         }
 
         .top3-card .withdraw-text {
@@ -221,10 +214,6 @@
             color: #2563eb;
             font-weight: 600;
             margin-bottom: 6px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
         }
 
         .download-btn-sm {
@@ -238,10 +227,9 @@
             width: 92%;
             display: block;
             text-align: center;
-            white-space: nowrap;
         }
 
-        .tabs-container {
+        .tabs-container, .search-box, .sort-container, .games-list {
             padding: 0 16px;
             margin-bottom: 12px;
         }
@@ -264,19 +252,11 @@
             font-weight: 600;
             font-size: 12px;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
         .tab-btn.active {
             background: linear-gradient(135deg, #2563eb, #7c3aed);
             color: #fff;
-            box-shadow: 0 2px 6px rgba(37,99,235,0.3);
-        }
-
-        .search-box {
-            padding: 0 16px;
-            margin-bottom: 12px;
-            position: relative;
         }
 
         .search-box input {
@@ -287,53 +267,9 @@
             background: #fff;
             outline: none;
             font-size: 12px;
-            color: #1e293b;
-        }
-
-        .search-box i {
-            position: absolute;
-            right: 28px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #2563eb;
-        }
-
-        .sort-container {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 0 16px;
-            margin-bottom: 14px;
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none;
-        }
-
-        .sort-label {
-            font-size: 10px;
-            font-weight: 700;
-            color: #334155;
-        }
-
-        .sort-chip {
-            padding: 4px 10px;
-            border-radius: 12px;
-            background: #fff;
-            border: 1px solid #94a3b8;
-            font-size: 10px;
-            font-weight: 600;
-            color: #1e293b;
-            cursor: pointer;
-        }
-
-        .sort-chip.active {
-            background: #2563eb;
-            color: #fff;
-            border-color: #2563eb;
         }
 
         .games-list {
-            padding: 0 16px;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -346,137 +282,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            position: relative;
             border: 1px solid #d5defd;
-        }
-
-        .game-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .game-rank {
-            font-size: 12px;
-            font-weight: 800;
-            color: #2563eb;
-            min-width: 14px;
-        }
-
-        .game-img-wrapper {
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .game-img-wrapper img {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            object-fit: cover;
-            background: #fff;
-        }
-
-        .game-badge-inline {
-            position: absolute;
-            top: -6px;
-            left: -4px;
-            font-size: 7px;
-            font-weight: 700;
-            padding: 1px 4px;
-            border-radius: 6px;
-            color: #fff;
-            z-index: 2;
-        }
-
-        .game-details {
-            min-width: 0;
-            flex: 1;
-        }
-
-        .game-details h3 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .game-details p {
-            font-size: 0.62rem;
-            font-weight: 600;
-            color: #d97706;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .game-details .withdraw {
-            color: #2563eb;
-            font-size: 0.6rem;
-            font-weight: 600;
-            display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .game-right-actions {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            flex-shrink: 0;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            color: #fff;
-            text-decoration: none;
-            padding: 6px 9px;
-            border-radius: 16px;
-            font-size: 9.5px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            box-shadow: 0 2px 6px rgba(37,99,235,0.25);
-            white-space: nowrap;
-        }
-
-        .action-icon-btn {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-size: 11px;
-            cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: all 0.2s;
-            flex-shrink: 0;
-        }
-
-        .action-icon-btn.liked {
-            color: #ef4444 !important;
-            border-color: #fca5a5 !important;
-            background: #fef2f2 !important;
         }
     </style>
 
-    <!-- Firebase App & Firestore CDN (Compat / Classic Scripts) -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
-<body>
 
+<body>
     <header class="header">
         <div class="brand">
             <img src="images/logo.png" alt="Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'">
@@ -491,253 +305,71 @@
     </header>
 
     <div class="banner-container">
-        <div class="banner" style="padding: 0; overflow: hidden;">
-            <img src="images/banner.png" style="width: 100%; display: block; border-radius: 16px;" alt="Banner" onerror="this.src='https://placehold.co/600x200?text=Banner'">
-        </div>
-    </div>
-
-    <div class="stats-bar">
-        <div class="stat-item">
-            <h4>15,0000+</h4>
-            <p>HAPPY USERS</p>
-        </div>
-        <div class="stat-item">
-            <h4>₹50 Lakh+</h4>
-            <p>BONUSES CLAIMED</p>
-        </div>
-        <div class="stat-item">
-            <h4>100%</h4>
-            <p>VERIFIED APPS</p>
-        </div>
-    </div>
-
-    <div class="section-title">
-        <i class="fa-solid fa-trophy" style="color:#f59e0b;"></i> Top 3 Apps Today
-    </div>
-    <div class="top3-grid" id="top3Container"></div>
-
-    <div class="tabs-container">
-        <div class="tabs">
-            <button class="tab-btn active" onclick="filterCategory('all', this)">All Apps</button>
-            <button class="tab-btn" onclick="filterCategory('new', this)">New Apps</button>
-            <button class="tab-btn" onclick="filterCategory('upcoming', this)">Upcoming</button>
-        </div>
-    </div>
-
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search Yono, Rummy, Joy, 51 Bonus..." onkeyup="filterGames()">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </div>
-
-    <div class="sort-container">
-        <span class="sort-label"><i class="fa-solid fa-sliders"></i> Sort:</span>
-        <div class="sort-chip active" onclick="sortGames('default', this)">Default</div>
-        <div class="sort-chip" onclick="sortGames('bonus-high', this)">Bonus: High</div>
-        <div class="sort-chip" onclick="sortGames('bonus-low', this)">Bonus: Low</div>
-        <div class="sort-chip" onclick="sortGames('withdraw-low', this)">Min Withdraw</div>
+        <img src="images/banner.png" style="width: 100%; display: block; border-radius: 16px;" alt="Banner" onerror="this.src='https://placehold.co/600x200?text=Banner'">
     </div>
 
     <div class="games-list" id="gamesContainer">
-        <p style="text-align: center; color: #334155; font-size: 12px; padding: 20px;">Loading games...</p>
+        <p style="text-align: center; color: #334155; font-size: 12px; padding: 20px;">Loading apps...</p>
     </div>
 
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
-            authDomain: "yonoappskiduniya.firebaseapp.com",
-            projectId: "yonoappskiduniya",
-            storageBucket: "yonoappskiduniya.firebasestorage.app",
-            messagingSenderId: "474330790853",
-            appId: "1:474330790853:web:da1f01d00a7ffedbc4e9ac"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        // Safe Initialization
+        let db = null;
+        try {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
+                authDomain: "yonoappskiduniya.firebaseapp.com",
+                projectId: "yonoappskiduniya",
+                storageBucket: "yonoappskiduniya.firebasestorage.app",
+                messagingSenderId: "474330790853",
+                appId: "1:474330790853:web:da1f01d00a7ffedbc4e9ac"
+            };
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            db = firebase.firestore();
+        } catch (e) {
+            console.error("Firebase Init Error:", e);
+        }
 
         let masterGamesData = [];
 
-        async function fetchGamesFromFirebase() {
+        async function loadData() {
+            const container = document.getElementById("gamesContainer");
             try {
-                const querySnapshot = await db.collection("games").get();
+                if (!db) {
+                    throw new Error("Database not initialized");
+                }
+                const snapshot = await db.collection("games").get();
                 masterGamesData = [];
-                
-                querySnapshot.forEach((doc) => {
+                snapshot.forEach(doc => {
                     masterGamesData.push({ id: doc.id, ...doc.data() });
                 });
 
                 if (masterGamesData.length === 0) {
-                    document.getElementById("gamesContainer").innerHTML = `<p style="text-align:center; color:#334155; font-size:12px; padding:20px;">No games found in Firebase!</p>`;
+                    container.innerHTML = `<p style="text-align:center; color:#334155; font-size:12px; padding:20px;">No games found in database.</p>`;
                     return;
                 }
 
-                masterGamesData.sort((a, b) => (Number(a.order) || 999) - (Number(b.order) || 999));
-                renderUI(masterGamesData);
-            } catch (error) {
-                console.error("Firebase Error: ", error);
-                document.getElementById("gamesContainer").innerHTML = `<p style="text-align:center; color:red; font-size:12px; padding:20px;">Failed to load games from Firebase!</p>`;
-            }
-        }
-
-        function toggleLike(btn) {
-            btn.classList.toggle('liked');
-            const icon = btn.querySelector('i');
-            if(btn.classList.contains('liked')) {
-                icon.classList.remove('fa-regular');
-                icon.classList.add('fa-solid');
-            } else {
-                icon.classList.remove('fa-solid');
-                icon.classList.add('fa-regular');
-            }
-        }
-
-        function shareApp(appName, appLink) {
-            if (navigator.share) {
-                navigator.share({
-                    title: appName,
-                    text: `Download ${appName} and get huge bonuses!`,
-                    url: appLink || window.location.href,
-                }).catch(() => {});
-            } else {
-                alert("Share link copied: " + (appLink || window.location.href));
-            }
-        }
-
-        function cleanReward(val) {
-            if (!val) return "58";
-            let str = String(val).trim();
-            let numbers = str.match(/\d+/g);
-            return numbers ? numbers[0] : "58";
-        }
-
-        function cleanWithdraw(val) {
-            if (!val) return "100";
-            let str = String(val).trim();
-            let numbers = str.match(/\d+/g);
-            return numbers ? numbers[0] : "100";
-        }
-
-        function filterGames() {
-            const queryText = document.getElementById("searchInput").value.toLowerCase();
-            const filtered = masterGamesData.filter(game => {
-                const name = (game.name || '').toLowerCase();
-                return name.includes(queryText);
-            });
-            renderGameCards(filtered);
-        }
-
-        function filterCategory(cat, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            if (cat === 'all') {
-                renderGameCards(masterGamesData);
-            } else if (cat === 'new') {
-                const filtered = masterGamesData.filter(g => (g.badge || '').toLowerCase().includes('new'));
-                renderGameCards(filtered);
-            } else {
-                const filtered = masterGamesData.filter(g => (g.badge || '').toLowerCase().includes('upcoming') || (g.badge || '').toLowerCase().includes('vip'));
-                renderGameCards(filtered);
-            }
-        }
-
-        function sortGames(type, chip) {
-            document.querySelectorAll('.sort-chip').forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-
-            let sorted = [...masterGamesData];
-            if (type === 'bonus-high') {
-                sorted.sort((a, b) => Number(cleanReward(b.reward)) - Number(cleanReward(a.reward)));
-            } else if (type === 'bonus-low') {
-                sorted.sort((a, b) => Number(cleanReward(a.reward)) - Number(cleanReward(b.reward)));
-            } else if (type === 'withdraw-low') {
-                sorted.sort((a, b) => Number(cleanWithdraw(a.withdraw)) - Number(cleanWithdraw(b.withdraw)));
-            } else {
-                sorted.sort((a, b) => (Number(a.order) || 999) - (Number(b.order) || 999));
-            }
-            renderGameCards(sorted);
-        }
-
-        function renderUI(data) {
-            const top3Container = document.getElementById("top3Container");
-            if (top3Container) {
-                top3Container.innerHTML = "";
-                let topGames = data.filter(g => g.topPosition && Number(g.topPosition) > 0);
-                topGames.sort((a, b) => Number(a.topPosition) - Number(b.topPosition));
-                topGames = topGames.slice(0, 3);
-                
-                topGames.forEach(game => {
-                    const badgeClass = (game.badge || 'NEW').toLowerCase().includes('hot') ? 'badge-hot' : (game.badge || 'NEW').toLowerCase().includes('vip') ? 'badge-vip' : 'badge-new';
-                    const bIcon = game.bonusIcon || '🎁';
-                    const imgSrc = game.image ? (game.image.startsWith('http') ? game.image : game.image.startsWith('images/') ? game.image : 'images/' + game.image) : 'images/logo.png';
-                    
-                    const cleanRew = cleanReward(game.reward);
-                    const cleanWd = cleanWithdraw(game.withdraw);
-
-                    top3Container.innerHTML += `
-                        <div class="top3-card">
-                            <span class="rank-badge">${game.topPosition}</span>
-                            <span class="badge-tag ${badgeClass}">${game.badge || 'NEW'}</span>
-                            <img src="${imgSrc}" onerror="this.onerror=null;this.src='images/logo.png'">
-                            <h3>${game.name || 'Game'}</h3>
-                            <div class="info-text">${bIcon} Bonus ₹${cleanRew}</div>
-                            <div class="withdraw-text">Min Wd: ₹${cleanWd}</div>
-                            <a href="${game.link || '#'}" target="_blank" class="download-btn-sm">Download</a>
+                container.innerHTML = "";
+                masterGamesData.forEach((game, idx) => {
+                    container.innerHTML += `
+                        <div class="game-card">
+                            <div>
+                                <h3>${game.name || 'App'}</h3>
+                                <p style="font-size:11px; color:#d97706;">Bonus: ₹${game.reward || '50'}</p>
+                            </div>
+                            <a href="${game.link || '#'}" target="_blank" style="background:#2563eb; color:#fff; padding:6px 12px; border-radius:12px; text-decoration:none; font-size:11px;">Download</a>
                         </div>
                     `;
                 });
+            } catch (err) {
+                console.error("Fetch Error:", err);
+                container.innerHTML = `<p style="text-align:center; color:red; font-size:12px; padding:20px;">Error loading apps. Check Firebase rules!</p>`;
             }
-
-            renderGameCards(data);
         }
 
-        function renderGameCards(data) {
-            const gamesContainer = document.getElementById("gamesContainer");
-            if (!gamesContainer) return;
-
-            gamesContainer.innerHTML = "";
-
-            if (data.length === 0) {
-                gamesContainer.innerHTML = `<p style="text-align:center; color:#334155; font-size:12px; padding:20px;">No games available.</p>`;
-                return;
-            }
-
-            data.forEach((game, index) => {
-                const badgeClass = (game.badge || 'NEW').toLowerCase().includes('hot') ? 'badge-hot' : (game.badge || 'NEW').toLowerCase().includes('vip') ? 'badge-vip' : 'badge-new';
-                const bIcon = game.bonusIcon || '🎁';
-                const imgSrc = game.image ? (game.image.startsWith('http') ? game.image : game.image.startsWith('images/') ? game.image : 'images/' + game.image) : 'images/logo.png';
-                
-                const cleanRew = cleanReward(game.reward);
-                const cleanWd = cleanWithdraw(game.withdraw);
-                const safeName = (game.name || 'Game').replace(/'/g, "\\'");
-                const safeLink = game.link || '#';
-
-                gamesContainer.innerHTML += `
-                    <div class="game-card">
-                        <div class="game-left">
-                            <span class="game-rank">#${index + 1}</span>
-                            <div class="game-img-wrapper">
-                                <span class="game-badge-inline ${badgeClass}">${game.badge || 'NEW'}</span>
-                                <img src="${imgSrc}" onerror="this.onerror=null;this.src='images/logo.png'">
-                            </div>
-                            <div class="game-details">
-                                <h3>${game.name || 'Game'}</h3>
-                                <p>${bIcon} Bonus: ₹${cleanRew}</p>
-                                <span class="withdraw">Min Withdraw: ₹${cleanWd}</span>
-                            </div>
-                        </div>
-                        <div class="game-right-actions">
-                            <a href="${safeLink}" target="_blank" class="download-btn">
-                                <i class="fa-solid fa-download"></i> Download
-                            </a>
-                            <button class="action-icon-btn" onclick="toggleLike(this)" title="Like"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-icon-btn" onclick="shareApp('${safeName}', '${safeLink}')" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        fetchGamesFromFirebase();
+        loadData();
     </script>
 </body>
 </html>
