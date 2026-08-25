@@ -2666,6 +2666,74 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(forceRender, 2500);
 });
     </script>
+    <!-- PASTE THIS AT THE VERY BOTTOM OF YOUR INDEX.HTML FILE -->
+<style id="final-override-style">
+    /* 1. ICONS FIX: UNLIMITED OVERRIDE TO FORCE RIGHT CORNER & SMALL SIZE */
+    header .header-top,
+    div.header-top {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding-right: 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    header .header-brand-text,
+    div.header-brand-text {
+        margin-right: auto !important;
+        flex: 1 !important;
+    }
+
+    header .header-nav-btns,
+    div.header-nav-btns {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        position: relative !important;
+        right: 0 !important;
+    }
+
+    header .header-nav-btns a.nav-btn,
+    div.header-nav-btns a.nav-btn {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        max-width: 26px !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #f1f5f9 !important;
+        color: #0284c7 !important;
+        font-size: 11px !important;
+        text-decoration: none !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+    }
+
+    /* 2. FORCE SHOW GAMES & CONTAINER FIX */
+    #firebaseGamesSection,
+    #firebaseGamesSection .firebasenamesList,
+    #top3GamesSection,
+    .top-games,
+    .game-card,
+    .firebase-game-card {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    #indexGamesSection {
+        display: none !important;
+    }
+</style>
     
 </body>
 
