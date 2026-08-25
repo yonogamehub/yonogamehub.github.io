@@ -171,12 +171,7 @@ function getVisibleGames() {
 // RENDER
 // =====================================
 
-function renderFirebaseGames(games = null) {
-
-    // Firebase se fresh full list aaye tabhi master list update hogi
-    if (Array.isArray(games)) {
-        allFirebaseGames = games.slice();
-    }
+function renderFirebaseGames(games = allFirebaseGames) {
 
     if (!firebaseContainer) return;
 
@@ -193,7 +188,7 @@ function renderFirebaseGames(games = null) {
                         <h3>No Games Found</h3>
                         <small>Try another game name or filter.</small>
                     </div>
-                </div>
+                </hog
             </div>`;
         updateGameCount(0);
         renderTopApps([]);
@@ -432,14 +427,33 @@ document.addEventListener("click", (event) => {
 });
 
 // =====================================
-// SEARCH — FIXED
+// =====================================
+// SEARCH — FINAL FIX
 // =====================================
 
 if (searchInput) {
+
     searchInput.addEventListener("input", () => {
-        currentSearch = searchInput.value.trim().toLowerCase();
-        renderFirebaseGames();
+
+        currentSearch =
+            searchInput.value.trim().toLowerCase();
+
+        // IMPORTANT:
+        // Original Firebase list se filter karo
+        const filteredGames = allFirebaseGames.filter(game => {
+            return matchesSearch(game) && matchesFilter(game);
+        });
+
+        // Render filtered list
+        renderFirebaseGames(filteredGames);
+
+        // IMPORTANT:
+        // render ke baad master list restore
+        // taaki next search me games gayab na ho
+        // renderFirebaseGames ne filtered list save ki hogi,
+        // isliye isko restore karna zaroori hai.
     });
+
 }
 
 // =====================================
