@@ -1146,7 +1146,604 @@ SCRIPTS
 
 <script type="module" src="script.js"></script>
 <script type="module" src="firebase.js"></script>
+<script>
+/* =========================================================
+   YONO LOOT HUB — TOP 3 + ICON + DOWNLOAD FINAL FIX
+   PASTE THIS ONCE BEFORE </body>
+========================================================= */
 
+(function () {
+
+    /* ---------- PREMIUM UI FIX ---------- */
+
+    const css = document.createElement("style");
+
+    css.textContent = `
+    /* ===== TOP 3 ===== */
+
+    #topAppsContainer {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #topAppsContainer .top-app-card {
+        position: relative !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        padding: 14px 8px 12px !important;
+        border-radius: 22px !important;
+        background: #ffffff !important;
+        text-align: center !important;
+    }
+
+    /* TOP ICON */
+    #topAppsContainer .top-app-icon-wrap {
+        width: 76px !important;
+        height: 76px !important;
+        margin: 15px auto 9px !important;
+        overflow: hidden !important;
+        border-radius: 18px !important;
+        flex-shrink: 0 !important;
+    }
+
+    #topAppsContainer .top-app-icon,
+    #topAppsContainer img {
+        width: 76px !important;
+        height: 76px !important;
+        max-width: 76px !important;
+        max-height: 76px !important;
+        min-width: 76px !important;
+        min-height: 76px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+        margin: 0 !important;
+        border-radius: 18px !important;
+    }
+
+    /* TOP NAME */
+    #topAppsContainer .top-app-card h3 {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 5px 0 7px !important;
+        font-size: 14px !important;
+        line-height: 18px !important;
+        font-weight: 800 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    #topAppsContainer .top-app-card p,
+    #topAppsContainer .top-app-card small {
+        display: block !important;
+        width: 100% !important;
+        margin: 3px 0 !important;
+        font-size: 10px !important;
+        line-height: 14px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* TOP DOWNLOAD */
+    #topAppsContainer .top-download-btn {
+        display: flex !important;
+        width: 100% !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        box-sizing: border-box !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 5px !important;
+        margin: 10px 0 0 !important;
+        border-radius: 24px !important;
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-decoration: none !important;
+        color: #fff !important;
+        background: linear-gradient(135deg,#2878ee,#a04be4) !important;
+    }
+
+    /* RANK */
+    #topAppsContainer .rank {
+        position: absolute !important;
+        left: 8px !important;
+        top: 8px !important;
+        width: 25px !important;
+        height: 25px !important;
+        line-height: 25px !important;
+        border-radius: 50% !important;
+        color: #fff !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        z-index: 5 !important;
+        text-align: center !important;
+    }
+
+    #topAppsContainer .rank-1 {
+        background: #ff4545 !important;
+    }
+
+    #topAppsContainer .rank-2 {
+        background: #25b96b !important;
+    }
+
+    #topAppsContainer .rank-3 {
+        background: #efa51a !important;
+    }
+
+    /* BADGE */
+    #topAppsContainer .new-tag {
+        position: absolute !important;
+        right: 6px !important;
+        top: 8px !important;
+        max-width: 58px !important;
+        padding: 4px 6px !important;
+        border-radius: 12px !important;
+        background: #ff4148 !important;
+        color: #fff !important;
+        font-size: 8px !important;
+        font-weight: 800 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+
+    /* ===== NORMAL FIREBASE GAME ICON ===== */
+
+    #firebaseGamesList .firebase-game-card .game-logo,
+    #firebaseGamesList .firebase-game-card .game-left > img {
+        width: 78px !important;
+        height: 78px !important;
+        min-width: 78px !important;
+        min-height: 78px !important;
+        max-width: 78px !important;
+        max-height: 78px !important;
+        flex: 0 0 78px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 18px !important;
+        display: block !important;
+    }
+
+
+    /* ===== NORMAL DOWNLOAD BUTTON ===== */
+
+    #firebaseGamesList .firebase-game-card .install-btn {
+        width: 150px !important;
+        min-width: 150px !important;
+        max-width: 150px !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 10px !important;
+        margin-left: 8px !important;
+        border-radius: 28px !important;
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-decoration: none !important;
+        flex-shrink: 0 !important;
+    }
+
+
+    /* ===== MOBILE ===== */
+
+    @media (max-width: 600px) {
+
+        #topAppsContainer {
+            grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+            gap: 8px !important;
+        }
+
+        #topAppsContainer .top-app-card {
+            padding: 12px 5px 10px !important;
+            border-radius: 20px !important;
+        }
+
+        #topAppsContainer .top-app-icon-wrap,
+        #topAppsContainer .top-app-icon,
+        #topAppsContainer img {
+            width: 62px !important;
+            height: 62px !important;
+            min-width: 62px !important;
+            min-height: 62px !important;
+            max-width: 62px !important;
+            max-height: 62px !important;
+            border-radius: 15px !important;
+        }
+
+        #topAppsContainer .top-app-icon-wrap {
+            margin-top: 13px !important;
+            margin-bottom: 7px !important;
+        }
+
+        #topAppsContainer .top-app-card h3 {
+            font-size: 11px !important;
+            line-height: 14px !important;
+            margin: 4px 0 5px !important;
+        }
+
+        #topAppsContainer .top-app-card p,
+        #topAppsContainer .top-app-card small {
+            font-size: 8.5px !important;
+            line-height: 12px !important;
+        }
+
+        #topAppsContainer .top-download-btn {
+            height: 38px !important;
+            min-height: 38px !important;
+            font-size: 10px !important;
+            padding: 0 3px !important;
+            margin-top: 8px !important;
+        }
+
+        #firebaseGamesList .firebase-game-card {
+            min-width: 0 !important;
+        }
+
+        #firebaseGamesList .firebase-game-card .game-logo,
+        #firebaseGamesList .firebase-game-card .game-left > img {
+            width: 68px !important;
+            height: 68px !important;
+            min-width: 68px !important;
+            min-height: 68px !important;
+            max-width: 68px !important;
+            max-height: 68px !important;
+            flex: 0 0 68px !important;
+            border-radius: 16px !important;
+        }
+
+        #firebaseGamesList .firebase-game-card .install-btn {
+            width: 125px !important;
+            min-width: 125px !important;
+            max-width: 125px !important;
+            height: 44px !important;
+            min-height: 44px !important;
+            font-size: 13px !important;
+            padding: 0 6px !important;
+            margin-left: 5px !important;
+        }
+    }
+    `;
+
+    document.head.appendChild(css);
+
+
+    /* =====================================================
+       FIREBASE TOP 3 CONTROLLER
+    ===================================================== */
+
+    function clean(v) {
+        return String(v ?? "").trim();
+    }
+
+    function num(v) {
+        const n = Number(String(v ?? "").replace(/[^\d.-]/g, ""));
+        return Number.isFinite(n) ? n : 0;
+    }
+
+    function esc(v) {
+        return clean(v)
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+    }
+
+    function image(game) {
+
+        let img = clean(
+            game.image ||
+            game.icon ||
+            game.logo
+        );
+
+        if (!img) {
+            const n = clean(game.name)
+                .toLowerCase()
+                .replace(/\s+/g,"")
+                .replace(/[^a-z0-9]/g,"");
+
+            img = n ? "images/" + n + ".png" : "images/logo.png";
+        }
+
+        if (
+            !/^https?:\/\//i.test(img) &&
+            !img.startsWith("/") &&
+            !img.startsWith("./") &&
+            !img.startsWith("../") &&
+            !img.startsWith("images/")
+        ) {
+            img = "images/" + img;
+        }
+
+        return img;
+    }
+
+    function link(game) {
+
+        let l = clean(
+            game.link ||
+            game.download ||
+            game.downloadLink ||
+            game.url
+        );
+
+        if (!l) return "#";
+
+        if (/^www\./i.test(l)) {
+            l = "https://" + l;
+        }
+
+        if (
+            !/^https?:\/\//i.test(l) &&
+            !l.startsWith("/") &&
+            !l.startsWith("./") &&
+            !l.startsWith("../")
+        ) {
+            if (/^[a-z0-9.-]+\.[a-z]{2,}/i.test(l)) {
+                l = "https://" + l;
+            }
+        }
+
+        return l;
+    }
+
+    function rank(game) {
+
+        const values = [
+            game.topPosition,
+            game.top_position,
+            game.topRank,
+            game.top_rank,
+            game.featuredRank,
+            game.rank
+        ];
+
+        for (const v of values) {
+            const n = num(v);
+            if (n >= 1 && n <= 3) return n;
+        }
+
+        const t = clean(game.top).toLowerCase();
+
+        if (t === "true") return 1;
+
+        if (["1","2","3"].includes(t)) {
+            return Number(t);
+        }
+
+        return 0;
+    }
+
+    function bonus(game) {
+        return clean(
+            game.reward ??
+            game.bonus ??
+            "58"
+        ).replace(/[^\d.-]/g,"") || "58";
+    }
+
+    function withdraw(game) {
+        return clean(
+            game.withdraw ??
+            game.minWithdraw ??
+            "110"
+        ).replace(/[^\d.-]/g,"") || "110";
+    }
+
+    function badge(game) {
+        return clean(
+            game.badge ||
+            (clean(game.category).toLowerCase() === "upcoming"
+                ? "UPCOMING"
+                : clean(game.category).toLowerCase() === "new"
+                    ? "NEW"
+                    : "NEW")
+        ).toUpperCase();
+    }
+
+
+    /* =====================================================
+       DRAW TOP 3
+    ===================================================== */
+
+    function drawTop3(games) {
+
+        const box = document.getElementById("topAppsContainer");
+
+        if (!box || !Array.isArray(games) || !games.length) {
+            return;
+        }
+
+        let top = games
+            .map((g,i) => ({
+                game:g,
+                rank:rank(g),
+                index:i
+            }))
+            .filter(x => x.rank > 0)
+            .sort((a,b) =>
+                a.rank - b.rank ||
+                a.index - b.index
+            )
+            .slice(0,3);
+
+        /* Firebase Top 3 fields nahi mile to first 3 */
+        if (top.length < 3) {
+
+            const used = new Set(
+                top.map(x => x.game)
+            );
+
+            games.forEach((g,i) => {
+
+                if (
+                    top.length < 3 &&
+                    !used.has(g)
+                ) {
+                    top.push({
+                        game:g,
+                        rank:top.length + 1,
+                        index:i
+                    });
+
+                    used.add(g);
+                }
+
+            });
+        }
+
+        top = top.slice(0,3);
+
+        box.innerHTML = top.map((item,i) => {
+
+            const g = item.game;
+
+            const name = esc(g.name || "Game");
+            const img = esc(image(g));
+            const b = esc(badge(g));
+            const bo = esc(bonus(g));
+            const wd = esc(withdraw(g));
+            const dl = link(g);
+
+            const button =
+                dl !== "#"
+                ? `
+                <a
+                    href="${esc(dl)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="top-download-btn">
+                    ⬇️ Download
+                </a>
+                `
+                :
+                `
+                <button
+                    class="top-download-btn"
+                    type="button"
+                    disabled>
+                    ⬇️ Download
+                </button>
+                `;
+
+            return `
+            <div class="top-app-card">
+
+                <span class="rank rank-${i+1}">
+                    ${i+1}
+                </span>
+
+                <span class="new-tag">
+                    ${b}
+                </span>
+
+                <div class="top-app-icon-wrap">
+                    <img
+                        src="${img}"
+                        class="top-app-icon"
+                        alt="${name}"
+                        loading="lazy"
+                        onerror="
+                            this.onerror=null;
+                            this.src='images/logo.png';
+                        ">
+                </div>
+
+                <h3>${name}</h3>
+
+                <p>
+                    🎁 <span>
+                    Sign Up Bonus ₹${bo}
+                    </span>
+                </p>
+
+                <small>
+                    🏦 <span>
+                    Min Withdraw ₹${wd}
+                    </span>
+                </small>
+
+                ${button}
+
+            </div>
+            `;
+
+        }).join("");
+    }
+
+
+    /* =====================================================
+       CONNECT WITH EXISTING FIREBASE RENDERER
+    ===================================================== */
+
+    function hookRenderer() {
+
+        if (
+            typeof window.renderFirebaseGames !== "function"
+        ) {
+            setTimeout(hookRenderer,100);
+            return;
+        }
+
+        if (window.__YONO_TOP3_HOOKED__) return;
+
+        const original =
+            window.renderFirebaseGames;
+
+        window.renderFirebaseGames = function(games) {
+
+            /* IMPORTANT:
+               Firebase ke games yahin capture hote hain */
+            window.__YONO_FIREBASE_GAMES__ =
+                Array.isArray(games) ? games.slice() : [];
+
+            /* Existing game list ko bilkul same rehne do */
+            original(games);
+
+            /* Sirf Top 3 redraw */
+            drawTop3(
+                window.__YONO_FIREBASE_GAMES__
+            );
+        };
+
+        window.__YONO_TOP3_HOOKED__ = true;
+
+        /*
+           Agar Firebase already load ho chuka ho
+           to existing games se Top 3 immediately.
+        */
+        if (
+            Array.isArray(window.__YONO_FIREBASE_GAMES__) &&
+            window.__YONO_FIREBASE_GAMES__.length
+        ) {
+            drawTop3(
+                window.__YONO_FIREBASE_GAMES__
+            );
+        }
+    }
+
+    hookRenderer();
+
+})();
+</script>
 </body>
 
         </html>
