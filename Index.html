@@ -470,6 +470,10 @@
             background: #fef2f2 !important;
         }
     </style>
+
+    <!-- Firebase App & Firestore CDN (Compat / Classic Scripts) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -491,6 +495,7 @@
             <img src="images/banner.png" style="width: 100%; display: block; border-radius: 16px;" alt="Banner" onerror="this.src='https://placehold.co/600x200?text=Banner'">
         </div>
     </div>
+
     <div class="stats-bar">
         <div class="stat-item">
             <h4>15,0000+</h4>
@@ -536,11 +541,7 @@
         <p style="text-align: center; color: #334155; font-size: 12px; padding: 20px;">Loading games...</p>
     </div>
 
-    <!-- Firebase Stable Version 10.8.0 Fixes White Screen Crash -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+    <script>
         const firebaseConfig = {
             apiKey: "AIzaSyAMl53E0np-l4zF0gLFyDPtcTmStISkglI",
             authDomain: "yonoappskiduniya.firebaseapp.com",
@@ -550,14 +551,14 @@
             appId: "1:474330790853:web:da1f01d00a7ffedbc4e9ac"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
         let masterGamesData = [];
 
         async function fetchGamesFromFirebase() {
             try {
-                const querySnapshot = await getDocs(collection(db, "games"));
+                const querySnapshot = await db.collection("games").get();
                 masterGamesData = [];
                 
                 querySnapshot.forEach((doc) => {
@@ -577,7 +578,7 @@
             }
         }
 
-        window.toggleLike = function(btn) {
+        function toggleLike(btn) {
             btn.classList.toggle('liked');
             const icon = btn.querySelector('i');
             if(btn.classList.contains('liked')) {
@@ -589,7 +590,7 @@
             }
         }
 
-        window.shareApp = function(appName, appLink) {
+        function shareApp(appName, appLink) {
             if (navigator.share) {
                 navigator.share({
                     title: appName,
@@ -615,7 +616,7 @@
             return numbers ? numbers[0] : "100";
         }
 
-        window.filterGames = function() {
+        function filterGames() {
             const queryText = document.getElementById("searchInput").value.toLowerCase();
             const filtered = masterGamesData.filter(game => {
                 const name = (game.name || '').toLowerCase();
@@ -624,7 +625,7 @@
             renderGameCards(filtered);
         }
 
-        window.filterCategory = function(cat, btn) {
+        function filterCategory(cat, btn) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
@@ -639,7 +640,7 @@
             }
         }
 
-        window.sortGames = function(type, chip) {
+        function sortGames(type, chip) {
             document.querySelectorAll('.sort-chip').forEach(c => c.classList.remove('active'));
             chip.classList.add('active');
 
@@ -740,3 +741,4 @@
     </script>
 </body>
 </html>
+
