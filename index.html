@@ -2170,6 +2170,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* TARGET BACKGROUND */
 html,
+   <!-- COMPLETE FIX FOR BUTTON CLICKS, GAMES & HEADER ICONS -->
+<style id="master-layout-fix">
+    /* 1. Header Icons Perfect Circle & Right Alignment */
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .header-brand-text {
+        margin-right: auto !important;
+    }
+
+    .header-nav-btns {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-left: auto !important;
+    }
+
+    .header-nav-btns a.nav-btn {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #f1f5f9 !important;
+        color: #0284c7 !important;
+        font-size: 13px !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+    }
+
+    /* 2. Unblock Filter Buttons Click */
+    .filter-btn, 
+    .filter-tab, 
+    .category-btn,
+    .nav-btn {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 10 !important;
+    }
+
+    /* 3. Force Show Games Area */
+    #firebaseGamesSection,
+    #top3GamesSection,
+    .firebasenamesList {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+</style>
+
+<script>
+// UNBLOCK TABS & FORCE LOAD GAMES
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Enable Click on All Filter Tabs
+    const filterButtons = document.querySelectorAll('.filter-btn, .filter-tab, .category-btn');
+    filterButtons.forEach(btn => {
+        btn.style.pointerEvents = "auto";
+        btn.addEventListener('click', function () {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            if (typeof renderGames === 'function') {
+                renderGames();
+            }
+        });
+    });
+
+    // 2. Trigger Games Rendering
+    function loadGamesNow() {
+        if (typeof renderGames === "function") renderGames();
+        if (typeof rememberGames === "function") rememberGames();
+    }
+
+    loadGamesNow();
+    setTimeout(loadGamesNow, 1200);
+});
+</script>
+    
 body {
     background: #f4f5fa !important;
 }
@@ -2734,6 +2818,89 @@ document.addEventListener("DOMContentLoaded", function () {
         display: none !important;
     }
 </style>
+    <!-- COMPLETE FIX FOR BUTTON CLICKS, GAMES & HEADER ICONS -->
+<style id="master-layout-fix">
+    /* 1. Header Icons Perfect Circle & Right Alignment */
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .header-brand-text {
+        margin-right: auto !important;
+    }
+
+    .header-nav-btns {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-left: auto !important;
+    }
+
+    .header-nav-btns a.nav-btn {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #f1f5f9 !important;
+        color: #0284c7 !important;
+        font-size: 13px !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+    }
+
+    /* 2. Unblock Filter Buttons Click */
+    .filter-btn, 
+    .filter-tab, 
+    .category-btn,
+    .nav-btn {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 10 !important;
+    }
+
+    /* 3. Force Show Games Area */
+    #firebaseGamesSection,
+    #top3GamesSection,
+    .firebasenamesList {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+</style>
+
+<script>
+// UNBLOCK TABS & FORCE LOAD GAMES
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Enable Click on All Filter Tabs
+    const filterButtons = document.querySelectorAll('.filter-btn, .filter-tab, .category-btn');
+    filterButtons.forEach(btn => {
+        btn.style.pointerEvents = "auto";
+        btn.addEventListener('click', function () {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            if (typeof renderGames === 'function') {
+                renderGames();
+            }
+        });
+    });
+
+    // 2. Trigger Games Rendering
+    function loadGamesNow() {
+        if (typeof renderGames === "function") renderGames();
+        if (typeof rememberGames === "function") rememberGames();
+    }
+
+    loadGamesNow();
+    setTimeout(loadGamesNow, 1200);
+});
+</script>
     
 </body>
 
