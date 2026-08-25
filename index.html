@@ -2486,37 +2486,25 @@ main,
 
     /* ---------- Firebase watcher ---------- */
 
-    function watchFirebaseGames() {
+    /* ---------- Firebase Watcher ---------- */
 
-        const container = getGameContainer();
+function watchFirebaseGames() {
+    const container = getGameContainer();
+    if (!container) return;
 
-        if (!container) return;
+    const observer = new MutationObserver(() => {
+        rememberGames();
+        if (currentSearch || currentFilter !== "all") {
+            renderGames();
+        }
+    });
 
-        const observer =
-            new MutationObserver(() => {
-
-                rememberGames();
-
-                /*
-                 Firebase can add cards later.
-                 Existing cards remain protected.
-                */
-
-                if (
-                    currentSearch ||
-                    currentFilter !== "all"
-                ) {
-                    renderGames();
-                }
-
-            });
-
-        observer.observe(container, {
-            childList: true
-        });
-
-    }
-
+    // Fix applied here: .observe instead of .observer
+    observer.observe(container, {
+        childList: true
+    });
+}
+    
 
     /* ---------- start ---------- */
 
