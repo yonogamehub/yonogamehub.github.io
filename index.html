@@ -142,15 +142,15 @@
         .top3-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
             padding: 0 16px;
             margin-bottom: 20px;
         }
 
         .top3-card {
             background: linear-gradient(135deg, #ffffff 0%, #f1f5fe 100%) !important;
-            border-radius: 16px;
-            padding: 12px 8px;
+            border-radius: 14px;
+            padding: 10px 4px;
             text-align: center;
             position: relative;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -158,18 +158,19 @@
             flex-direction: column;
             align-items: center;
             border: 1px solid #e0e7ff !important;
+            overflow: hidden;
         }
 
         .rank-badge {
             position: absolute;
-            top: -8px;
+            top: -6px;
             left: -4px;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: #f59e0b;
             color: #fff;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             display: flex;
             align-items: center;
@@ -178,12 +179,12 @@
 
         .badge-tag {
             position: absolute;
-            top: 6px;
-            right: 6px;
-            font-size: 8px;
+            top: 4px;
+            right: 4px;
+            font-size: 7px;
             font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 8px;
+            padding: 2px 4px;
+            border-radius: 6px;
             color: #fff;
             text-transform: uppercase;
         }
@@ -193,18 +194,18 @@
         .badge-vip { background: #8b5cf6; }
 
         .top3-card img {
-            width: 55px;
-            height: 55px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
             object-fit: cover;
             margin-top: 6px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .top3-card h3 {
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             font-weight: 700;
-            color: #1e293b;
+            color: #0f172a;
             margin-bottom: 4px;
             white-space: nowrap;
             overflow: hidden;
@@ -213,28 +214,39 @@
         }
 
         .top3-card .info-text {
-            font-size: 0.62rem;
+            font-size: 0.55rem;
             color: #d97706;
             font-weight: 600;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
         .top3-card .withdraw-text {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #2563eb;
-            font-weight: 500;
-            margin-bottom: 8px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
         .download-btn-sm {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: #fff;
             text-decoration: none;
-            font-size: 10px;
+            font-size: 8.5px;
             font-weight: 700;
-            padding: 5px 10px;
-            border-radius: 12px;
-            width: 100%;
+            padding: 4px 2px;
+            border-radius: 10px;
+            width: 92%;
             display: block;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .tabs-container {
@@ -412,7 +424,7 @@
         .game-details .withdraw {
             color: #2563eb;
             font-size: 0.6rem;
-            font-weight: 500;
+            font-weight: 600;
             display: block;
             white-space: nowrap;
             overflow: hidden;
@@ -531,7 +543,9 @@
         <div class="sort-chip" onclick="sortGames('withdraw-low', this)">Min Withdraw</div>
     </div>
 
-    <div class="games-list" id="gamesContainer"></div>
+    <div class="games-list" id="gamesContainer">
+        <p style="text-align: center; color: #475569; font-size: 12px; padding: 20px;">Loading games from Firebase...</p>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
@@ -554,18 +568,17 @@
 
         async function fetchGamesFromFirebase() {
             try {
-                const snapshot = await getDocs(collection(db, "games"));
+                const querySnapshot = await getDocs(collection(db, "games"));
                 masterGamesData = [];
-
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    masterGamesData.push({ id: doc.id, ...data });
+                querySnapshot.forEach((doc) => {
+                    masterGamesData.push({ id: doc.id, ...doc.data() });
                 });
 
                 masterGamesData.sort((a, b) => (Number(a.order) || 999) - (Number(b.order) || 999));
                 renderUI();
             } catch (error) {
-                console.error("Error loading games from Firebase:", error);
+                console.error("Error loading games: ", error);
+                document.getElementById("gamesContainer").innerHTML = `<p style="text-align:center; color:red; font-size:12px;">Failed to load games: ${error.message}</p>`;
             }
         }
 
@@ -606,6 +619,8 @@
             
             topGames.forEach(game => {
                 const badgeClass = (game.badge || 'NEW').toLowerCase().includes('hot') ? 'badge-hot' : (game.badge || 'NEW').toLowerCase().includes('vip') ? 'badge-vip' : 'badge-new';
+                const bIcon = game.bonusIcon || '🎁';
+                const mText = game.minText || 'Min';
                 
                 top3Container.innerHTML += `
                     <div class="top3-card">
@@ -613,8 +628,8 @@
                         <span class="badge-tag ${badgeClass}">${game.badge || 'NEW'}</span>
                         <img src="${game.image || 'https://placehold.co/100x100?text=Game'}" onerror="this.src='https://placehold.co/100x100?text=Game'">
                         <h3>${game.name}</h3>
-                        <div class="info-text">🎁 ${game.reward || 'Sign Up Bonus ₹51'}</div>
-                        <div class="withdraw-text">🏦 Min. Withdrawal ₹${game.withdraw || '100'}</div>
+                        <div class="info-text">${bIcon} Bonus ₹${game.reward || '51'}</div>
+                        <div class="withdraw-text">🏦 ${mText}. W/D ₹${game.withdraw || '100'}</div>
                         <a href="${game.link || '#'}" target="_blank" class="download-btn-sm"><i class="fa-solid fa-download"></i> Download</a>
                     </div>
                 `;
@@ -629,65 +644,4 @@
             const searchKey = searchInputEl ? searchInputEl.value.toLowerCase() : "";
             if(searchKey) {
                 filteredList = filteredList.filter(g => (g.name || '').toLowerCase().includes(searchKey));
-            }
-
-            filteredList.forEach((game, index) => {
-                const badgeClass = (game.badge || 'NEW').toLowerCase().includes('hot') ? 'badge-hot' : (game.badge || 'NEW').toLowerCase().includes('vip') ? 'badge-vip' : 'badge-new';
-
-                gamesContainer.innerHTML += `
-                    <div class="game-card">
-                        <div class="game-left">
-                            <span class="game-rank">${index + 1}.</span>
-                            <div class="game-img-wrapper">
-                                <span class="game-badge-inline ${badgeClass}">${game.badge || 'NEW'}</span>
-                                <img src="${game.image || 'https://placehold.co/100x100?text=Game'}" onerror="this.src='https://placehold.co/100x100?text=Game'">
-                            </div>
-                            <div class="game-details">
-                                <h3>${game.name}</h3>
-                                <p>🎁 ${game.reward || 'Sign Up Bonus ₹51'}</p>
-                                <span class="withdraw">🏦 Min. Withdrawal ₹${game.withdraw || '100'}</span>
-                            </div>
-                        </div>
-                        <div class="game-right-actions">
-                            <button class="action-icon-btn" onclick="toggleLike(this)" title="Like"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-icon-btn" onclick="shareGame('${game.name}', '${game.link}')" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
-                            <a href="${game.link || '#'}" target="_blank" class="download-btn">
-                                <i class="fa-solid fa-download"></i> Download
-                            </a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        window.filterCategory = function(cat, element) {
-            activeCategory = cat;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            renderUI();
-        };
-
-        window.filterGames = function() {
-            renderUI();
-        };
-
-        window.sortGames = function(type, element) {
-            document.querySelectorAll('.sort-chip').forEach(c => c.classList.remove('active'));
-            element.classList.add('active');
-
-            if(type === 'bonus-high') {
-                masterGamesData.sort((a,b) => (parseInt(b.reward) || 0) - (parseInt(a.reward) || 0));
-            } else if(type === 'bonus-low') {
-                masterGamesData.sort((a,b) => (parseInt(a.reward) || 0) - (parseInt(b.reward) || 0));
-            } else if(type === 'withdraw-low') {
-                masterGamesData.sort((a,b) => (parseInt(a.withdraw) || 0) - (parseInt(b.withdraw) || 0));
-            } else {
-                masterGamesData.sort((a,b) => (Number(a.order) || 999) - (Number(b.order) || 999));
-            }
-            renderUI();
-        };
-
-        fetchGamesFromFirebase();
-    </script>
-</body>
-</html>
+            
