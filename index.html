@@ -943,14 +943,18 @@ async function loadHeaderSettings() {
                 document.getElementById("footerTitle").innerText = data.title;
                 document.getElementById("modalSiteTitle").innerText = data.title;
             }
-            // If Firebase has logo/banner use it, else keep logo.png / banner.png
-            if(data.logo && data.logo.trim() !== "") {
-                document.getElementById("siteLogo").src = data.logo;
-                document.getElementById("modalLogo").src = data.logo;
-            } else {
-                document.getElementById("siteLogo").src = "logo.png";
-                document.getElementById("modalLogo").src = "logo.png";
-            }
+            const logoUrl = data.logo || data.logoUrl || data.icon;
+const siteLogo = document.getElementById("siteLogo");
+const modalLogo = document.getElementById("modalLogo");
+
+if (logoUrl && logoUrl.trim() !== "") {
+    if (siteLogo) { siteLogo.src = logoUrl; siteLogo.style.display = "block"; }
+    if (modalLogo) { modalLogo.src = logoUrl; modalLogo.style.display = "block"; }
+} else {
+    if (siteLogo) siteLogo.style.display = "none";
+    if (modalLogo) modalLogo.style.display = "none";
+}
+            
             
             if(data.banner1 && data.banner1.trim() !== "") {
                 document.getElementById("siteBanner").src = data.banner1;
