@@ -943,35 +943,34 @@ async function loadHeaderSettings() {
                 document.getElementById("footerTitle").innerText = data.title;
                 document.getElementById("modalSiteTitle").innerText = data.title;
             }
-        const logoUrl = data.logo || data.logoUrl || data.icon || "logo.png";
+        const logoUrl = data.logo || data.logoUrl || data.icon || "images/logo.png";
 const siteLogo = document.getElementById("siteLogo");
 const modalLogo = document.getElementById("modalLogo");
 
 if (siteLogo) {
     siteLogo.src = logoUrl;
     siteLogo.style.display = "block";
-    siteLogo.onerror = function() { this.src = "logo.png"; this.onerror = null; };
+    siteLogo.onerror = function() { this.src = "images/logo.png"; this.onerror = null; };
 }
 if (modalLogo) {
     modalLogo.src = logoUrl;
     modalLogo.style.display = "block";
-    modalLogo.onerror = function() { this.src = "logo.png"; this.onerror = null; };
+    modalLogo.onerror = function() { this.src = "images/logo.png"; this.onerror = null; };
 }
-            
-            
-            
-            if(data.banner1 && data.banner1.trim() !== "") {
-                document.getElementById("siteBanner").src = data.banner1;
-            } else {
-                document.getElementById("siteBanner").src = "banner.png";
-            }
-        }
-    } catch(e) { 
-        console.log("Header Read Error, using local images:", e); 
-        document.getElementById("siteLogo").src = "logo.png";
-        document.getElementById("modalLogo").src = "logo.png";
-        document.getElementById("siteBanner").src = "banner.png";
+
+if(data.banner1 || data.banner) {
+    document.getElementById("siteBanner").src = data.banner1 || data.banner;
+} else {
+    document.getElementById("siteBanner").src = "images/banner.png";
+}
+
+} catch(e) { 
+    console.log("Header Read Error, using local images:", e);
+    if(document.getElementById("siteLogo")) document.getElementById("siteLogo").src = "images/logo.png";
+    if(document.getElementById("modalLogo")) document.getElementById("modalLogo").src = "images/logo.png";
+    if(document.getElementById("siteBanner")) document.getElementById("siteBanner").src = "images/banner.png";
     }
+    
 
     document.getElementById("headerTgBtn").href = DEFAULT_TG;
     document.getElementById("menuTgBtn").href = DEFAULT_TG;
