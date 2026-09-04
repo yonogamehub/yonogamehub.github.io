@@ -943,17 +943,21 @@ async function loadHeaderSettings() {
                 document.getElementById("footerTitle").innerText = data.title;
                 document.getElementById("modalSiteTitle").innerText = data.title;
             }
-            const logoUrl = data.logo || data.logoUrl || data.icon;
+        const logoUrl = data.logo || data.logoUrl || data.icon || "logo.png";
 const siteLogo = document.getElementById("siteLogo");
 const modalLogo = document.getElementById("modalLogo");
 
-if (logoUrl && logoUrl.trim() !== "") {
-    if (siteLogo) { siteLogo.src = logoUrl; siteLogo.style.display = "block"; }
-    if (modalLogo) { modalLogo.src = logoUrl; modalLogo.style.display = "block"; }
-} else {
-    if (siteLogo) siteLogo.style.display = "none";
-    if (modalLogo) modalLogo.style.display = "none";
+if (siteLogo) {
+    siteLogo.src = logoUrl;
+    siteLogo.style.display = "block";
+    siteLogo.onerror = function() { this.src = "logo.png"; this.onerror = null; };
 }
+if (modalLogo) {
+    modalLogo.src = logoUrl;
+    modalLogo.style.display = "block";
+    modalLogo.onerror = function() { this.src = "logo.png"; this.onerror = null; };
+}
+            
             
             
             if(data.banner1 && data.banner1.trim() !== "") {
